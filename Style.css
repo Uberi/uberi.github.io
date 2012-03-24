@@ -33,7 +33,16 @@ li
 	font-size:1.2em;
 }
 
-a { color:#666666; }
+a
+{
+	color:#777777;
+	transition:color 0.3s ease-in;
+	-o-transition:color 0.3s ease-in;
+	-moz-transition:color 0.3s ease-in;
+	-webkit-transition:color 0.3s ease-in;
+}
+
+a:hover { color:#000000; }
 
 @keyframes cloudmove
 {
@@ -65,38 +74,48 @@ div.cloud#cloud1
 {
 	left:24%;top:52%;width:16%;height:8%;
 	animation:cloudmove 60s -14.4s linear infinite;
+	-o-animation:cloudmove 60s -14.4s linear infinite;
 	-moz-animation:cloudmove 60s -14.4s linear infinite;
+	-ms-animation:cloudmove 60s -14.4s linear infinite;
 	-webkit-animation:cloudmove 60s -14.4s linear infinite;
 }
 
 div.cloud#cloud2
 {
-	left:71%;top:36%;width:13%;height:14%;
+	left:84%;top:36%;width:13%;height:14%;
 	animation:cloudmove 80s -66.8s linear infinite;
+	-o-animation:cloudmove 80s -66.8s linear infinite;
 	-moz-animation:cloudmove 80s -66.8s linear infinite;
+	-ms-animation:cloudmove 80s -66.8s linear infinite;
 	-webkit-animation:cloudmove 80s -66.8s linear infinite;
 }
 
 div.cloud#cloud3
 {
-	left:34%;top:85%;width:19%;height:10%;
+	left:48%;top:85%;width:19%;height:10%;
 	animation:cloudmove 70s -33.8s linear infinite;
+	-o-animation:cloudmove 70s -33.8s linear infinite;
 	-moz-animation:cloudmove 70s -33.8s linear infinite;
+	-ms-animation:cloudmove 70s -33.8s linear infinite;
 	-webkit-animation:cloudmove 70s -33.8s linear infinite;
 }
 
 div.cloud#cloud4
 {
-	left:12%;top:15%;width:20%;height:9%;
+	left:22%;top:15%;width:20%;height:9%;
 	animation:cloudmove 100s -22s linear infinite;
+	-o-animation:cloudmove 100s -22s linear infinite;
 	-moz-animation:cloudmove 100s -22s linear infinite;
+	-ms-animation:cloudmove 100s -22s linear infinite;
 	-webkit-animation:cloudmove 100s -22s linear infinite;
 }
 
 div.cloud#cloud5
 {
-	left:38%;top:18%;width:21%;height:12%;
+	left:58%;top:18%;width:21%;height:12%;
 	animation:cloudmove 50s -29s linear infinite;
+	-o-animation:cloudmove 50s -29s linear infinite;
 	-moz-animation:cloudmove 50s -29s linear infinite;
+	-ms-animation:cloudmove 50s -29s linear infinite;
 	-webkit-animation:cloudmove 50s -29s linear infinite;
 }
