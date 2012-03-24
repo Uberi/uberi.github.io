@@ -19,6 +19,7 @@ div#content
 h1
 {
 	color:#444444;
+	text-shadow:#666666 0 0 0.5em;
 	font-weight:100;
 	font-size:7em;
 }
@@ -35,14 +36,19 @@ li
 
 a
 {
-	color:#777777;
-	transition:color 0.3s ease-in;
-	-o-transition:color 0.3s ease-in;
-	-moz-transition:color 0.3s ease-in;
-	-webkit-transition:color 0.3s ease-in;
+	text-shadow:#AAAAAA 0 0 0.3em;
+	color:#888888;
+	transition:all 0.2s ease-in;
+	-o-transition:all 0.2s ease-in;
+	-moz-transition:all 0.2s ease-in;
+	-webkit-transition:all 0.2s ease-in;
 }
 
-a:hover { color:#000000; }
+a:hover
+{
+	text-shadow:#CCCCCC 0 0 0.8em;
+	color:#999999;
+}
 
 @keyframes cloudmove
 {
