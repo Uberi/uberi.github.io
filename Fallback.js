@@ -6,7 +6,7 @@ $(document).ready(function () {
         var offsets = [45.6,13.2,36.2,78,21];
         var speeds = [60,80,70,100,50];
         for (var i = 0;i < 5;i++) {
-            var element = $("div.cloud#cloud" + (i + 1));
+            var element = $("#background .cloud#cloud" + (i + 1));
             element.animate({left:"100%"},Math.round(offsets[i] * 1000),"linear",(function (element) {
                 var cloud = {element:element,speed:Math.round(speeds[i] * 1000)};
                 return function () {
