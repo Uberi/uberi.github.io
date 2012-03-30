@@ -1,8 +1,6 @@
 ---
 title: Some stuff.
 ---
-Test post
-=========
 Some _markdown_.
 
 a section
