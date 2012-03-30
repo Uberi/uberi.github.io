@@ -1,3 +1,6 @@
+---
+title: Some stuff.
+---
 Test post
 =========
 Some _markdown_.
