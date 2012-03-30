@@ -1,0 +1,14 @@
+---
+layout: default
+title: Blog
+---
+<h1>Hello, world.</h1>
+<h2>Personal blog of <a href="index.html">Anthony Zhang.</a></h2>
+
+{% for post in site.posts %}
+	<div class="post">
+		<h3><a href="{{ post.url }}" class="permalink">{{ post.title }}</a></h3>
+		<h4>{{ post.date | date: "%B %d, %Y" }}</h4>
+		{{ post.content | markdownify }}
+	</div>
+{% endfor %}
