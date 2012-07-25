@@ -104,18 +104,10 @@ a.permalink:hover
 	line-height:150%;
 }
 
-.post h2
-{
-	margin:0;
-	color:#555555;
-	font-size:2em;
-}
-
 .post h3
 {
 	margin:0;
-	color:#555555;
-	font-size:3em;
+	font-size:2em;
 }
 
 .post h4
