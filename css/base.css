@@ -1,0 +1,121 @@
+body
+{
+	font-size:100%;
+	margin:0;
+	padding:0;
+	background-color:#CCCCCC;
+	font-family:Georgia, Times New Roman, Times, serif;
+}
+
+#background
+{
+	z-index:-1;
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	overflow:hidden;
+}
+
+#content
+{
+	position:absolute;
+	top:10%;
+	width:100%;
+	text-align:center;
+}
+
+h1
+{
+	margin:0;
+	text-shadow:#888888 0 0 0.2em;
+	font-weight:100;
+	font-size:3em;
+}
+
+h2
+{
+	color:#888888;
+	text-shadow:#888888 0 0 0.1em;
+	font-weight:100;
+	font-size:0.8em;
+}
+
+a { color:#555555; }
+
+@keyframes cloudmove
+{
+	from { left:-25%; }
+	to   { left:100%; }
+}
+
+@-moz-keyframes cloudmove
+{
+	from { left:-25%; }
+	to   { left:100%; }
+}
+
+@-webkit-keyframes cloudmove
+{
+	from { left:-25%; }
+	to   { left:100%; }
+}
+
+#background .cloud
+{
+	z-index:-1;
+	position:absolute;
+	background-color:#E8E8E8;
+	overflow:hidden;
+}
+
+#background .cloud#cloud1
+{
+	left:24%;top:52%;width:16%;height:8%;
+	animation:cloudmove 60s -14.4s linear infinite;
+	-o-animation:cloudmove 60s -14.4s linear infinite;
+	-moz-animation:cloudmove 60s -14.4s linear infinite;
+	-ms-animation:cloudmove 60s -14.4s linear infinite;
+	-webkit-animation:cloudmove 60s -14.4s linear infinite;
+}
+
+#background .cloud#cloud2
+{
+	left:84%;top:36%;width:13%;height:14%;
+	animation:cloudmove 80s -66.8s linear infinite;
+	-o-animation:cloudmove 80s -66.8s linear infinite;
+	-moz-animation:cloudmove 80s -66.8s linear infinite;
+	-ms-animation:cloudmove 80s -66.8s linear infinite;
+	-webkit-animation:cloudmove 80s -66.8s linear infinite;
+}
+
+#background .cloud#cloud3
+{
+	left:48%;top:85%;width:19%;height:10%;
+	animation:cloudmove 70s -33.8s linear infinite;
+	-o-animation:cloudmove 70s -33.8s linear infinite;
+	-moz-animation:cloudmove 70s -33.8s linear infinite;
+	-ms-animation:cloudmove 70s -33.8s linear infinite;
+	-webkit-animation:cloudmove 70s -33.8s linear infinite;
+}
+
+#background .cloud#cloud4
+{
+	left:22%;top:15%;width:20%;height:9%;
+	animation:cloudmove 100s -22s linear infinite;
+	-o-animation:cloudmove 100s -22s linear infinite;
+	-moz-animation:cloudmove 100s -22s linear infinite;
+	-ms-animation:cloudmove 100s -22s linear infinite;
+	-webkit-animation:cloudmove 100s -22s linear infinite;
+}
+
+#background .cloud#cloud5
+{
+	left:58%;top:18%;width:21%;height:12%;
+	animation:cloudmove 50s -29s linear infinite;
+	-o-animation:cloudmove 50s -29s linear infinite;
+	-moz-animation:cloudmove 50s -29s linear infinite;
+	-ms-animation:cloudmove 50s -29s linear infinite;
+	-webkit-animation:cloudmove 50s -29s linear infinite;
+}
