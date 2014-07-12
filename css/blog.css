@@ -39,7 +39,7 @@ a.permalink:hover {
 	border-top: 1px solid grey;
 }
 
-.post img {
+.post .figure {
 	border: 1px solid #CCCCCC;
 	width: 80%;
 	display: block;
