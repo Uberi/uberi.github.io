@@ -1,121 +1,99 @@
-body
-{
-	font-size:100%;
-	margin:0;
-	padding:0;
-	background-color:#CCCCCC;
-	font-family:Georgia, Times New Roman, Times, serif;
+@font-face {
+	font-family: "Roboto";
+	font-style: normal;
+	font-weight: 400;
+	src: local("OFL Sorts Mill Goudy TT"), url("fonts/sorts-mill-goudy.ttf")  format("ttf");
 }
 
-#background
-{
-	z-index:-1;
-	position:absolute;
-	left:0;
-	top:0;
-	width:100%;
-	height:100%;
-	overflow:hidden;
-}
-
-#content
-{
-	position:absolute;
-	top:10%;
-	width:100%;
+body {
+	font-size: 100%;
+	margin: 0;
+	padding: 1em 10%;
+	background-color: white;
+	font-family: "OFL Sorts Mill Goudy TT", Georgia, Times New Roman, Times, serif;
 	text-align:center;
 }
 
-h1
-{
-	margin:0;
-	text-shadow:#888888 0 0 0.2em;
-	font-weight:100;
-	font-size:3em;
+h1 {
+	margin: 0;
+	text-shadow: #AAAAAA 0 0 0.02em;
+	font-weight: 100;
+	font-size: 3em;
+	color: #444444;
+	font-variant: small-caps;
+	margin-bottom: -0.3em;
 }
 
-h2
-{
+h1 a { color: inherit; }
+
+.site_links {
+	padding: 0;
+	margin: 0;
+}
+
+.site_links li {
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+	margin-top: 0.8em;
+}
+
+.site_links .divider:after {
+	content: "//";
+	margin: 0 0.5em;
 	color:#888888;
-	text-shadow:#888888 0 0 0.1em;
-	font-weight:100;
-	font-size:0.8em;
 }
 
-a { color:#555555; }
-
-@keyframes cloudmove
-{
-	from { left:-25%; }
-	to   { left:100%; }
+.site_links a {
+	font-size:0.9em;
+	text-transform: uppercase;
+	padding-top: 0.3em;
+	color: #555555;
+	text-decoration: none;
+	border-top: 0.15em solid rgba(153, 0, 0, 0);
+	border-bottom: 0.15em solid #990000;
+	transition: all 0.3s ease-in;
+	-webkit-transition: all 0.3s ease-in;
 }
 
-@-moz-keyframes cloudmove
-{
-	from { left:-25%; }
-	to   { left:100%; }
+.site_links a:hover, .site_links a:focus { border-top-color: #990000; }
+
+.site_links .page { border-color: #009900; border-top-color: rgba(0, 153, 0, 0); }
+
+.site_links .page:hover, .site_links .page:focus { border-top-color: #009900; }
+
+.site_links .contact { border-color: #000099; border-top-color: rgba(0, 0, 153, 0); }
+
+.site_links .contact:hover, .site_links .contact:focus { border-top-color: #000099; }
+
+a { color: #775555; }
+
+code {
+	border: 1px solid grey;
+	border-radius: 0.3em;
+	white-space: pre;
+	display: inline-block;
+	padding: 0.1em 0.3em;
+	color: #555555;
 }
 
-@-webkit-keyframes cloudmove
-{
-	from { left:-25%; }
-	to   { left:100%; }
+:not(pre) > code {
+	display: inline-block !important;
+	padding: 0.1em 0.3em !important;
+	margin-bottom: -0.3em;
 }
 
-#background .cloud
-{
-	z-index:-1;
-	position:absolute;
-	background-color:#E8E8E8;
-	overflow:hidden;
+pre { margin: 1em 3em; }
+
+pre > code { padding: 1em; overflow: auto; }
+
+.license {
+	font-size: 0.6em;
+	display: inline-block;
+	padding: 1em;
+	margin: 1em;
+	border-top: 1px solid #EEEEEE;
+	border-bottom: 1px solid #EEEEEE;
 }
 
-#background .cloud#cloud1
-{
-	left:24%;top:52%;width:16%;height:8%;
-	animation:cloudmove 60s -14.4s linear infinite;
-	-o-animation:cloudmove 60s -14.4s linear infinite;
-	-moz-animation:cloudmove 60s -14.4s linear infinite;
-	-ms-animation:cloudmove 60s -14.4s linear infinite;
-	-webkit-animation:cloudmove 60s -14.4s linear infinite;
-}
-
-#background .cloud#cloud2
-{
-	left:84%;top:36%;width:13%;height:14%;
-	animation:cloudmove 80s -66.8s linear infinite;
-	-o-animation:cloudmove 80s -66.8s linear infinite;
-	-moz-animation:cloudmove 80s -66.8s linear infinite;
-	-ms-animation:cloudmove 80s -66.8s linear infinite;
-	-webkit-animation:cloudmove 80s -66.8s linear infinite;
-}
-
-#background .cloud#cloud3
-{
-	left:48%;top:85%;width:19%;height:10%;
-	animation:cloudmove 70s -33.8s linear infinite;
-	-o-animation:cloudmove 70s -33.8s linear infinite;
-	-moz-animation:cloudmove 70s -33.8s linear infinite;
-	-ms-animation:cloudmove 70s -33.8s linear infinite;
-	-webkit-animation:cloudmove 70s -33.8s linear infinite;
-}
-
-#background .cloud#cloud4
-{
-	left:22%;top:15%;width:20%;height:9%;
-	animation:cloudmove 100s -22s linear infinite;
-	-o-animation:cloudmove 100s -22s linear infinite;
-	-moz-animation:cloudmove 100s -22s linear infinite;
-	-ms-animation:cloudmove 100s -22s linear infinite;
-	-webkit-animation:cloudmove 100s -22s linear infinite;
-}
-
-#background .cloud#cloud5
-{
-	left:58%;top:18%;width:21%;height:12%;
-	animation:cloudmove 50s -29s linear infinite;
-	-o-animation:cloudmove 50s -29s linear infinite;
-	-moz-animation:cloudmove 50s -29s linear infinite;
-	-ms-animation:cloudmove 50s -29s linear infinite;
-	-webkit-animation:cloudmove 50s -29s linear infinite;
-}
+.license img { float: left; margin-right: 0.6em; }
