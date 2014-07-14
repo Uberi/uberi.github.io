@@ -16,7 +16,7 @@ p {
 	max-width: 23em;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 650px) {
 	#logo {
 		width: 18em;
 		margin-bottom: -1em;
