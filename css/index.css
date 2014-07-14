@@ -3,7 +3,7 @@
 	width: 23em;
 }
 
-h1.largeTitle {
+.large_title {
 	font-size: 5em;
 	margin-bottom: -0.1em;
 	line-height: 90%;
@@ -14,4 +14,15 @@ p {
 	margin: 1em 0;
 	font-size: 1.4em;
 	max-width: 23em;
+}
+
+@media screen and (max-width: 500px) {
+	#logo {
+		width: 18em;
+		margin-bottom: -1em;
+	}
+
+	.large_title {
+		font-size: 3em;
+	}
 }
