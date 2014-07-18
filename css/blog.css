@@ -7,8 +7,7 @@ a.permalink {
 	margin-left: -1em;
 	padding-left: 0.5em;
 	padding-top: 0.2em;
-	transition: all 0.2s ease-in;
-	-webkit-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in; -webkit-transition: all 0.2s ease-in;
 }
 
 a.permalink:hover {
