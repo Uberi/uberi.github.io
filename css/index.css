@@ -1,6 +1,14 @@
 #logo {
 	margin-bottom: -2em;
 	width: 23em;
+	border-radius: 50%;
+	transition: all 0.6s ease;
+	-webkit-transition: all 0.6s ease;
+}
+
+#logo:hover {
+	transform: rotate(360deg);
+	-webkit-transform: rotate(360deg);
 }
 
 .large_title {
