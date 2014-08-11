@@ -1,16 +1,33 @@
 .site_links { margin-bottom: 3em; }
 
-a.permalink {
+.permalink {
 	text-decoration: none;
 	color:#444444;
-	border-left: 0.5em solid rgba(0, 0, 0, 0);
-	margin-left: -1em;
-	padding-left: 0.5em;
 	padding-top: 0.2em;
+}
+
+.closing {
+	font-size: 0.7em;
+	border-top: 1px solid grey;
+	margin-top: 1em;
+}
+
+.time {
+	display: block;
+	font-weight:100;
+	color:#888888;
+	font-size:0.8em;
+	margin: 0;
+}
+
+.entry {
+	padding: 0.5em 1em;
+	text-align: left;
+	border-left: 0.5em solid rgba(0, 0, 0, 0);
 	transition: all 0.2s ease-in; -webkit-transition: all 0.2s ease-in;
 }
 
-a.permalink:hover {
+.entry:hover {
 	border-color: black;
 }
 
@@ -20,22 +37,14 @@ a.permalink:hover {
 	line-height: 150%;
 }
 
-.post h3 {
+.entry h2, .post h2 {
 	margin: 0;
 	font-size: 2em;
 }
 
-.post .time {
-	display: block;
-	font-weight:100;
-	color:#888888;
-	font-size:0.8em;
+.post h3 {
 	margin: 0;
-}
-
-.post .closing {
-	font-size: 0.7em;
-	border-top: 1px solid grey;
+	font-size: 1.5em;
 }
 
 .post .figure {

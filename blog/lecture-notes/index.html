@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" href="../../css/base.css" type="text/css">
+		<link rel="stylesheet" href="../../css/blog.css" type="text/css">
+		<link rel="stylesheet" href="../../highlight/styles/default.css">
+		<link rel="stylesheet" href="../../highlight/styles/monokai.css">
+		<script src="../../highlight/highlight.pack.js"></script>
+		<script>
+function highlight() { // highlight all code blocks using HighlightJS
+	var code_blocks = document.getElementsByTagName("code");
+	for (var i = 0; i < code_blocks.length; i++)
+		hljs.highlightBlock(code_blocks[i]);
+}
+		</script>
+		<title>Blog - Lecture Notes | Anthony Zhang</title>
+	</head>
+	<body onload="highlight()">
+		<h1>Hi, I'm <a href="/">Anthony Zhang</a>.</h1>
+		<ul class="site_links">
+			<li><a href="/blog/" class="page">blog</a></li>
+			<span class="divider"></span>
+			<li><a href="http://uberi.github.io/University-Notes" class="page">notes</a></li>
+			<span class="divider"></span>
+			<li><a href="/Résumé.pdf" class="page">résumé</a></li>
+			<span class="divider"></span>
+			<li><a href="https://github.com/Uberi" class="contact">github</a></li>
+			<span class="divider"></span>
+			<li><a href="http://www.linkedin.com/pub/anthony-zhang/8b/aa5/7aa" class="contact">linkedin</a></li>
+			<span class="divider"></span>
+			<li><a href="mailto:azhang9@gmail.com" class="contact">email</a></li>
+			<span class="divider"></span>
+			<li><a href="https://www.facebook.com/anthony.zhang.user" class="contact">facebook</a></li>
+			<span class="divider"></span>
+			<li><a href="http://uberi.mesecons.net/">mesecons</a></li>
+			<span class="divider"></span>
+			<li><a href="http://www.autohotkey.net/~Uberi/">autohotkey.net</a></li>
+		</ul>
+		<div class="post">
+			<h2>Lecture Notes</h2>
+			<p class="time">July 11, 2014</p>
+			<p>A few people have asked now about the technical setup behind my <a href="../University-Notes">lecture notes</a>. It's actually very simple.</p>
+			<p>In class, I write notes in <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>, a formatting syntax that is incredibly easy and efficient to write. Markdown has a lot of dialects and variations since the original version was described, but I use the one supported by <a href="https://github.com/benweet/stackedit#readme">StackEdit.io</a>, a powerful Markdown application with support for things like LaTeX and UML diagrams built-in. The writing itself is done in a standard text editor, which in my case is either Cream/Vim or a Scintilla-based editor like SciTE or Geany. The result looks something like this:</p>
+			<pre><code class="markdown">**Euler's formula** relates the number of vertices, edges, and faces to each other. Let $G$ be a connected graph with a planar embedding and $F$ be the set of faces in $G$. Then $\abs{V(G)} - \abs{E(G)} + \abs{F(G)} = 2$. In other words, the number of vertices plus the number of faces minus the number of edges always results in 2.
+
+Proof:
+
+&gt; Induction over fixed $\abs{V(G)}$ and induction on $\abs{E(G)}$. Let $F(H)$ be the set of faces in a graph $H$.  
+&gt; Clearly, the smallest possible connected graph with a planar embedding is a tree, so it is one such that $\abs{E(G)} = \abs{V(G)} - 1$. Since there is only one face, $\abs{V(G)} - \abs{E(G)} + \abs{F(G)} = \abs{V(G)} - (\abs{V(G)} - 1) + 1 = 2$.  
+&gt; Suppose for some $k$ that for all $\abs{E(G)} &lt; k$, $\abs{V(G)} - \abs{E(G)} + \abs{F(G)} = 2$.  
+&gt; Assume $\abs{E(G)} = k$. Let $e$ be an edge in a cycle, which must exist because graph has more than $\abs{V(G)} - 1$ edges and is not a tree.  
+&gt; Then if we remove $e$ from $G$ to get $G'$, $G'$ is also connected and planar, since $e$ is in a cycle and is therefore not a bridge.  
+&gt; Clearly, $G'$ has $\abs{F(G)} - 1$ faces, since $e$ was in a cycle and had two different faces on both sides, and removing $e$ merges them into one face.  
+&gt; So $\abs{V(G')} - \abs{E(G')} + \abs{F(G')} = 2$. Since $G$ has one more edge and one more face than $G'$, $\abs{V(G)} - \abs{E(G)} + \abs{F(G)} = \abs{V(G')} - (\abs{E(G')} + 1) + (\abs{F(G')} + 1) = 2$.  </code></pre>
+			<p>Markdown syntax is pretty powerful. With the built-in Markdown contructs, it's possible to represent anything HTML can (since it allows inline HTML), and with the LaTeX extension, it's possible to render math as well.</p>
+			<p>The only real problem comes from diagrams. Things like electronic circuits and graphs are best represented using free-form vector graphics, but there is no such facility in the language. A solution I've used in the past is to draw out the diagrams using applications such as Inkscape (for general graphics), Webtronics (for electronic circuits), or UMLet (for UML diagrams), and then embed the exported and minified SVG directly into the document as XML. This tends to look something like this:</p>
+			<pre><code class="xml">&lt;svg xmlns="http://www.w3.org/2000/svg" width="140" height="126"&gt;&lt;rect x="0" y="0" fill="white" width="140px" height="126px"/&gt;&lt;text x="56" y="113" font-size="12" fill="black" stroke-width="0px"&gt;V_{cc}-&lt;/text&gt;&lt;text x="52" y="17" font-size="12" fill="black" stroke-width="0px"&gt;V_{cc}+&lt;/text&gt;&lt;text x="10" y="80" font-size="12" fill="black" stroke-width="0px"&gt;V_p&lt;/text&gt;&lt;text x="10" y="44" font-size="12" fill="black" stroke-width="0px"&gt;V_n&lt;/text&gt;&lt;text x="107" y="65" font-size="12" fill="black" stroke-width="0px"&gt;V_O&lt;/text&gt;&lt;g id="u" stroke="#000" stroke-width="2px" class="op-amp" transform="matrix(1,1.2246468525851679e-16,1.2246468525851679e-16,-1,40,90)"&gt;&lt;metadata class="part"&gt;&lt;wtx:part xmlns:wtx="http://code.google.com/p/webtronics"&gt;&lt;wtx:pins&gt;&lt;wtx:analog&gt;&lt;!-- all opamp models must be in this order * CONNECTIONS: NON-INVERTING INPUT * | INVERTING INPUT * | | POSITIVE POWER SUPPLY * | | | NEGATIVE POWER SUPPLY * | | | | OPEN COLLECTOR OUTPUT * | | | | | .SUBCKT LM339 1 2 3 4 5 --&gt;&lt;wtx:node index="1" x="0" y="10"/&gt;&lt;wtx:node index="2" x="0" y="50"/&gt;&lt;wtx:node index="3" x="30" y="0"/&gt;&lt;wtx:node index="4" x="30" y="60"/&gt;&lt;wtx:node index="5" x="60" y="30"/&gt;&lt;/wtx:analog&gt;&lt;/wtx:pins&gt;&lt;wtx:id&gt;u&lt;/wtx:id&gt;&lt;wtx:type&gt;u&lt;/wtx:type&gt;&lt;wtx:name&gt;op-amp&lt;/wtx:name&gt;&lt;wtx:category&gt;amplifier&lt;/wtx:category&gt;&lt;wtx:value/&gt;&lt;wtx:spice/&gt;&lt;wtx:label/&gt;&lt;wtx:flip&gt;true&lt;/wtx:flip&gt;&lt;wtx:model/&gt;&lt;/wtx:part&gt;&lt;/metadata&gt;&lt;path id="path1887" fill="none" d="M50,30,10,60,10,0,50,30z"/&gt;&lt;path id="path1889" d="M0,10,10,10"/&gt;&lt;path id="path1893" d="M0,50,10,50"/&gt;&lt;text id="text1895" y="20" x="15" font-size="12px" stroke-width="0px"&gt;+&lt;/text&gt;&lt;path id="path2167" d="M50,30,60,30"/&gt;&lt;text id="text1915" y="45" x="15" font-size="12px" stroke-width="0px"&gt;_&lt;/text&gt;&lt;path id="path2" d="M30,0,30,15"/&gt;&lt;path id="path2" d="M30,45,30,60"/&gt;&lt;/g&gt;&lt;/svg&gt;</code></pre>
+			<p>That's the part that happens during class. Afterwards, everything is more or less automated. The text is converted into HTML via <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a>, a utility capable of converting between a ton of different markup formats, including Markdown with embedded LaTeX. Then, the resulting HTML is filled out via a template that brings in <a href="http://www.mathjax.org/">MathJax</a> (for rendering the LaTeX math), code styles, and other general presentation-related stuff.</p>
+			<p>Of course, all of this is done via build script, and then committed to the <a href="https://github.com/Uberi/University-Notes">GitHub repository</a> by hand due to the need for manual review. Since the repository is set up with GitHub Pages, it's automatically hosted on my website:</p>
+			<img src="notes.png" alt="Notes Screenshot" class="figure">
+			<div class="closing">Questions or comments? Drop me a line at <a href="mailto:azhang9@gmail.com?subject=Blog:%20Lecture%20Notes">azhang9@gmail.com</a>.</div>
+		</div>
+		<div class="license">
+			<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a> This work by <a xmlns:cc="http://creativecommons.org/ns#" href="https://uberi.github.io/" property="cc:attributionName" rel="cc:attributionURL">Anthony Zhang</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+			Copyright 2013-2014 Anthony Zhang.
+		</div>
+	</body>
+</html>
