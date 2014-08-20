@@ -14,7 +14,7 @@ function highlight() { // highlight all code blocks using HighlightJS
 		hljs.highlightBlock(code_blocks[i]);
 }
 		</script>
-		<title>Blog - Update Banshee's Date Added Field | Anthony Zhang</title>
+		<title>Blog - Building OpenSpades on Ubuntu 14.04 | Anthony Zhang</title>
 	</head>
 	<body onload="highlight()">
 		<h1>Hi, I'm <a href="/">Anthony Zhang</a>.</h1>
@@ -38,30 +38,19 @@ function highlight() { // highlight all code blocks using HighlightJS
 			<li><a href="http://www.autohotkey.net/~Uberi/">autohotkey.net</a></li>
 		</ul>
 		<div class="post">
-			<h2>Update Banshee's Date Added Field</h2>
-			<p class="time">August 10, 2014</p>
-			<p>If you use <a href="http://banshee.fm/">Banshee</a> as a music player, you've probably noticed that the "Date Added" column isn't very useful. Instead of showing the file creation or last modified time, it actually uses the time the files were added to the library.</p>
-			<p>There's no built-in way to make it sort by modification time. To make this work, we'll have to mess around with the media database.</p>
-			<p>Here's a quick Python script that accomplishes the task:</p>
-			<pre><code class="python">#!/usr/bin/env python
-
-DB_PATH = "~/.config/banshee-1/banshee.db"
-
-import sqlite3
-import os.path as path
-conn = sqlite3.connect(path.expanduser(DB_PATH))
-c = conn.cursor()
-c.execute("""UPDATE CoreTracks SET
-	DateAddedStamp = FileModifiedStamp,
-	DateUpdatedStamp = FileModifiedStamp""")
-conn.commit()
-c.close()</code></pre>
-			<p>You can also <a href="banshee-update-date-added.py">download the script directly</a>.</p>
-			<p>This was written for Python 2.7, but should also work for any modern-ish version you have available. Simply run the script once to update the Date Added and Date Modified columns in your Banshee tracks list to the actual file modified time:</p>
-			<img src="screenshot.png" alt="Screenshot" class="figure">
-			<p>To do this regularly, you might want to set up a cronjob or have it done on startup. To have the script run once a day, simply run <code class="bash">crontab -e</code> and add <code class="no-highlight">0 0 */1 * * /PATH_TO_PYTHON_SCRIPT/banshee-update-date-added.py</code>. If you do this, make sure that the script is executable first using <code class="bash">chmod +x /PATH_TO_PYTHON_SCRIPT/banshee-update-date-added.py</code>.</p>
-			<p>Oh, and one last thing. If you like keeping your ID3 tags updated in MP3 files, simply enable "Edit > Preferences > Sync metadata between library and files" to apply edits to tracks in Banshee to the actual files.</p>
-			<p>Edit (August 19, 2014): To do the opposite, updating the file modified timestamp to match Banshee's date added timestamp, here's <a href="banshee-update-file-modified.py">another Python script to accomplish that</a>. This one's written for Python 3, however.</p>
+			<h2>Building OpenSpades on Ubuntu 14.04</h2>
+			<p class="time">August 19, 2014</p>
+			<p><a href="https://sites.google.com/a/yvt.jp/openspades/">OpenSpades</a> is a multiplayer voxel-based FPS with fully destructible terrain and pretty complete building mechanics. Based on an older game called Ace of Spades, I'd have to say it really captures the feel of the original:</p>
+			<img src="screenshot.png" alt="OpenSpades Screenshot" class="figure">
+			<p>The downloads page has packages for Windows and OS X, so <a href="https://sites.google.com/a/yvt.jp/openspades/downloads">give it a spin</a>! On Ubuntu, we'll need to be a little creative to get things running:</p>
+			<ul>
+				<li>The <code class="no-highlight">libopenal-dev</code>, <code class="no-highlight">libpng-dev</code>, and <code class="no-highlight">libtiff-dev</code> packages are required - without them, the program will build but not run.</li>
+				<li>"SDL_Image" needs to be configured with the <code class="bash">--disable-png-shared</code> option.</li>
+				<li>CMake and Make need to be available. While Make usually is, CMake often isn't.</li>
+				<li>A resource pack to actually run the game - an archive with the models, sounds, and etc. These are available from a different place, and the game will not run without one.</li>
+			</ul>
+			<p>Here's a <a href="build-openspades.sh">nice bash script to do the whole build from scratch</a>. When run with something like <code language="bash">bash build-openspades.sh</code>, the script downloads, builds, and installs the game completely automatically. You may need to enter your password when prompted in order to do the actual installation.</p>
+			<p>Additionally, if you're running Ubuntu, here's <a href="https://dl.dropboxusercontent.com/u/8097754/openspades-0.0.12-Linux-x86_64.deb">a prebuilt DEB package</a> for 14.04 (Trusty Tahr).</p>
 			<div class="closing">Questions or comments? Drop me a line at <a href="mailto:azhang9@gmail.com?subject=Blog:%20Lecture%20Notes">azhang9@gmail.com</a>.</div>
 		</div>
 		<div class="license">
