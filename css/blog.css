@@ -2,8 +2,9 @@
 
 .permalink {
 	text-decoration: none;
-	color:#444444;
+	color: #444444;
 	padding-top: 0.2em;
+	font-weight: lighter;
 }
 
 .closing {
