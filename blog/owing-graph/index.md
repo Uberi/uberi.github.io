@@ -249,6 +249,14 @@ The above outputs:
 
 In this case, the result also happens to be optimal. This is also the case for most real-world inputs!
 
+However, the result will not be optimal whenever the largest partition with subsets that all sum to 0 is larger than the number of components in the graph where all vertices with a 0 net balance are removed. Let's try to construct one of these graphs:
+
+![Contrived example of graph where approximation isn't optimal](img/whiteboard-contrived-example.png)
+
+On the top left, we have a graph with a single component, where none of the vertices have a net balance of 0 (each vertex is labelled with the amount they are owed). Running the approximation on this graph results in 3 transactions, when the optimal result, shown on the bottom right, has 2.
+
+There are many ways to improve our approximation: for example, we could detect and break cycles in the graph. However, since the problem is NP-complete, our approximations will never be perfect in all cases without also taking just as much time.
+
 ### The leftovers
 
 The code in this post can be downloaded directly:
