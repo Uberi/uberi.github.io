@@ -95,20 +95,17 @@ code {
 	white-space: pre;
 	display: inline-block;
 	padding: 0.1em 0.3em;
-	color: #555555;
 	overflow: auto;
 	line-height: 150%;
 }
-
 :not(pre) > code {
 	display: inline-block !important;
 	padding: 0.1em 0.3em !important;
 	margin-bottom: -0.6em;
 }
-
-pre { margin: 1em 3em; }
-
-pre > code { padding: 1em; overflow: auto; }
+.highlight { margin: 1em 3em; }
+pre code { padding: 1em; overflow: auto; display: block; }
+:not(.highlight) > pre { margin: 1em 3em; }
 
 .license {
 	font-size: 0.6em;

@@ -1,1 +1,4 @@
 .dropbox.attr
+_site/
+.jekyll-metadata
+*.lock
