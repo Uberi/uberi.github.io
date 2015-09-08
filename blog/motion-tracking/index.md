@@ -148,7 +148,7 @@ Those round empties are the reconstructed points, and are keyframed in world spa
 
 All this is nice and all, but it's all for nothing if we can't use that animation for anything.
 
-I downloaded a public domain Blend for [Sting](http://lotr.wikia.com/wiki/Sting) from [BlendSwap](http://www.blendswap.com/blends/view/67037) (credits to **for_the_kingdom** for the model!), imported it into the scene, and whipped up a quick rig to make it follow our tracked empties:
+I downloaded a public domain model for [Sting](http://lotr.wikia.com/wiki/Sting) from [BlendSwap](http://www.blendswap.com/blends/view/67037) (credits to **for\_the\_kingdom**!), imported it into the scene, and whipped up a quick rig to make it follow our tracked empties:
 
 ![Fully rigged model](img/rigged-sword.png)
 
