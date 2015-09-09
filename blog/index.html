@@ -33,7 +33,7 @@
 		{% for page in pages reversed %}
 			{% if page.layout == 'post' %}  
 				<div class="entry">
-					<h2><a href="{{ page.url }}" class="permalink">{{ page.title }}</a></h2>
+					<h2><a href="{{ page.url | append: '\n' | replace: '/index.html\n', '/\n' | remove_first: '\n' }}" class="permalink">{{ page.title }}</a></h2>
 					<p class="time">{{ page.date | date:'%B %d, %Y' }}</p>
 				</div>
 			{% endif %}
