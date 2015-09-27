@@ -11,7 +11,7 @@
 
 .large_title {
 	font-size: 5em;
-	margin-bottom: -0.1em;
+	margin-bottom: 0.1em;
 	line-height: 90%;
 	transition: all 0.6s ease; -webkit-transition: all 0.6s ease;
 }
