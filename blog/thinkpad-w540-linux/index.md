@@ -99,6 +99,15 @@ sudo apt-get install libbsapi policykit-1-fingerprint-gui fingerprint-gui
 
 After rebooting, Fingerprint GUI can be used to to log in, or even use fingerprint swipes to authenticate `sudo`! It all feels very smooth.
 
+The battery life is pretty bad in this configuration. To improve it, install TLP to enable more advanced power settings when running off the battery:
+
+```bash
+sudo add-apt-repository ppa:linrunner/tlp
+sudo apt-get update
+sudo apt-get install tlp tlp-rdw
+sudo apt-get install tp-smapi-dkms acpi-call-dkms # Thinkpad-specific packages
+```
+
 There's also a bunch of other hardware-related things to consider over at the [ThinkWiki page for the W540](http://www.thinkwiki.org/wiki/Category:W540).
 
 Of course, at this point we've only got the OS set up - there's still the matter of installing/configuring all the software!
@@ -134,4 +143,10 @@ else
 	xinput disable "AT Translated Set 2 keyboard"
 	echo "Device disabled."
 fi
+```
+
+* The Alt + Drag window moving behaviour in GNOME is rather annoying when trying to use applications that also use Alt + Drag, so this can be changed to Super + Drag using the following command:
+
+```bash
+gsettings set org.gnome.desktop.wm.preferences mouse-button-modifier "<Super>"
 ```
