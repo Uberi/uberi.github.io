@@ -6,7 +6,7 @@ layout: post
 
 There's just something beautiful about the sight of gears and linkages in motion. Let's build some logic gates!
 
-![Completed gate assemblies](img/completed.png)
+<video src="img/or-gate-final.ogv" controls loop></video>
 
 ### Background
 
@@ -25,9 +25,7 @@ There are currently a few well-known systems of mechanical computation:
 
 The Zuse Z1 is especially interesting because it was actually built - Konrad Zuse finished the original in 1938, predating the ENIAC by 8 years. The mechanisms within the device implemented Boolean logic, memory, and even floating point operations, using rods, bars, and levers.
 
-Rod logic is a well-researched topic - here's a basic [rundown of common logic gates](http://www.halfbakedmaker.org/blog/58) implemented using just rods and knobs.
-
-However, all of these mechanical logic systems have a problem - their **gates are not composable**. Consider the identity gate from the link above:
+Rod logic is a well-researched topic - here's a few [common logic gates implemented using just rods and knobs](http://www.halfbakedmaker.org/blog/58). However, all of these mechanical logic systems have a problem - their **gates are not composable**. Consider the identity gate from the previous link:
 
 ![Identity gate in standard rod logic](img/identity-gate.png)
 
