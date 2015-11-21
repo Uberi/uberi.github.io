@@ -38,16 +38,25 @@
 
 .entry h2, .post h2 {
 	margin: 0;
-	font-size: 2em;
+	font-size: 2.8em;
 	line-height: 1.2;
 }
 
 .post h3 {
 	margin: 0;
 	margin-top: 1em;
-	font-size: 1.5em;
+	font-size: 1.8em;
 	line-height: 1.2;
 }
+
+.post h4 {
+	margin: 0;
+	margin-top: 0.5em;
+	font-size: 1.4em;
+	line-height: 1.2;
+}
+
+.post strong { font-weight: bold; }
 
 .post img {
 	border: 1px solid #CCCCCC;
@@ -57,6 +66,12 @@
 	display: block;
 	text-align: center;
 	margin: 1em auto;
+}
+
+.post video {
+	display: block;
+	width: 90%;
+	margin: 0 auto;
 }
 
 .post table {
