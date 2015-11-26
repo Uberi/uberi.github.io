@@ -68,9 +68,14 @@
 	margin: 1em auto;
 }
 
-.post video, .post iframe {
+.post video {
 	display: block;
 	width: 90%;
+	margin: 0 auto;
+}
+
+.post iframe {
+	display: block;
 	margin: 0 auto;
 }
 
