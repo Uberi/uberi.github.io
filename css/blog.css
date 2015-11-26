@@ -68,7 +68,7 @@
 	margin: 1em auto;
 }
 
-.post video {
+.post video, .post iframe {
 	display: block;
 	width: 90%;
 	margin: 0 auto;
