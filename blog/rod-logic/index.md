@@ -6,7 +6,7 @@ layout: post
 
 There's just something beautiful about the sight of gears and linkages in motion. Let's build some logic gates!
 
-<video src="img/or-gate-final.ogv" controls loop></video>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/f8vI3hsQHN8" frameborder="0" allowfullscreen></iframe>
 
 ### Background
 
@@ -43,7 +43,7 @@ We're going to avoid this issue by designing gates that are directly composable 
 
 This one is pretty simple:
 
-<video src="img/not-gate-mechanism.ogv" controls loop></video>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dh_jWl1bVn8" frameborder="0" allowfullscreen></iframe>
 
 When the cyan input rod is pushed, it turns the blue gear, which then retracts the red output rod. It is easy to analyze this system and see that the output rod's extension is exactly \\(E - x\\) where \\(E\\) is the maximum extension and \\(x\\) is the input rod extension.
 
@@ -55,7 +55,7 @@ Note that NOT gates will often not be necessary, because retracting a rod from o
 
 This is a bit more complex than the NOT gate, having 3 mechanical layers:
 
-<video src="img/or-gate-mechanism.ogv" controls loop></video>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/s5DIRmrV2SM" frameborder="0" allowfullscreen></iframe>
 
 Here, either of the two cyan and magenta input rods can be extended right to push on the red output rod and cause it to extend right, so the output rod's extension is at least \\(\\max(x\_1, x\_2)\\) where \\(x\_1\\) and \\(x\_2\\) are the amounts by which the input rods are extended.
 
@@ -71,7 +71,7 @@ From the plots, we can tell that the position of the OR gate's output rod is exa
 
 This is very similar to the OR gate:
 
-<video src="img/and-gate-mechanism.ogv" controls loop></video>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/rg9HKS8W6FU" frameborder="0" allowfullscreen></iframe>
 
 Here, either of the two cyan and magenta input rods can be retracted left to pull on the red output rod and cause it to retract left, so the output rod's extension is at most \\(\\min(x\_1, x\_2)\\) where \\(x\_1\\) and \\(x\_2\\) are the amounts by which the input rods are extended.
 
@@ -122,8 +122,8 @@ I'm going to skip the assembly steps, but here are a few notes on the process:
 
 ### Results
 
-<video src="img/or-gate-final.ogv" controls loop></video>
-<video src="img/and-gate-final.ogv" controls loop></video>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/f8vI3hsQHN8" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/esi3rg6Aaro" frameborder="0" allowfullscreen></iframe>
 
 Both gates currently have an actuation force of less than 300 mN in all states. This can be reduced further by sanding down the parts that are binding and cleaning up all the extra hot glue.
 
