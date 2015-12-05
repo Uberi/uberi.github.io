@@ -57,6 +57,7 @@
 }
 
 .post strong { font-weight: bold; }
+.post emph { font-style: italic; }
 
 .post img {
 	border: 1px solid #CCCCCC;
