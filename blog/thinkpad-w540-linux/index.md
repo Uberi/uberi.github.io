@@ -18,6 +18,10 @@ Going through the installer, Ubuntu was put in the empty space allocated earlier
 
 ### Step 2: Not setting the graphics card on fire
 
+**Update:** Nvidia's [new proprietary driver](http://www.nvidia.com/download/driverResults.aspx/95159/en-us) (other versions available [here](http://www.nvidia.com/download/index.aspx)) now seems to correctly support the Quadro K2100M. I recommend trying this before resorting to the steps below.
+
+**Update:** some users report that nvidia-355 doesn't work with their hardware. The workaround for this is to use `nvidia-352` for all of the steps below in place of `nvidia-355`. Many thanks to **Hanno** for confirming that these steps also work on Linux Mint 17.
+
 [This article](http://www.linuxveda.com/2015/07/16/how-to-install-drivers-for-nvidia-optimus-cards/) was a great starting point for making the nVidia GPU behave properly. However, the instructions needed quite a few changes to work properly. Here's what it took:
 
 * Get rid of the current, broken nVidia drivers:
@@ -61,8 +65,8 @@ sudo usermod -a -G bumblebee $USER
 * Since Xorg-Edgers is on the bleeding edge, the latest nVidia drivers can have stability issues. That means it's necessary to explicitly write the version as 355. As root, make the following edits to `/etc/bumblebee/bumblebee.conf`:
     * In the `[bumblebeed]` section, replace `Driver=` with `Driver=nvidia`.
     * In the `[driver-nvidia]` section, replace `KernelDriver=` with `KernelDriver=nvidia-355`.
-    * In the `[driver-nvidia]` section, replace `LibraryPath=` with `LibraryPath=/usr/lib/nvidia-355,/usr/lib/nvidia-355:/usr/lib32/nvidia-355` (or append them to the end if there are already entries, making sure to separate paths with commas).
-    * In the `[driver-nvidia]` section, replace `XorgModulePath=` with `/usr/lib/nvidia-355,/usr/lib/xorg/modules` (or append them to the end if there are already entries, making sure to separate paths with commas).
+    * In the `[driver-nvidia]` section, replace `LibraryPath=` with `LibraryPath=/usr/lib/nvidia-355:/usr/lib32/nvidia-355` (or append them to the end if there are already entries, making sure to separate paths with **colons**).
+    * In the `[driver-nvidia]` section, replace `XorgModulePath=` with `/usr/lib/nvidia-355,/usr/lib/xorg/modules` (or append them to the end if there are already entries, making sure to separate paths with **commas**).
 * Now to make sure that the display is set correctly: in `/etc/bumblebee/xorg.conf.nvidia `, replace `Option “ConnectedMonitor” “DFP”` with `Option “UseDisplayDevice” “none”` if the latter is not already present.
 * The nVidia driver needs to be blacklisted so Bumblebee can manage it:
 
@@ -115,9 +119,9 @@ Of course, at this point we've only got the OS set up - there's still the matter
 ### Other notes
 
 * Don't use [bbswitch](https://github.com/Bumblebee-Project/bbswitch)! A lot of old forum posts will recommend it for power management, but as of Bumblebee 3.0 it is redundant and will break things.
-* Thinkpad Ultra Docks and the built in 4-in-1 card reader are not supported. Unfortunately, there's no real workaround for this.
+* Thinkpad Ultra Docks and the built in 4-in-1 card reader are not supported. Unfortunately, there's no real workaround known at this time.
 * The X-Rite Huey PRO Colorimeter doesn't work with Argyll color management. Basically, it'll be necessary to boot into Windows to generate the ICC file using Lenovo's official tools, then boot back into Ubuntu and apply the `*.icc` color profile using something like [dispcalGUI](http://dispcalgui.hoech.net/).
-* When you have multiple monitors, a Wacom tablet will move the mouse across all of them. GNOME's Wacom configuration utility can map the tablet to a single monitor. If not using GNOME, modify this script to suit your needs:
+* When you have multiple monitors, a Wacom tablet will move the cursor across all of them. GNOME's Wacom configuration utility can map the tablet to a single monitor. If not using GNOME, modify this script to suit your needs:
 
 ```bash
 #!/usr/bin/env bash
