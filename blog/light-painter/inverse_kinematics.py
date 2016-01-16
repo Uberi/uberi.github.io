@@ -47,7 +47,7 @@ def inverse_solve_actuator(end_position, actuator_normal, actuator_arm_length, e
         return None
 
     # (OPTIONAL) verify that theta actually satisfies the delta robot arm constraints
-    #from vectr import Vector
+    #from vectr import Vector # get this from http://anthony-zhang.me/blog/light-painter/vectr.py
     #arm = Vector(actuator_normal[0], actuator_normal[1]).rotated2D(-math.pi / 2)
     #joint = actuator_arm_length * Vector(arm[0] * math.cos(theta), arm[1] * math.cos(theta), math.sin(theta))
     #assert abs((Vector(*actuator_normal) * joint)) < 0.00001, "joint on circle constraint violated for position {}".format(end_position)
