@@ -167,7 +167,7 @@ def inverse_solve_actuator(end_position, actuator_normal, actuator_arm_length, e
 
 ### Physical construction
 
-The design was pretty much made up as we went along, based on what materials that could be scavenged. For example, the base and arms were all made out of empty Mountain Dew cans and assorted litter found around the room. The bottom of a soda can became the base for the arms:
+The design was pretty much made up as we went along, based on what materials could be scavenged. For example, the base and arms were all made out of empty Mountain Dew cans and assorted litter found around the room. The bottom of a soda can became the base for the arms:
 
 Since we didn't have any universal joints, actuator arms and end arms were joined together by gluing them to flexible strips cut from ziplock bags. This actually behaves a lot like a universal joint, if you don't think about it too much. The arm actuators are SG90 servos (nylon-geared analog micro servos, generally about $3 each).
 
@@ -185,7 +185,7 @@ Despite our best efforts, the robot actually worked!
 
 With better motion control, the movements can be made a lot smoother, increasing the quality of the resulting photo - perhaps a good project for another time. For now, LightPainter sits on my desk, occasionally flashing and spinning around.
 
-Various project files/links:
+Project files and links:
 
 * The [Blender file used to render the graphics in this document](mechanics.blend).
 * The full source code for the [inverse kinematics routines](inverse_kinematics.py).
