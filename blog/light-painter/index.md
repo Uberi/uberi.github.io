@@ -86,7 +86,7 @@ With this, we should now be able to solve for \\(\theta\\) (WARNING: LOTS OF MAT
     * In general, when we square both sides of an equation, the solutions to the squared equation is the union of the solutions to the original equation and the solutions to the original equation with one side negated. Suppose we have \\(x^2 = (2 - 7)^2\\), so \\(x = \pm 5\\). Clearly, the values of \\(x\\) are the union of the solutions to \\(x = 2 - 7\\) and \\(x = -(2 - 7)\\).
     * Clearly, the left side of the equation at step 1 is positive since it is the end arm length, and the right side is non-negative since it is a square root.
     * So there is no possible solution for \\(-E = \sqrt{\left(\vec P(\theta) - \vec v\right) \cdot \left(\vec P(\theta) - \vec v\right)}\\) (the equation at step 2 with one side inverted).
-    * Therefore, the set of solutions (values of \\(\theta\\) to the equation at step 2 is the same as that for the equation at step 1.
+    * Therefore, the set of solutions (values of \\(\theta\\)) to the equation at step 2 is the same as that for the equation at step 1.
 3. Expand dot product: \\(E^2 = \left(-A \cos(\theta) n\_2 - v\_1\right)^2 + \left(A \cos(\theta) n\_1 - v\_2\right)^2 + \left(A \sin(\theta) - v\_3\right)^2\\).
 4. Expand and simplify: \\(E^2 = A^2 \cos(\theta)^2 (n\_1^2 + n\_2^2) + A^2 \sin(\theta)^2 + 2 A \cos(\theta) n\_2 v\_1 - 2 A \cos(\theta) n\_1 v\_2 - 2 A \sin(\theta) v\_3 + v\_1^2 + v\_2^2 + v\_3^2\\).
 5. Simplify: \\(E^2 = A^2 + 2 A \cos(\theta) (n\_2 v\_1 - n\_1 v\_2) - 2 A \sin(\theta) v\_3 + v\_1^2 + v\_2^2 + v\_3^2\\).
@@ -107,7 +107,7 @@ With this, we should now be able to solve for \\(\theta\\) (WARNING: LOTS OF MAT
 14. Solve for \\(\sin(\theta)\\): \\(\sin(\theta) = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} = \frac{-2xz \pm \sqrt{\left(2xz\right)^2 - 4\left(y^2 + z^2\right)\left(x^2 - y^2\right)}}{2\left(y^2 + z^2\right)}\\).
     * The [quadratic formula](https://en.wikipedia.org/wiki/Quadratic_formula) can be used to solve any quadratic equation.
     * Note that the denominator could be 0, giving an undefined result. This means that the end effector position doesn't have a unique solution.
-    * For example, if \\(A = E\\) (actuator arms and end arms have same length), and the end effector is moved to \\(\vec 0\\) (by setting \\(\theta_1 = \theta_2 = \theta_3 = 0\\)), then the actuators can be moved arbitrarily while the end effector stays in place - the end effector can get stuck if we move it to the origin.
+    * For example, if \\(A = E\\) (actuator arms and end arms have same length), and the end effector is moved to \\(\vec 0\\) (by setting \\(\theta\_1 = \theta\_2 = \theta\_3 = 0\\)), then the actuators can be moved arbitrarily while the end effector stays in place - the end effector can get stuck if we move it to the origin.
     * We'll simply check if the denominator is 0, and disallow moving the end effector to that position to prevent it from getting stuck.
 15. Expand and simplify: \\(\sin(\theta) = \frac{-xz \pm \sqrt{y^2 \left(y^2 + z^2 - x^2\right)}}{y^2 + z^2}\\).
     * This gives us 2 possible values of \\(\sin(\theta)\\) due to the \\(\pm\\).
