@@ -32,25 +32,22 @@
 			<span class="divider"></span>
 			<li><a href="/anthony-zhang.asc" class="info">GPG key</a></li>
 		</ul>
+{% assign posts = site.pages | sort:"date" %}{% comment %}
+{% endcomment %}{% for post in posts %}
+	{% if post.layout == 'post' %}
+		{% if post.url == page.url %}
+			{% assign previous = previous_post %}
+		{% endif %}
+		{% if previous_post.url == page.url %}
+			{% assign next = post %}
+		{% endif %}
+		{% assign previous_post = post %}
+	{% endif %}
+{% endfor %}
 		<div class="navigation">
-{% comment %}
-			{% endcomment %}{% assign posts = site.pages | sort:"date" %}{% comment %}
-			{% endcomment %}{% for post in posts %}{% comment %}
-				{% endcomment %}{% if post.layout == 'post' and post.url == page.url %}{% comment %}
-					{% endcomment %}{% unless forloop.first %}{% comment %}
-						{% endcomment %}			<a href="{{ previous_post.url | append: '\n' | replace: '/index.html\n', '/\n' | remove_first: '\n' }}">&larr; Previous</a> <span class="spacer"></span>
-{% comment %}
-					{% endcomment %}{% endunless %}{% comment %}
-					{% endcomment %}			<a href="..">Blog Index</a>
-{% comment %}
-					{% endcomment %}{% unless forloop.last %}{% comment %}
-						{% endcomment %}{% assign next_post = posts[forloop.index] %}{% comment %}
-						{% endcomment %}			<span class="spacer"></span> <a href="{{ next_post.url | append: '\n' | replace: '/index.html\n', '/\n' | remove_first: '\n' }}">Next &rarr;</a>
-{% comment %}
-					{% endcomment %}{% endunless %}{% comment %}
-				{% endcomment %}{% endif %}{% comment %}
-				{% endcomment %}{% assign previous_post = post %}{% comment %}
-			{% endcomment %}{% endfor %}
+			{% if previous %}<a href="{{ previous.url | append: '\n' | replace: '/index.html\n', '/\n' | remove_first: '\n' }}">&larr; Previous</a> <span class="spacer"></span>{% endif %}
+			<a href="..">Blog Index</a>
+			{% if next %}<span class="spacer"></span> <a href="{{ next.url | append: '\n' | replace: '/index.html\n', '/\n' | remove_first: '\n' }}">Next &rarr;</a>{% endif %}
 		</div>
 		<div class="post">
 			<h2>{{ page.title }}</h2>
@@ -59,24 +56,9 @@
 			<div class="closing">Questions or comments? Drop me a line at <a href="mailto:azhang9@gmail.com?subject=Blog%20-%20{{ page.title }}">azhang9@gmail.com</a>.</div>
 		</div>
 		<div class="navigation">
-{% comment %}
-			{% endcomment %}{% assign posts = site.pages | sort:"date" %}{% comment %}
-			{% endcomment %}{% for post in posts %}{% comment %}
-				{% endcomment %}{% if post.layout == 'post' and post.url == page.url %}{% comment %}
-					{% endcomment %}{% unless forloop.first %}{% comment %}
-						{% endcomment %}			<a href="{{ previous_post.url | append: '\n' | replace: '/index.html\n', '/\n' | remove_first: '\n' }}">&larr; Previous</a> <span class="spacer"></span>
-{% comment %}
-					{% endcomment %}{% endunless %}{% comment %}
-					{% endcomment %}			<a href="..">Blog Index</a>
-{% comment %}
-					{% endcomment %}{% unless forloop.last %}{% comment %}
-						{% endcomment %}{% assign next_post = posts[forloop.index] %}{% comment %}
-						{% endcomment %}			<span class="spacer"></span> <a href="{{ next_post.url | append: '\n' | replace: '/index.html\n', '/\n' | remove_first: '\n' }}">Next &rarr;</a>
-{% comment %}
-					{% endcomment %}{% endunless %}{% comment %}
-				{% endcomment %}{% endif %}{% comment %}
-				{% endcomment %}{% assign previous_post = post %}{% comment %}
-			{% endcomment %}{% endfor %}
+			{% if previous %}<a href="{{ previous.url | append: '\n' | replace: '/index.html\n', '/\n' | remove_first: '\n' }}">&larr; Previous</a> <span class="spacer"></span>{% endif %}
+			<a href="..">Blog Index</a>
+			{% if next %}<span class="spacer"></span> <a href="{{ next.url | append: '\n' | replace: '/index.html\n', '/\n' | remove_first: '\n' }}">Next &rarr;</a>{% endif %}
 		</div>
 		<div class="license">
 			<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a> This work by <a xmlns:cc="http://creativecommons.org/ns#" href="https://uberi.github.io/" property="cc:attributionName" rel="cc:attributionURL">Anthony Zhang</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
