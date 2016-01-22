@@ -98,3 +98,28 @@
 .post td:first-child, th:first-child { border-left: none; }
 
 .post td:last-child, th:last-child { border-right: none; }
+
+.navigation {
+	text-align: center;
+}
+
+.navigation .spacer:after {
+	content: "\2732";
+	margin: 0 0.5em;
+	color: #888888;
+	font-size: 0.7em;
+}
+
+.navigation a {
+	text-decoration: none;
+	font-size: 0.8em;
+	text-transform: uppercase;
+	color: #888888;
+}
+
+@media only screen and (max-width: 900px) {
+	.post {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}

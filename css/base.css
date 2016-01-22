@@ -98,7 +98,7 @@ ol, ul {
 .site_links .divider:after {
 	content: "//";
 	margin: 0 0.5em;
-	color:#888888;
+	color: #888888;
 }
 
 .site_links a {
