@@ -6,7 +6,7 @@ __author__ = "Anthony Zhang (Uberi)"
 __version__ = "1.0.0"
 __license__ = "BSD"
 
-import math, numbers
+import math
 
 class Vector:
     """"""
@@ -38,7 +38,7 @@ class Vector:
         return self / magnitude
     
     def cross(self, value):
-        """Returns the vector cross product of the vector and another vector `value`"""
+        """Returns the vector cross product of the vector and `value`"""
         if len(self) != 3 and len(self) != 7: raise ValueError("Vector cross product can only be applied in 3 or 7 dimensions; \"{}\" is {} dimensional".format(self, len(self)))
         if len(value) != 3 and len(value) != 7: raise ValueError("Vector cross product can only be applied in 3 or 7 dimensions; \"{}\" is {} dimensional".format(value, len(value)))
         if len(self) != len(value): raise ValueError("Both vectors must be the same dimension; \"{}\" is {} dimensional while \"{}\" is {} dimensional".format(self, len(self), value, len(value)))
@@ -70,8 +70,10 @@ class Vector:
         return Vector(cosine * self[0] + sine * self[1], -sine * self[0] + cosine * self[1])
 
     def rotated3D(self, theta, axis):
-        """Returns the vector (3D only) rotated clockwise (viewed when facing in the direction of the vector `axis`; right hand rule) around the vector axis `axis` by `theta` radians."""
+        """Returns the vector (3D only) rotated clockwise (viewed when facing in the direction of the vector `axis`; right hand rule) around the vector `axis` by `theta` radians. ``axis`` does not have to be a unit vector."""
         if len(self) != 3: raise ValueError("3D rotation can only be applied in 3 dimensions; \"{}\" is {} dimensional.".format(self, len(self)))
+        float(theta) # ensure that the angle is a valid number
+        if not isinstance(axis, Vector): raise ValueError("Axis \"{}\" must be a vector".format(axis))
 
         # apply 3D rotation matrix, see https://en.wikipedia.org/wiki/Rotation_matrix#Rotation_matrix_from_axis_and_angle
         x, y, z = axis.normalized()
@@ -82,6 +84,15 @@ class Vector:
             (y * x * opposite_cosine + z * sine) * self[0] + (cosine + y ** 2 * opposite_cosine)  * self[1] + (y * z * opposite_cosine - x * sine) * self[2],
             (z * x * opposite_cosine - y * sine) * self[0] + (z * y * opposite_cosine + x * sine) * self[1] + (cosine + z ** 2 * opposite_cosine)  * self[2]
         )
+
+    def scalar_projected(self, axis):
+        """Returns the component of the vector that is along ``axis``. ``axis`` does not have to be a unit vector."""
+        return self * axis.normalized()
+
+    def vector_projected(self, axis):
+        """Returns the vector projected along ``axis``. ``axis`` does not have to be a unit vector."""
+        unit_axis = axis.normalized()
+        return (self * unit_axis) * unit_axis
 
     def angle_between(self, value):
         """Returns the smallest angle between the vector and another vector `value`."""
@@ -125,6 +136,10 @@ class Vector:
             return sum(component1 * component2 for component1, component2 in zip(self, value))
         float(value) # ensure the multiplicand is a valid number
         return Vector(*(component * value for component in self))
+    def __matmul__(self, value):
+        """Returns the vector cross product of the vector and `value`"""
+        if not isinstance(value, Vector): raise ValueError("`value` must be a `Vector` instance; `value` is actually \"{}\".".format(value))
+        return self.cross(value)
     def __truediv__(self, value):
         """Returns the vector divided component-wise by `value`."""
         float(value) # ensure the multiplicand is a valid number
