@@ -35,6 +35,17 @@ See also:
 * [Telemetry-aggregator](https://github.com/mozilla/telemetry-aggregator) - the module that, when driven by Telemetry-server, aggregates data and publishes it.
 * Telemetry.js (v1) - Javascript library for accessing data from the v2 pipeline.
 
+### Telemetry-Wrapper.js
+
+Telemetry-Wrapper.js uses Telemetry.js (v2) to generate nifty charts, much like the histograms/plots shown by the v4 pipeline dashboards. This is the library powering the [Dashboard Generator](https://telemetry.mozilla.org/dashboard-generator/) on [Mozilla Telemetry](http://telemetry.mozilla.org/).
+
+A more detailed overview of this library can be found [here](https://chuttenblog.wordpress.com/2015/11/18/single-api-firefox-telemetry-plots-telemetry-wrapper-js/), with examples and usage information.
+
+See also:
+
+* [Source Code](https://github.com/mozilla/telemetry-dashboard/tree/gh-pages/wrapper)
+* [Dashboard Generator](https://chuttenblog.wordpress.com/2015/12/01/to-order-telemetry-dashboards-dashboard-generator/) - quickly build embeddable Telemetry visualizations.
+
 ### Telemetry.js (v2)
 
 Telemetry.js v2 is a Javascript library for accessing data from the v4 pipeline. As of this writing, this is still under active development, but is quite stable already. This library powers the v4 pipeline dashboards on [Mozilla Telemetry](http://telemetry.mozilla.org/).
@@ -74,6 +85,8 @@ On that page, the left column has the **Histogram and Evolution dashboards**, wh
 
 Using the Histogram and Evolution dashboards are hopefully pretty self-explanatory, but there is also a [detailed tutorial](http://telemetry.mozilla.org/tutorial.html) for using these dashboards to answer questions. For example, to find the average startup time on the latest nightly, one would go to the histogram dashboard, select "SIMPLE\_MEASURES\_FIRSTPAINT distribution for nightly 42, on any OS for any architecture", and read the result off either the histogram, or the summary statistics on the right.
 
+The [Dashboard Generator](https://telemetry.mozilla.org/dashboard-generator/) has an overview and tutorial [here](https://chuttenblog.wordpress.com/2015/12/01/to-order-telemetry-dashboards-dashboard-generator/). This tool lets you generate plots much like the histogram/evolution dashboards, but customizable and embeddable for your own purposes.
+
 There are also various other dashboards for more specialized purposes, listed on the right pane of the main landing page. For example, the [Background Hang Reporting](http://telemetry.mozilla.org/hang/bhr) dashboard shows common sources of hangs, and [Graphics Telemetry](http://people.mozilla.org/~danderson/moz-gfx-telemetry/www/) breaks down submissions by OS, product version, and more.
 
 Not all of these dashboards are documented, but you can probably find a few tips and tricks from the `#perf` and `#telemetry` channels on the [Mozilla IRC](https://wiki.mozilla.org/IRC).
@@ -82,41 +95,9 @@ Not all of these dashboards are documented, but you can probably find a few tips
 
 If none of the existing dashboards can answer your questions, a custom dashboard might. Dashboards using Telemetry.js actually do significant amount of processing on the data before it's shown to the user, and along the way some of the information gets filtered out.
 
-For information about writing dashboards, see the [Telemetry.js v2 documentation](https://github.com/mozilla/telemetry-dashboard/blob/gh-pages/v2/doc.md).
+The [telemetry-wrapper.js](https://chuttenblog.wordpress.com/2015/11/18/single-api-firefox-telemetry-plots-telemetry-wrapper-js/) library builds on top of Telemetry.js to generate histogram/evolution plots. This is useful for embedding customizable Telemetry data visualizations into other webpages, which can then be further tweaked to better display the relevant information.
 
-For example, a dashboard that just lists all histograms submitted by Firefox Mobile (Fennec) in Nightly 47 looks like this:
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Fennec Histograms</title>
-</head>
-<body>
-  <ul id="histograms"></ul>
-  <script src="https://telemetry.mozilla.org/v2/telemetry.js"></script>
-  <script>
-  var list = document.getElementById("histograms");
-  function run(metrics) {
-    var measure = metrics[0];
-    Telemetry.getEvolution("nightly", "47", measure, {application: "Fennec"}, true, function(evolutionMap) {
-      if (Object.keys(evolutionMap).length > 0) {
-        var element = document.createElement("li");
-        element.innerHTML = measure;
-        list.appendChild(element);
-      }
-      metrics.shift();
-      if (metrics.length > 0) return run(metrics);
-    });
-  }
-  Telemetry.init(function() {
-    Telemetry.getFilterOptions("nightly", "47", function(filterOptions) { run(filterOptions.metric); });
-  });
-  </script>
-</body>
-</html>
-```
+For information about writing other kinds of dashboards, see the [Telemetry.js v2 documentation](https://github.com/mozilla/telemetry-dashboard/blob/gh-pages/v2/doc.md).
 
 For help with creating custom dashboards, make sure to check out the `#perf` and `#telemetry` channels on the [Mozilla IRC](https://wiki.mozilla.org/IRC).
 
