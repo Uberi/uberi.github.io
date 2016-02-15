@@ -45,7 +45,7 @@ This one is pretty simple:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/dh_jWl1bVn8" frameborder="0" allowfullscreen></iframe>
 
-When the cyan input rod is pushed, it turns the blue gear, which then retracts the red output rod. It is easy to analyze this system and see that the output rod's extension is exactly \\(E - x\\) where \\(E\\) is the maximum extension and \\(x\\) is the input rod extension.
+When the cyan input rod is pushed, it turns the blue gear, which then retracts the red output rod. It is easy to analyze this system and see that the output rod's extension is exactly $$E - x$$ where $$E$$ is the maximum extension and $$x$$ is the input rod extension.
 
 Note that NOT gates will often not be necessary, because retracting a rod from one point of view is extending it from the opposite side - the following two circuits are equivalent, since rotating the AND gate by 180 degrees inverts all of its inputs:
 
@@ -57,15 +57,15 @@ This is a bit more complex than the NOT gate, having 3 mechanical layers:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/s5DIRmrV2SM" frameborder="0" allowfullscreen></iframe>
 
-Here, either of the two cyan and magenta input rods can be extended right to push on the red output rod and cause it to extend right, so the output rod's extension is at least \\(\\max(x\_1, x\_2)\\) where \\(x\_1\\) and \\(x\_2\\) are the amounts by which the input rods are extended.
+Here, either of the two cyan and magenta input rods can be extended right to push on the red output rod and cause it to extend right, so the output rod's extension is at least $$\max(x_1, x_2)$$ where $$x_1$$ and $$x_2$$ are the amounts by which the input rods are extended.
 
-Additionally, the unanchored small blue gear moves the purple rack gear right by \\(\\frac{x\_1 + x\_2}{2}\\), which, through the green gears, moves the longer orange rack gear by \\(x\_1 + x\_2\\). The orange rack gear hooks onto the red output rod to ensure that the output rod's extension is at most \\(\\min(E, x\_1 + x\_2)\\), where \\(E\\) is the maximum extension and \\(x\_1, x\_2\\) are the extensions of the input rods.
+Additionally, the unanchored small blue gear moves the purple rack gear right by $$\frac{x_1 + x_2}{2}$$, which, through the green gears, moves the longer orange rack gear by $$x_1 + x_2$$. The orange rack gear hooks onto the red output rod to ensure that the output rod's extension is at most $$\min(E, x_1 + x_2)$$, where $$E$$ is the maximum extension and $$x_1, x_2$$ are the extensions of the input rods.
 
-Therefore, the extension of the output rod is between \\(\\max(x\_1, x\_2)\\) and \\(\\min(E, x\_1 + x\_2)\\) inclusive:
+Therefore, the extension of the output rod is between $$\max(x_1, x_2)$$ and $$\min(E, x_1 + x_2)$$ inclusive:
 
 ![OR gate output](img/or-gate-output.png)
 
-From the plots, we can tell that the position of the OR gate's output rod is exactly \\(\\max(x\_1, x\_2)\\) whenever either \\(x\_1\\) or \\(x\_2\\) are either \\(0\\) or \\(E\\).
+From the plots, we can tell that the position of the OR gate's output rod is exactly $$\max(x_1, x_2)$$ whenever either $$x_1$$ or $$x_2$$ are either $$0$$ or $$E$$.
 
 #### AND Gates
 
@@ -73,15 +73,15 @@ This is very similar to the OR gate:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/rg9HKS8W6FU" frameborder="0" allowfullscreen></iframe>
 
-Here, either of the two cyan and magenta input rods can be retracted left to pull on the red output rod and cause it to retract left, so the output rod's extension is at most \\(\\min(x\_1, x\_2)\\) where \\(x\_1\\) and \\(x\_2\\) are the amounts by which the input rods are extended.
+Here, either of the two cyan and magenta input rods can be retracted left to pull on the red output rod and cause it to retract left, so the output rod's extension is at most $$\min(x_1, x_2)$$ where $$x_1$$ and $$x_2$$ are the amounts by which the input rods are extended.
 
-Additionally, the unanchored small blue gear moves the purple rack gear right by \\(\\frac{x\_1 + x\_2}{2}\\), which, through the green gears, moves the longer orange rack gear by \\(x\_1 + x\_2\\). The orange rack gear pushes the red output rod to ensure that the output rod's extension is at least \\(\\max(0, x\_1 + x\_2 - E)\\), where \\(E\\) is the maximum extension and \\(x\_1, x\_2\\) are the extensions of the input rods.
+Additionally, the unanchored small blue gear moves the purple rack gear right by $$\frac{x_1 + x_2}{2}$$, which, through the green gears, moves the longer orange rack gear by $$x_1 + x_2$$. The orange rack gear pushes the red output rod to ensure that the output rod's extension is at least $$\max(0, x_1 + x_2 - E)$$, where $$E$$ is the maximum extension and $$x_1, x_2$$ are the extensions of the input rods.
 
-Therefore, the extension of the output rod is between \\(\\min(x\_1, x\_2)\\) and \\(\\min(0, x\_1 + x\_2 - E)\\) inclusive:
+Therefore, the extension of the output rod is between $$\min(x_1, x_2)$$ and $$\min(0, x_1 + x_2 - E)$$ inclusive:
 
 ![AND gate output](img/and-gate-output.png)
 
-From the plots, we can tell that the position of the AND gate's output rod is exactly \\(\\min(x\_1, x\_2)\\) whenever either \\(x\_1\\) or \\(x\_2\\) are either \\(0\\) or \\(E\\).
+From the plots, we can tell that the position of the AND gate's output rod is exactly $$\min(x_1, x_2)$$ whenever either $$x_1$$ or $$x_2$$ are either $$0$$ or $$E$$.
 
 #### Alternative designs
 

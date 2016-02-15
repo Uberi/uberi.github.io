@@ -8,7 +8,7 @@ If you use [Banshee](http://banshee.fm/) as a music player, you've probably noti
 
 Here's a quick Python script that accomplishes the task:
 
-{% highlight python linenos %}
+{% highlight python linenos=table %}
 #!/usr/bin/env python
 
 DB_PATH = "~/.config/banshee-1/banshee.db"

@@ -6,13 +6,15 @@ layout: post
 
 I've seen this one a few times now, and apparently it's a pretty common mistake to make. Consider the following:
 
-    class A:
-        def x(self): print(self)
+{% highlight python linenos=table %}
+class A:
+    def x(self): print(self)
 
-    def f(callback):
-        callback("hello")
+def f(callback):
+    callback("hello")
 
-    a = A()
+a = A()
+{% endhighlight %}
 
 Now, assuming we've run this code, what's the difference between `f(a.x)` and `f(A.x)`?
 
@@ -20,10 +22,12 @@ If you're used to languages like Javascript (or other languages with prototypal 
 
 This is not the case - the first snippet will actually result in an error! The difference becomes immediately obvious when we check the types of these two:
 
-    >>> A.x
-    <unbound method A.x>
-    >>> a.x
-    <bound method A.x of <__main__.A instance at 0x4f698e2b2370>>
+{% highlight python linenos=table %}
+>>> A.x
+<unbound method A.x>
+>>> a.x
+<bound method A.x of <__main__.A instance at 0x4f698e2b2370>>
+{% endhighlight %}
 
 Most Pythoners have seen issues caused by something like what's described in [this StackOverFlow answer](http://stackoverflow.com/questions/114214). This is because calls like `a.x()` are actually translated into something similar to `A.x(a)`.
 
@@ -35,13 +39,15 @@ This difference becomes very important when we're doing things like using method
 
 The correct thing to do is to use the `@staticmethod` decorator on our callback, which eliminates its `self` parameter entirely and means that we can sidestep the whole bound/unbound distinction:
 
-    class A:
-        @staticmethod
-        def x(stuff): print(stuff)
+{% highlight python linenos=table %}
+class A:
+    @staticmethod
+    def x(stuff): print(stuff)
 
-    def f(callback):
-        callback("hello")
+def f(callback):
+    callback("hello")
 
-    f(A.x)
+f(A.x)
+{% endhighlight %}
 
 Note that if we used the `@classmethod` decorator to make `x` a class method, `A.x` would also bind `A` to the first parameter of `x`. In other words, when we access class methods, their first parameters are bound to their classes.

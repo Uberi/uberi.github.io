@@ -22,7 +22,7 @@ Isolation is also important when we have different, fixed ground potentials for 
 
 ![Ideal schematic for multiple power supplies](img/ideal.png)However, since we don't control where those DC power supplies are being plugged in to, it's actually possible to get something like the following:![Actual schematic for multiple power supplies](img/actual.png)
 
-That's a short! Generally, that grey wiring inside the circuit will be the first thing to go up in flames. The issue here is that it is not safe to assume that the two grounds for the power supplies are at the same potential - if we connect them together, we get a [ground loop](https://en.wikipedia.org/wiki/Ground_loop_(electricity)), as shown above. It is not always practical to redesign a circuit to not use a common ground, so in these cases we simply ensure that the power for at least one of the supplies is isolated.
+That's a short! Generally, that grey wiring inside the circuit will be the first thing to go up in flames. The issue here is that it's not safe to assume that the two grounds for the power supplies are at the same potential - if we connect them together, we get a [ground loop](https://en.wikipedia.org/wiki/Ground_loop_(electricity)), as shown above. It is not always practical to redesign a circuit to not use a common ground, so in these cases we simply ensure that the power for at least one of the supplies is isolated.
 
 Most hobbyist-grade DC power supplies you'll see are non-isolating. Consider the [UBEC DC converter/power supply](http://www.adafruit.com/products/1385) from Adafruit. If we look at the [datasheet](http://www.adafruit.com/datasheets/MP2307_r1.9.pdf) linked in the product page, we see this:
 

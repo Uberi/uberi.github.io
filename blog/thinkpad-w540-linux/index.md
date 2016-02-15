@@ -26,14 +26,14 @@ Going through the installer, Ubuntu was put in the empty space allocated earlier
 
 * Get rid of the current, broken nVidia drivers:
 
-```bash
+{% highlight bash linenos=table %}
 sudo apt-get remove --purge 'nvidia*'
 sudo apt-get --purge remove xserver-xorg-video-nouveau
-```
+{% endhighlight %}
 
 * Disable the bad nVidia drivers for the Quadro:
 
-```bash
+{% highlight bash linenos=table %}
 echo '
 # disable bad nVidia drivers
 blacklist nouveau
@@ -47,11 +47,11 @@ alias nvidia nvidia_current_updates
 alias nouveau off
 alias lbm-nouveau off
 options nouveau modeset=0' | sudo tee --append /etc/modprobe.d/blacklist.conf
-```
+{% endhighlight %}
 
 * Install working nVidia drivers as well as [Bumblebee](http://bumblebee-project.org/), which adds nVidia Optimus support for making GPU switching work:
 
-```bash
+{% highlight bash linenos=table %}
 sudo apt-add-repository ppa:bumblebee/stable -y
 sudo add-apt-repository ppa:xorg-edgers/ppa -y
 sudo apt-get update && sudo apt-get upgrade -y
@@ -60,7 +60,7 @@ sudo apt-get install nvidia-355 nvidia-settings
 sudo apt-get update && sudo apt-get dist-upgrade -y
 sudo apt-get install bumblebee bumblebee-nvidia virtualgl virtualgl-libs virtualgl-libs-ia32:i386 virtualgl-libs:i386
 sudo usermod -a -G bumblebee $USER
-```
+{% endhighlight %}
 
 * Since Xorg-Edgers is on the bleeding edge, the latest nVidia drivers can have stability issues. That means it's necessary to explicitly write the version as 355. As root, make the following edits to `/etc/bumblebee/bumblebee.conf`:
     * In the `[bumblebeed]` section, replace `Driver=` with `Driver=nvidia`.
@@ -70,13 +70,13 @@ sudo usermod -a -G bumblebee $USER
 * Now to make sure that the display is set correctly: in `/etc/bumblebee/xorg.conf.nvidia `, replace `Option “ConnectedMonitor” “DFP”` with `Option “UseDisplayDevice” “none”` if the latter is not already present.
 * The nVidia driver needs to be blacklisted so Bumblebee can manage it:
 
-```bash
+{% highlight bash linenos=table %}
 echo '
 # disable nVidia driver so Bumblebee can manage it
 blacklist nvidia-355
 blacklist nvidia-355-updates
 blacklist nvidia-experimental-355' | sudo tee --append /etc/modprobe.d/bumblebee.conf
-```
+{% endhighlight %}
 
 * Reboot the machine and check if it worked! Run `glxspheres64` and the output should show the info for the integrated graphics, and run `optirun glxspheres64` and the output should show the info for the nVidia graphics.
 
@@ -88,29 +88,29 @@ I also reduced swapping tendency by adding `vm.swappiness=1` to the end of `/etc
 
 I installed GNOME just to use GNOME-specific software like the Wacom tablet configuration GUI. This is as simple as running the following:
 
-```bash
+{% highlight bash linenos=table %}
 sudo apt-get install ubuntu-gnome-desktop
 sudo service gdm restart
-```
+{% endhighlight %}
 
 The fingerprint sensor was actually surprisingly easy to get working - there are pretty clear instructions over at the [Fingerprint GUI PPA](https://launchpad.net/~fingerprint/+archive/ubuntu/fingerprint-gui):
 
-```bash
+{% highlight bash linenos=table %}
 sudo add-apt-repository ppa:fingerprint/fingerprint-gui
 sudo apt-get update
 sudo apt-get install libbsapi policykit-1-fingerprint-gui fingerprint-gui
-```
+{% endhighlight %}
 
 After rebooting, Fingerprint GUI can be used to to log in, or even use fingerprint swipes to authenticate `sudo`! It all feels very smooth.
 
 The battery life is pretty bad in this configuration. To improve it, install TLP to enable more advanced power settings when running off the battery:
 
-```bash
+{% highlight bash linenos=table %}
 sudo add-apt-repository ppa:linrunner/tlp
 sudo apt-get update
 sudo apt-get install tlp tlp-rdw
 sudo apt-get install tp-smapi-dkms acpi-call-dkms # Thinkpad-specific packages
-```
+{% endhighlight %}
 
 There's also a bunch of other hardware-related things to consider over at the [ThinkWiki page for the W540](http://www.thinkwiki.org/wiki/Category:W540).
 
@@ -123,7 +123,7 @@ Of course, at this point we've only got the OS set up - there's still the matter
 * The X-Rite Huey PRO Colorimeter doesn't work with Argyll color management. Basically, it'll be necessary to boot into Windows to generate the ICC file using Lenovo's official tools, then boot back into Ubuntu and apply the `*.icc` color profile using something like [dispcalGUI](http://dispcalgui.hoech.net/).
 * When you have multiple monitors, a Wacom tablet will move the cursor across all of them. GNOME's Wacom configuration utility can map the tablet to a single monitor. If not using GNOME, modify this script to suit your needs:
 
-```bash
+{% highlight bash linenos=table %}
 #!/usr/bin/env bash
 
 # force Wacom graphics tablet to map to only one monitor
@@ -133,11 +133,11 @@ Of course, at this point we've only got the OS set up - there's still the matter
 # the form is `xsetwacom set WACOM_HARDWARE_VALUE MapToOutput DISPLAY_HARDWARE_VALUE`
 xsetwacom set "Wacom Intuos PT S Pen stylus" MapToOutput HDMI1
 xsetwacom set "Wacom Intuos PT S Pen eraser" MapToOutput HDMI1
-```
+{% endhighlight %}
 
 * I like to keep the mechanical keyboard on top of the laptop while using it, but it often presses down on the built-in keyboard, causing random extra keystrokes. To enable/disable the built-in keyboard on command, I've bound the following script to a hotkey:
 
-```bash
+{% highlight bash linenos=table %}
 #!/usr/bin/env bash
 
 if xinput list-props "AT Translated Set 2 keyboard" | grep "Device Enabled.*:.*0" > /dev/null; then
@@ -147,10 +147,10 @@ else
 	xinput disable "AT Translated Set 2 keyboard"
 	echo "Device disabled."
 fi
-```
+{% endhighlight %}
 
 * The Alt + Drag window moving behaviour in GNOME is rather annoying when trying to use applications that also use Alt + Drag, so this can be changed to Super + Drag using the following command:
 
-```bash
+{% highlight bash linenos=table %}
 gsettings set org.gnome.desktop.wm.preferences mouse-button-modifier "<Super>"
-```
+{% endhighlight %}

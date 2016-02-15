@@ -14,15 +14,15 @@ How can we do better? One way is to formalize the conflict-free schedule problem
 
 The schedule conflict solver uses [Pycosat](https://pypi.python.org/pypi/pycosat) to directly calculate schedules with no conflicts. This eliminates a lot of the work in searching for non-conflicting schedules. For example, out of a search space of roughly 38,000 possible schedules in the code examples, we can solve for the 72 possibilities within 5 milliseconds.
 
-Reducing the schedule conflicts to SAT clauses is simple. Let \\(A\_1, \ldots, A\_m\\) be courses, each with sections \\({A\_i}\_1, \ldots, {A\_i}\_m\\). Then to specify that we want one of the sections of each course, we specify the clause \\({A\_i}\_1 \lor \ldots \lor {A\_i}\_1\\) for each \\(i\\).
+Reducing the schedule conflicts to SAT clauses is simple. Let $$A_1, \ldots, A_m$$ be courses, each with sections $${A_i}_1, \ldots, {A_i}_m$$. Then to specify that we want one of the sections of each course, we specify the clause $${A_i}_1 \lor \ldots \lor {A_i}_1$$ for each $$i$$.
 
-\\(aaa\\) To avoid multiple sections of the same course being selected, we specify the clauses \\(\neg {A\_i}\_x \lor \neg {A\_i}\_y\\) for each distinct set \\(\left\\{x, y\right\\}\\), for each \\(i\\). Now we have specified that we want one and only one section from each course.
+To avoid multiple sections of the same course being selected, we specify the clauses $$\neg {A_i}_x \lor \neg {A_i}_y$$ for each distinct set $$\set{x, y}$$, for each $$i$$. Now we have specified that we want one and only one section from each course.
 
 The conflict detector is responsible for detecting every possible pair of conflicting sections. This means that we run it once over all the sections and obtain a list of conflicting pairs, which is a good thing since its time complexity is pretty bad (but still polynomial). However, in practice it completes quickly enough, helped by the fact that we only need to run it once per query.
 
-The conflict detector outputs pairs \\(({A\_i}\_x, {A\_j}\_y)\\), which represent the idea that the section \\({A\_i}\_x\\) conflicts with \\({A\_j}\_y\\). For each of these pairs, we specify the clause \\(\neg {A\_i}_x \lor \neg {A\_j}\_y\\). Now we have specified that the conflicting sections cannot both be chosen.
+The conflict detector outputs pairs $$\tup{ {A_i}_x, {A_j}_y}$$, which represent the idea that the section $${A_i}_x$$ conflicts with $${A_j}_y$$. For each of these pairs, we specify the clause $$\neg {A_i}_x \lor \neg {A_j}_y$$. Now we have specified that the conflicting sections cannot both be chosen.
 
-Solving for all these clauses using the SAT solver, we obtain solutions of the form \\({A\_1}\_x, \ldots, {A\_n}\_y\\) - a list of course sections that were solved for. These are the conflict-free schedules. The only thing left to do after this is display the results.
+Solving for all these clauses using the SAT solver, we obtain solutions of the form $${A_1}_x, \ldots, {A_n}_y$$ - a list of course sections that were solved for. These are the conflict-free schedules. The only thing left to do after this is display the results.
 
 Essentially:
 

@@ -8,7 +8,7 @@ Do you have a whiteboard? Do you share it with a group of people? It probably ha
 
 ![Owing list with 3 entries](img/whiteboard-list.png)
 
-Each line of the form \\(X \to Y: a\\) represents a **transaction** - the fact that \\(X\\) owes \\(Y\\) exactly \\(a\\) dollars, where \\(X\\) and \\(Y\\) are people and \\(a\\) is a dollar amount.
+Each line of the form $$X \to Y: a$$ represents a **transaction** - the fact that $$X$$ owes $$Y$$ exactly $$a$$ dollars, where $$X$$ and $$Y$$ are people and $$a$$ is a dollar amount.
 
 Every time a new transaction is created, we can just add a new entry to the list. However, this causes the list to slowly grow out of control:
 
@@ -16,7 +16,7 @@ Every time a new transaction is created, we can just add a new entry to the list
 
 Our goal is to make this list smaller. Let's kick this off by representing the above example in code. In this post I will be using Python 3:
 
-{% highlight python linenos %}
+{% highlight python linenos=table %}
 owings = [
     ("Avi",      "Randall",   25), # Avi owes Randall 25 dollars
     ("Charlene", "Andrew",    65),
@@ -31,7 +31,7 @@ owings = [
 ]
 {% endhighlight %}
 
-This list of transactions is a graph, where people are the vertices, transactions are edges, and dollar values are the edge labels. Edges in this graph are directed since \\(X\\) owing \\(Y\\) is not the same as \\(Y\\) owing \\(X\\). I'm going to call this structure an **owing graph**.
+This list of transactions is a graph, where people are the vertices, transactions are edges, and dollar values are the edge labels. Edges in this graph are directed since $$X$$ owing $$Y$$ is not the same as $$Y$$ owing $$X$$. I'm going to call this structure an **owing graph**.
 
 The above, then, translates to the following:
 
@@ -45,7 +45,7 @@ Solving this problem optimally is NP-complete, since it requires solving the sub
 
 First, we will calculate the overall amount each person owes - the net balances:
 
-{% highlight python linenos %}
+{% highlight python linenos=table %}
 from collections import defaultdict
 net_values = defaultdict(int) # net dollar amount each person owes
 for entry in owings:
@@ -53,19 +53,19 @@ for entry in owings:
     net_values[entry[1]] -= entry[2]
 {% endhighlight %}
 
-This algorithm will create a graph using the star topology (all vertices have 1 transaction with a designated **hub vertex**), which, in a set of \\(n\\) people, results in exactly \\(n - 1\\) transactions taking place - the hub has one transaction with each other person.
+This algorithm will create a graph using the star topology (all vertices have 1 transaction with a designated **hub vertex**), which, in a set of $$n$$ people, results in exactly $$n - 1$$ transactions taking place - the hub has one transaction with each other person.
 
-Suppose we partition the set of people into \\(k\\) disjoint sets of people such that no set owes any other (there are no transactions between any two sets). Then, for each set, we construct a graph with a star topology. The graph for a set of size \\(m\\) has \\(m - 1\\) transactions, and so \\(n - k\\) transactions take place in total (the sum of the sizes of all the subsets in the partition is always the size of the original set). If we maximize \\(k\\), then we minimize \\(n - k\\), the number of transactions.
+Suppose we partition the set of people into $$k$$ disjoint sets of people such that no set owes any other (there are no transactions between any two sets). Then, for each set, we construct a graph with a star topology. The graph for a set of size $$m$$ has $$m - 1$$ transactions, and so $$n - k$$ transactions take place in total (the sum of the sizes of all the subsets in the partition is always the size of the original set). If we maximize $$k$$, then we minimize $$n - k$$, the number of transactions.
 
 Clearly, no two sets will owe any other if and only if the sum of all the net balances in the set is 0. This is because if the sum of the net balances of a set was non-zero, money must be flowing into or out of that set of people.
 
 Therefore, **we want to partition the set of people into the largest possible number of disjoint subsets, such that the sum of each subset is 0**. Afterwards, we simply construct graphs out of each set in the resulting partition, and we will have the smallest possible owing graph.
 
-The partitioning part is actually what makes the problem NP-complete - if we can solve this problem in polynomial time, we can solve the subset-sum problem in polynomial time, and prove that \\(P = NP\\). The number of partitions of a set of size \\(n\\) is the \\(n\\)th [Bell numbers](https://en.wikipedia.org/wiki/Bell_number#Set_partitions), and according to that page, there are \\(O\left(\left(\frac{0.792n}{\ln(n + 1)}\right)^n\right)\\) (or more loosely, \\(O(n^n)\\)) possible partitions. We will use a naive approach and simply check if all the subsets of a partition add up to 0.
+The partitioning part is actually what makes the problem NP-complete - if we can solve this problem in polynomial time, we can solve the subset-sum problem in polynomial time, and prove that $$P = NP$$. The number of partitions of a set of size $$n$$ is the $$n$$th [Bell numbers](https://en.wikipedia.org/wiki/Bell_number#Set_partitions), and according to that page, there are $$O\left(\left(\frac{0.792n}{\ln(n + 1)}\right)^n\right)$$ (or more loosely, $$O(n^n)$$) possible partitions. We will use a naive approach and simply check if all the subsets of a partition add up to 0.
 
-One way to enumerate all partitions of a set of size \\(n\\) is to, for each partition, allocate \\(n\\) subsets, go through each element, and assign them to one of those subsets (afterward, we filter out empty subsets from the partition) - there is one unique element assignment per unique partition:
+One way to enumerate all partitions of a set of size $$n$$ is to, for each partition, allocate $$n$$ subsets, go through each element, and assign them to one of those subsets (afterward, we filter out empty subsets from the partition) - there is one unique element assignment per unique partition:
 
-{% highlight python linenos %}
+{% highlight python linenos=table %}
 def all_partitionings(elements):
     labels = [0] * len(elements)
     while True:
@@ -86,9 +86,9 @@ def all_partitionings(elements):
 
 This is very simple and works well, but we don't get the partitions in a nice order - ideally, we want to get them in decreasing order by number of subsets, because then we can stop looking through partitions as soon as we find one where all subsets sum to 0.
 
-There is another way to do that, which is almost as simple. We first take one vertex \\(v\\) from the set of vertices \\(V\\), and compute all the partitions of \\(V - v\\). For each partition \\(p\\) of \\(V - v\\), we can compute one partition of \\(V\\) by adding \\(v\\) as a subset, and more partitions by adding \\(v\\) to each subset of the partition in turn:
+There is another way to do that, which is almost as simple. We first take one vertex $$v$$ from the set of vertices $$V$$, and compute all the partitions of $$V - v$$. For each partition $$p$$ of $$V - v$$, we can compute one partition of $$V$$ by adding $$v$$ as a subset, and more partitions by adding $$v$$ to each subset of the partition in turn:
 
-{% highlight python linenos %}
+{% highlight python linenos=table %}
 def all_partitions(elements, max_index = None): # return partitions from most subsets to least subsets
     if max_index == None: max_index = len(elements) - 1
     if max_index < 0: yield () # zero elements has no partitions in its one partitioning
@@ -104,7 +104,7 @@ Here, we store the set of vertices as a list in order to use indexing. The only 
 
 We can now calculate the partition with the most subsets that sums to 0 pretty easily:
 
-{% highlight python linenos %}
+{% highlight python linenos=table %}
 def largest_partition(net_balances):
     vertices = list(net_balances.keys())
     for partition in all_partitions(vertices):
@@ -119,7 +119,7 @@ This is pretty self-explanatory - we go through each partition, from most subset
 
 To generate the minimal graphs now, we go through the subsets in our partition - the sets of vertices whose net balances add up to 0. For each set of vertices, we output edges to make a graph with a star topology:
 
-{% highlight python linenos %}
+{% highlight python linenos=table %}
 new_owings = [] # list of transactions
 for subset in largest_partition(net_balances):
     vertex_hub = subset.pop() # pick arbitrary hub, and remove it from the set of vertices
@@ -137,7 +137,7 @@ Here, we pick a hub vertex, and for each of the remaining vertices in the subset
 
 Let's test it out with our first example:
 
-{% highlight python linenos %}
+{% highlight python linenos=table %}
 from pprint import pprint
 pprint(minimize_owings([
     ("Avi",      "Randall",   25), # Avi owes Randall 25 dollars
@@ -155,17 +155,19 @@ pprint(minimize_owings([
 
 The above outputs:
 
-    [('Hubert', 'Amy', 34),
-     ('John', 'Beryl', 25),
-     ('Beryl', 'Avi', 119),
-     ('Andrew', 'Beryl', 155),
-     ('Randall', 'Beryl', 37)]
+{% highlight python linenos=table %}
+[('Hubert', 'Amy', 34),
+ ('John', 'Beryl', 25),
+ ('Beryl', 'Avi', 119),
+ ('Andrew', 'Beryl', 155),
+ ('Randall', 'Beryl', 37)]
+{% endhighlight %}
 
 Clearly, this is optimal - it is impossible to resolve these debts using 4 or fewer transactions.
 
 ### Some say it's still running to this day
 
-What if we have a larger network, say, 100 people all having various transactions with each other? Aside from needing to buy a bigger whiteboard, an \\(O(n^n)\\) algorithm isn't really practical when we have more than a dozen or so people - each additional person massively increases the time needed to run the algorithm.
+What if we have a larger network, say, 100 people all having various transactions with each other? Aside from needing to buy a bigger whiteboard, an $$O(n^n)$$ algorithm isn't really practical when we have more than a dozen or so people - each additional person massively increases the time needed to run the algorithm.
 
 Here, we need to use approximations. Our goal is now to create an owing graph that is equivalent to the original owing graph, with a preference for smaller graphs - we no longer require that the results be optimal, only reasonably close to optimal. In the real world, reasonable people don't borrow tiny amounts of money from every single person they know for every purchase, or specifically try to borrow from people who indirectly owe them.
 
@@ -173,7 +175,7 @@ Here's an approximation that works pretty well on that sort of owing graph: inst
 
 First, we compute the net balances for each person, and remove any people who have a net balance of 0 (as well as transactions that involve these people). People with a net balance of 0 neither owe or are owed any money, in the end:
 
-{% highlight python linenos %}
+{% highlight python linenos=table %}
 net_balances = defaultdict(int) # net dollar amount each person is owed
 for entry in owings:
     net_balances[entry[0]] += entry[2]
@@ -184,7 +186,7 @@ vertices = {vertex for vertex, net_value in net_balances.items() if net_value !=
 
 We then identify the components of the graph, using repeated breadth-first traversal:
 
-{% highlight python linenos %}
+{% highlight python linenos=table %}
 def largest_partition_most_of_the_time(vertices, nonzero_owings):
     connections = defaultdict(set) # mapping from each person to the set of people that owe or are owed by this person
     for entry in nonzero_owings:
@@ -207,7 +209,7 @@ def largest_partition_most_of_the_time(vertices, nonzero_owings):
 
 Now we treat our components list as a partition, and generate the star-topology graphs like we did earlier:
 
-{% highlight python linenos %}
+{% highlight python linenos=table %}
 new_owings = [] # list of transactions
 for subset in largest_partition_most_of_the_time(vertices, nonzero_owings):
     vertex_hub = subset.pop() # pick arbitrary hub, and remove it from the set of vertices
@@ -223,7 +225,7 @@ for subset in largest_partition_most_of_the_time(vertices, nonzero_owings):
 
 Let's try all this out with the same example as before:
 
-{% highlight python linenos %}
+{% highlight python linenos=table %}
 from pprint import pprint
 pprint(minimize_owings_approximate([
     ("Avi",      "Randall",   25), # Avi owes Randall 25 dollars
@@ -241,11 +243,13 @@ pprint(minimize_owings_approximate([
 
 The above outputs:
 
-    [('Hubert', 'Amy', 34),
-     ('John', 'Beryl', 25),
-     ('Beryl', 'Avi', 119),
-     ('Andrew', 'Beryl', 155),
-     ('Randall', 'Beryl', 37)]
+{% highlight python linenos=table %}
+[('Hubert', 'Amy', 34),
+ ('John', 'Beryl', 25),
+ ('Beryl', 'Avi', 119),
+ ('Andrew', 'Beryl', 155),
+ ('Randall', 'Beryl', 37)]
+{% endhighlight %}
 
 In this case, the result also happens to be optimal. This is also the case for most real-world inputs!
 
