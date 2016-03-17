@@ -1,10 +1,10 @@
 ---
-title: Installing Ubuntu 15.04 on a Thinkpad W540
+title: Installing Ubuntu 15.10 on a Thinkpad W540
 date: 2015-09-05
 layout: post
 ---
 
-The [Thinkpad W540](http://shop.lenovo.com/ca/en/laptops/thinkpad/w-series/w540/#tab-tech_specs) is a lovely machine. With an i7-4800MQ, 16GB of RAM, and a Quadro K2100M, it makes for a pretty solid workstation. However, setting it up proved a bit of a pain; this post outlines steps taken from a fresh machine to fully functional development environment on top of Ubuntu 15.04.
+The [Thinkpad W540](http://shop.lenovo.com/ca/en/laptops/thinkpad/w-series/w540/#tab-tech_specs) is a lovely machine. With an i7-4800MQ, 16GB of RAM, and a Quadro K2100M, it makes for a pretty solid workstation. However, setting it up proved a bit of a pain; this post outlines steps taken from a fresh machine to fully functional development environment on top of Ubuntu 15.10.
 
 ### Step 1: How to brick your motherboard
 
@@ -12,23 +12,27 @@ BIOS versions 2.08 and below will actually [brick the motherboard](https://forum
 
 My machine came with Windows pre-installed on the 512GB SSD. I wanted to keep this for electronics and CAD stuff, so I shrank the Windows partition and left some free space for the Linux partition using the Disk Management utility in Windows (this tool often works better than GParted). I already happen to have a Ubuntu 15.04 [bootable USB](https://www.ubuntu.com/download/desktop/create-a-usb-stick-on-windows) lying around.
 
-The boot device selection on the Thinkpad is triggered by F12. Booting the USB, I edited the "Install Ubuntu" GRUB entry to replace `quiet splash` with `quiet splash i915.modeset=1 noveau.modeset=0` (editing is done by highlighting an option without selecting it, then pressing "e"), then booted with that ("Ctrl + X" finishes editing and boots). The extra kernel flags were necessary to use the integrated Intel graphics rather than the nVidia Quadro, for which Noveau is extremely buggy.
+**Update:** I recently wanted to reinstall my OS, which meant these steps got another test run. This time, I started with Ubuntu GNOME 15.10 rather than Ubuntu Unity 15.04, and the instructions below have been updated to match. Note that they have also been tested and confirmed working with Ubuntu Unity 15.10 as well.
 
-Going through the installer, Ubuntu was put in the empty space allocated earlier on the 512GB SSD. Similar to the live USB boot procedure, the kernel flags need to be added again by replacing `quiet splash` with `quiet splash i915.modeset=1 noveau.modeset=0`.
+The boot device selection on the Thinkpad is triggered by F12. Booting the USB, I edited the "Install Ubuntu" GRUB entry to replace `quiet splash` with `quiet splash nomodeset` (editing is done by highlighting an option without selecting it, then pressing "e"), then booted with that ("Ctrl + X" finishes editing and boots). Note that this will make the resolution really low, but we'll fix that in the next step.
+
+Going through the installer, Ubuntu was put in the empty space allocated earlier on the 512GB SSD. Similar to the live USB boot procedure, the kernel flags need to be added again by replacing `quiet splash` with `quiet splash nomodeset`.
 
 ### Step 2: Not setting the graphics card on fire
 
-**Update:** Nvidia's [new proprietary driver](http://www.nvidia.com/download/driverResults.aspx/95159/en-us) (other versions available [here](http://www.nvidia.com/download/index.aspx)) now seems to correctly support the Quadro K2100M. I recommend trying this before resorting to the steps below.
+**Update:** If you don't really care about using the Nvidia card, just edit `/etc/default/grub` to replace `GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"` with `GRUB_CMDLINE_LINUX_DEFAULT="quiet splash i915.modeset=1 nouveau.modeset=0"`, then run `sudo update-grub`. This makes everything use only the integrated Intel graphics.
+
+**Update:** Nvidia's [new proprietary driver](http://www.nvidia.com/download/driverResults.aspx/95159/en-us) (other versions available [here](http://www.nvidia.com/download/index.aspx)) now seems to correctly support the Quadro K2100M. I personally haven't had much success with it, though some people have apparently made it work.
 
 **Update:** some users report that nvidia-355 doesn't work with their hardware. The workaround for this is to use `nvidia-352` for all of the steps below in place of `nvidia-355`. Many thanks to **Hanno** for confirming that these steps also work on Linux Mint 17.
 
-[This article](http://www.linuxveda.com/2015/07/16/how-to-install-drivers-for-nvidia-optimus-cards/) was a great starting point for making the nVidia GPU behave properly. However, the instructions needed quite a few changes to work properly. Here's what it took:
+[This article](http://www.linuxveda.com/2015/07/16/how-to-install-drivers-for-nvidia-optimus-cards/) was a great starting point for making the nVidia GPU behave properly. However, the instructions needed quite a few changes to work properly. Here's what it took (make sure to run these one-by-one; copy/pasting these commands won't always work!):
 
 * Get rid of the current, broken nVidia drivers:
 
 {% highlight bash linenos=table %}
 sudo apt-get remove --purge 'nvidia*'
-sudo apt-get --purge remove xserver-xorg-video-nouveau
+sudo apt-get remove --purge xserver-xorg-video-nouveau
 {% endhighlight %}
 
 * Disable the bad nVidia drivers for the Quadro:
@@ -53,40 +57,26 @@ options nouveau modeset=0' | sudo tee --append /etc/modprobe.d/blacklist.conf
 
 {% highlight bash linenos=table %}
 sudo apt-add-repository ppa:bumblebee/stable -y
-sudo add-apt-repository ppa:xorg-edgers/ppa -y
+sudo add-apt-repository ppa:graphics-drivers/ppa -y
 sudo apt-get update && sudo apt-get upgrade -y
 sudo apt-get install linux-source && sudo apt-get install linux-headers-$(uname -r)
 sudo apt-get install nvidia-355 nvidia-settings
-sudo apt-get update && sudo apt-get dist-upgrade -y
 sudo apt-get install bumblebee bumblebee-nvidia virtualgl virtualgl-libs virtualgl-libs-ia32:i386 virtualgl-libs:i386
 sudo usermod -a -G bumblebee $USER
 {% endhighlight %}
 
-* Since Xorg-Edgers is on the bleeding edge, the latest nVidia drivers can have stability issues. That means it's necessary to explicitly write the version as 355. As root, make the following edits to `/etc/bumblebee/bumblebee.conf`:
+* Since Xorg-Edgers is on the bleeding edge, the latest nVidia drivers can have stability issues. That means it's necessary to explicitly write the version as 355. As root, make the following edits to `/etc/bumblebee/bumblebee.conf` (by the way, you can do this using `sudo gedit FILE_THAT_YOU_WANT_TO_EDIT_AS_ROOT`):
     * In the `[bumblebeed]` section, replace `Driver=` with `Driver=nvidia`.
     * In the `[driver-nvidia]` section, replace `KernelDriver=` with `KernelDriver=nvidia-355`.
-    * In the `[driver-nvidia]` section, replace `LibraryPath=` with `LibraryPath=/usr/lib/nvidia-355:/usr/lib32/nvidia-355` (or append them to the end if there are already entries, making sure to separate paths with **colons**).
-    * In the `[driver-nvidia]` section, replace `XorgModulePath=` with `/usr/lib/nvidia-355,/usr/lib/xorg/modules` (or append them to the end if there are already entries, making sure to separate paths with **commas**).
-* Now to make sure that the display is set correctly: in `/etc/bumblebee/xorg.conf.nvidia `, replace `Option “ConnectedMonitor” “DFP”` with `Option “UseDisplayDevice” “none”` if the latter is not already present.
-* The nVidia driver needs to be blacklisted so Bumblebee can manage it:
+    * In the `[driver-nvidia]` section, replace `LibraryPath=` with `LibraryPath=/usr/lib/nvidia-355:/usr/lib32/nvidia-355` (or prepend the paths to the existing paths if there are any, making sure to separate paths with **colons**).
+    * In the `[driver-nvidia]` section, replace `XorgModulePath=` with `XorgModulePath=/usr/lib/nvidia-355,/usr/lib/xorg/modules` (or prepend the paths to the existing paths if there are any, making sure to separate paths with **commas**).
+* Now to make sure that the display is set correctly. As root, edit `/etc/bumblebee/xorg.conf.nvidia `: replace `Option “ConnectedMonitor” “DFP”` with `Option “UseDisplayDevice” “none”` if the latter is not already present, and do nothing otherwise.
 
-{% highlight bash linenos=table %}
-echo '
-# disable nVidia driver so Bumblebee can manage it
-blacklist nvidia-355
-blacklist nvidia-355-updates
-blacklist nvidia-experimental-355' | sudo tee --append /etc/modprobe.d/bumblebee.conf
-{% endhighlight %}
-
-* Reboot the machine and check if it worked! Run `glxspheres64` and the output should show the info for the integrated graphics, and run `optirun glxspheres64` and the output should show the info for the nVidia graphics.
+* Reboot the machine and check if it worked! Run `glxspheres64` and the output should show the info for the integrated graphics, and run `optirun glxspheres64` and the output should show the info for the nVidia graphics (and run at a much higher framerate too).
 
 ### Step 3: Avoiding computational defenestration
 
-I generally prefer to disable access time writing to reduce SSD writes. This can be done by editing `etc/fstab`: simply replace the line that looks like `UUID=<SOME STUFF> / ext4 errors=remount-ro <OTHER STUFF>` with `UUID=<SOME STUFF> / ext4 errors=remount-ro,noatime <OTHER STUFF>` (add the `noatime` option).
-
-I also reduced swapping tendency by adding `vm.swappiness=1` to the end of `/etc/sysctl.conf`. This made applications quite a bit snappier (at the expense various other performance factors)
-
-I installed GNOME just to use GNOME-specific software like the Wacom tablet configuration GUI. This is as simple as running the following:
+I started off with Ubuntu GNOME in order to GNOME-specific software like the Wacom tablet configuration GUI. However, if you didn't, it's simple to install GNOME afterward, by running the following:
 
 {% highlight bash linenos=table %}
 sudo apt-get install ubuntu-gnome-desktop
@@ -101,7 +91,7 @@ sudo apt-get update
 sudo apt-get install libbsapi policykit-1-fingerprint-gui fingerprint-gui
 {% endhighlight %}
 
-After rebooting, Fingerprint GUI can be used to to log in, or even use fingerprint swipes to authenticate `sudo`! It all feels very smooth.
+After rebooting, Fingerprint GUI can be used to to log in, or even use fingerprint swipes to authenticate `sudo`! I ended up not using this after a while, but the whole experience is very smooth.
 
 The battery life is pretty bad in this configuration. To improve it, install TLP to enable more advanced power settings when running off the battery:
 
@@ -111,6 +101,8 @@ sudo apt-get update
 sudo apt-get install tlp tlp-rdw
 sudo apt-get install tp-smapi-dkms acpi-call-dkms # Thinkpad-specific packages
 {% endhighlight %}
+
+I've always found the GNOME window grouping behaviour quite annoying, since it takes several extra keystrokes to get to the window you actually want. You can actually get around this by disabling the "Alt + Tab " keyboard shortcuts in the keyboard settings (under "Navigation" in the "Shortcuts" tab), installing CompizConfig with `sudo apt-get install compizconfig-settings-manager`, then enabling the "Static Application Switcher". This switcher is a lot more comfortable to use, in my opinion.
 
 There's also a bunch of other hardware-related things to consider over at the [ThinkWiki page for the W540](http://www.thinkwiki.org/wiki/Category:W540).
 
