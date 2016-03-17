@@ -101,7 +101,7 @@
 	color: #555555;
 }
 
-.highlighttable {
+.highlight {
 	margin: 1em 3em;
 	display: block;
 	font-family: monospace;
@@ -111,10 +111,10 @@
 	border-radius: 0.3em;
 	background: #272822;
 }
-.highlighttable .highlight pre {
+.highlight > pre {
 	padding: 0.3em 0.5em;
 }
-.highlighttable .linenos {
+.highlight .gutter {
 	padding: 0.3em 0.4em 0.3em 0.5em;
 	user-select: none; -webkit-user-select: none; -moz-user-select: none;
 	color: #555555;
