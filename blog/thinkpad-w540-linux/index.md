@@ -102,7 +102,9 @@ sudo apt-get install tlp tlp-rdw
 sudo apt-get install tp-smapi-dkms acpi-call-dkms # Thinkpad-specific packages
 {% endhighlight %}
 
-I've always found the GNOME window grouping behaviour quite annoying, since it takes several extra keystrokes to get to the window you actually want. You can actually get around this by disabling the "Alt + Tab " keyboard shortcuts in the keyboard settings (under "Navigation" in the "Shortcuts" tab), installing CompizConfig with `sudo apt-get install compizconfig-settings-manager`, then enabling the "Static Application Switcher". This switcher is a lot more comfortable to use, in my opinion.
+I've always found the GNOME window grouping behaviour quite annoying, since it takes several extra keystrokes to get to the window you actually want. This can be fixed by turning on "Alternatetab" under "Extensions" in `gnome-tweak-tool`, which should already be installed.
+
+One little tweak that makes life easier is swapping the CapsLock and Escape keys. This is also easily done using `gnome-tweak-tool`, where "Caps Lock key behaviour", under "Typing", can be set to "Swap ESC and Caps Lock". Likewise, you can disable Alt + Drag window moving by setting "Window Action key", under "Windows", to "Disabled".
 
 There's also a bunch of other hardware-related things to consider over at the [ThinkWiki page for the W540](http://www.thinkwiki.org/wiki/Category:W540).
 
