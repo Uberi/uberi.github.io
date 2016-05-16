@@ -96,8 +96,6 @@ After rebooting, Fingerprint GUI can be used to to log in, or even use fingerpri
 The battery life is pretty bad in this configuration. To improve it, install TLP to enable more advanced power settings when running off the battery:
 
 {% highlight bash linenos=table %}
-sudo add-apt-repository ppa:linrunner/tlp
-sudo apt-get update
 sudo apt-get install tlp tlp-rdw
 sudo apt-get install tp-smapi-dkms acpi-call-dkms # Thinkpad-specific packages
 {% endhighlight %}
