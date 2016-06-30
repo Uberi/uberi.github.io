@@ -4,3 +4,4 @@ _site/
 *.lock
 Original Design/
 __pycache__/
+.bundle/
