@@ -1,6 +1,7 @@
 ---
 title: Friendly the Robot
 date: 2014-09-25
+description: Build logs for a face-tracking, autonomous candy turret using OpenCV, cardboard tubes, and a lot of hot glue.
 layout: post
 ---
 

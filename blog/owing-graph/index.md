@@ -1,6 +1,7 @@
 ---
 title: Owing Graph Minimization
 date: 2015-07-11
+description: Global minimization of transactions in an owing graph, as well as faster but non-optimal local minimization.
 layout: post
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: Lecture Notes
 date: 2014-07-11
+description: An overview of how my lecture notes are written, edited, and published.
 layout: post
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: Introducing COURSERATOR3000
 date: 2014-12-06
+description: Overview of how COURSERATOR3000 resolves schedule conflicts by reducing them to Boolean SAT problems.
 layout: post
 ---
 

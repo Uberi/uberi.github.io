@@ -1,6 +1,7 @@
 ---
 title: Motion Tracking and 3D Point Reconstruction
 date: 2015-09-08
+description: Workflow example for the MotionTracking Blender addon using a static camera rig and LED markers.
 layout: post
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: Telemetry Demystified
 date: 2015-08-04
+description: All you ever wanted to know (and more) about Mozilla's Telemetry subsystems.
 layout: post
 ---
 

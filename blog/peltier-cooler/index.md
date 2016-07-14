@@ -1,6 +1,7 @@
 ---
 title: Wearable Peltier Cooling
 date: 2016-06-29
+description: Build logs for a USB wearable Peltier cooler with closed-loop temperature control.
 layout: post
 ---
 

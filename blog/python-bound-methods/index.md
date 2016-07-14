@@ -1,6 +1,7 @@
 ---
 title: "Python Gotchas: Bound Methods"
 date: 2015-04-05
+description: "Python trivia: a quick rundown on the difference between methods and bound methods."
 layout: post
 ---
 

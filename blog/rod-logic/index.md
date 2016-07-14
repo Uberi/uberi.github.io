@@ -1,6 +1,7 @@
 ---
 title: Rod Logic and Mechanical Computation
 date: 2015-11-09
+description: Mechanical computers, laser cutters, and functional composition in logic gates.
 layout: post
 ---
 

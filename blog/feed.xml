@@ -1,0 +1,22 @@
+---
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+	<channel>
+		<title>Anthony Writes Stuff</title>
+		<description>Personal blog of Anthony Zhang.</description>		
+		<link>http://anthony-zhang.me/blog/</link>
+		<atom:link href="http://anthony-zhang.me/blog/feed.xml" rel="self" type="application/rss+xml" />
+		{% assign posts = site.pages | where:"layout","post" | sort:"date" | reverse %}{% comment %}
+		{% endcomment %}{% for post in posts limit:20 %}{% comment %}
+			{% endcomment %}{% assign post_url = post.url | append: '\n' | replace: '/index.html\n', '/\n' | remove_first: '\n' %}{% comment %}
+{% endcomment %}	<item>
+				<title>{{ post.title | xml_escape }}</title>
+				<description>{{ post.description | xml_escape }}</description>
+				<pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
+				<link>http://anthony-zhang.me{{ post_url }}</link>
+				<guid isPermaLink="true">http://anthony-zhang.me{{ post_url }}</guid>
+			</item>
+		{% endfor %}
+	</channel>
+</rss>

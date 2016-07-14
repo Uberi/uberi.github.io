@@ -1,6 +1,7 @@
 ---
 title: Galvanic Isolation and Hobbyist Electronics
 date: 2015-05-08
+description: Local mom isolates electric potentials using this one weird trick! Doctors hate her!
 layout: post
 ---
 

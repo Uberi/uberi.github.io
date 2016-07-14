@@ -1,6 +1,7 @@
 ---
 title: Installing Ubuntu 15.10 on a Thinkpad W540
 date: 2015-09-05
+description: Instructions, pitfalls, gotchas, flaming acidic spike traps, and notes about loading a Linux distro onto the Thinkpad W540.
 layout: post
 ---
 
@@ -61,7 +62,7 @@ sudo add-apt-repository ppa:graphics-drivers/ppa -y
 sudo apt-get update && sudo apt-get upgrade -y
 sudo apt-get install linux-source && sudo apt-get install linux-headers-$(uname -r)
 sudo apt-get install nvidia-355 nvidia-settings
-sudo apt-get install bumblebee bumblebee-nvidia virtualgl virtualgl-libs virtualgl-libs-ia32:i386 virtualgl-libs:i386
+sudo apt-get install bumblebee bbswitch bumblebee-nvidia virtualgl virtualgl-libs virtualgl-libs-ia32:i386 virtualgl-libs:i386
 sudo usermod -a -G bumblebee $USER
 {% endhighlight %}
 
@@ -110,7 +111,6 @@ Of course, at this point we've only got the OS set up - there's still the matter
 
 ### Other notes
 
-* Don't use [bbswitch](https://github.com/Bumblebee-Project/bbswitch)! A lot of old forum posts will recommend it for power management, but as of Bumblebee 3.0 it is redundant and will break things.
 * Thinkpad Ultra Docks and the built in 4-in-1 card reader are not supported. Unfortunately, there's no real workaround known at this time.
 * The X-Rite Huey PRO Colorimeter doesn't work with Argyll color management. Basically, it'll be necessary to boot into Windows to generate the ICC file using Lenovo's official tools, then boot back into Ubuntu and apply the `*.icc` color profile using something like [dispcalGUI](http://dispcalgui.hoech.net/).
 * When you have multiple monitors, a Wacom tablet will move the cursor across all of them. GNOME's Wacom configuration utility can map the tablet to a single monitor. If not using GNOME, modify this script to suit your needs:

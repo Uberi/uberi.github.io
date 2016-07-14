@@ -1,6 +1,7 @@
 ---
 title: Update Banshee's Date Added Field
 date: 2014-08-10
+description: Quick fix for some annoying behaviours in Banshee's date added field.
 layout: post
 ---
 

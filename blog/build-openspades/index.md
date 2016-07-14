@@ -1,6 +1,7 @@
 ---
 title: Building OpenSpades on Ubuntu 14.04
 date: 2014-08-19
+description: More comprehensive instructions for building OpenSpades, including solutions for several common build issues.
 layout: post
 ---
 

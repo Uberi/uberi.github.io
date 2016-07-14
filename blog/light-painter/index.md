@@ -1,6 +1,7 @@
 ---
 title: LightPainter Breakdown
 date: 2016-01-02
+description: Care and maintenance of your very own delta-style 3D manipulator arm, plus build logs from HackWestern II.
 layout: post
 ---
 

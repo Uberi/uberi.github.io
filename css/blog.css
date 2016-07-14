@@ -5,6 +5,12 @@
 	font-weight: lighter;
 }
 
+.feed {
+  margin-left: 3px;
+  padding: 0 0 0 19px;
+  background: url("/blog/feed.png") no-repeat 0 50%;
+}
+
 .closing {
 	font-size: 0.7em;
 	border-top: 1px solid grey;

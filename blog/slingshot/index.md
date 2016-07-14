@@ -1,6 +1,7 @@
 ---
 title: Building a Slingshot
 date: 2014-10-26
+description: Build logs for a reliable, easy-to-assemble slingshot with a proper release mechanism.
 layout: post
 ---
 
