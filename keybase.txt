@@ -1,0 +1,73 @@
+==================================================================
+https://keybase.io/uberi
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://anthony-zhang.me
+  * I am uberi (https://keybase.io/uberi) on keybase.
+  * I have a public key with fingerprint C927 DE93 02A1 1966 1F00  8726 84D3 1436 5F56 B350
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "0101d569d83312a74ef92113b80eba128fa22f09e71f605dba96fd950442fb3e8a990a",
+            "fingerprint": "c927de9302a119661f00872684d314365f56b350",
+            "host": "keybase.io",
+            "key_id": "84d314365f56b350",
+            "kid": "0101d569d83312a74ef92113b80eba128fa22f09e71f605dba96fd950442fb3e8a990a",
+            "uid": "465122d6ddcbe94a9b54a1f18f3d6419",
+            "username": "uberi"
+        },
+        "service": {
+            "hostname": "anthony-zhang.me",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1470025978,
+    "expire_in": 157680000,
+    "prev": "16a3ea402e8da125e88e829a0357bb822dc313fa5996f0434b229470f761dc13",
+    "seqno": 4,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v2
+
+owGtUm1QVFUYBkRAHCXHpABBuyAhQ3TP/b6rNXxs+FFA4AS4yDDn7j2XvQF3l73L
+wu6Kgk4KGH5RaDEKGsMQM9C0JgQzImXajEwafTHQgDSFETlERppk0b2M/etn58+Z
+877P85znfeY9vmqZT5Cvfy2W1xZA1fkO/ST45J4dDvRgglV0YQYPVoyWLlQiItVR
+WCyLmAHDAQ5EmuFFjiQBAVkKSTwBAClwOBIgIDgJEoSE84gFEoPTogB5RhJ5Gqco
+QhJIxEGexyGWgEmyUoTsNrusODRZM0+wIuJJnIAA8AwDJBznWILhKJEEFMnQEs0I
+JI1rRItV1RmaOQGqKFG2ajXtUbhk7z/w/7Pv8iU5iqEBQYiMKJoFxFOQF2gKAglw
+EikyFOB1oIrsCixFGrpcQHYZq0rAtJJTNiM9VX2MR22oOCxWxfWM2wKVokStlIDZ
+7FaH1Wwt0boWh8OmGnS2w2XT4RVIKHwkVCjIiqgFqTGcyK7KVgUzAA1pdsi6MqBY
+HCdonuUSMFRpk+2oUNYRNMtwuHb0f5BTkwQMJBHcTeEE4kQtDRpxHOIIHuIkzQoC
+p41qJgEpQZrXYsEpkhIIgtfUJZYBohmQmD5bmWLFDJTmExZpmqpcpEBHuR1hVcF1
+fuv9fXyDfAKW++kr5hO84rF/9+6XvSGLlaPxr4TOm+bXjL7fmv3ax8tMhmd38VRU
+8oWqkoluy6ULHsx3IW9bA3s9cDJWHfTWRH8BnlrocDdMZB8ceXsmKyrJOOUnT8bd
+2rMn/y/hXPtXZwczt8eMDD3+N3iwcdT5xpWM1KyQtJSiF+fh3jZwdPF5Y+b52U2N
+AwcaIi1+9uWRfdk1W997yf3riGeV9+cmKe3Y8Idl5Oa0hs/qay95PE9X7LwccKi7
+YMt0te3ug/pDhhvHasfKawanP+0JvNm6+npj572PwMa1MbEtfalvfUf6OQ83zLR0
+9I8M3RtvLO3szakef2fNvmg+8PT+xJe9Ed4zYXhBTFJu/ZEerynlIjvmS12Lneue
+BZWmI00zn+RkvQnbO00dV9sbS3u8n6PRpghyO7nuyx1rw6sHqiP3bwIDbfnX0k+V
+Jt3eMCkG1HWlJF451Y7PTbXkbQ0aTq5QH2YFB6zEbp9pavpx8GFqTmNw9LTJFVZg
+WAjf9X1EjiV2UXUWv8s/l6GeDnW27o68mfnN/VtbUvrLVsh/PJk9tK35cDPKcH97
+Iid3c3JbhnInyZ2Lrb876H85n8sfOzFRddAUHul/wOhSAlf+4BiPmzx3ccxsrPwt
+LPuJ9Obwdf2/954MmnNNhXL5pS/E3eiKEvkPLPdD4vsXjUOrX89N73u1d8fV4rCu
++DtWy5/7Zo9+nbxTdled3/AP
+=HlqR
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/uberi
+
+==================================================================
