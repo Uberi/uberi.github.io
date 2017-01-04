@@ -63,7 +63,7 @@ Nowadays, it averages about 32 degrees Celsius outside. Normal human body temper
 
 First, a quick test with the Peltier cooler to see how it works. It turns out that when red is power and black is ground, the side with text on it becomes hot and the other side becomes cold.
 
-I originally meant to use a separate power transistor to turn the cooler on and off. Turns out it's not necessary: according to the MP1584 datasheet, pin 2 is an Enable input, which allows us to turn the DC regulator on and off without the power transistor. Since this pin isn't broken out, I soldered some enamel wire directly to it:
+I originally meant to use a separate power transistor to turn the cooler on and off. Turns out it's not necessary: according to the MP1584 datasheet, pin 2 is an Enable input, which allows us to turn the DC regulator on and off without the power transistor. Since this pin isn't broken out, I soldered some enamel wire directly to it (this is the blue wire on the schematic):
 
 ![Enamel wire soldered to pin 2 of the MP1584 on the DC regulator board](img/jumper.jpg)
 
