@@ -151,6 +151,8 @@ void loop() {
 
 After programming, the cooler is ready to use - just insert the USB-A plug into a portable power bank and wait a second for it to initialize.
 
+The cooling power is adjustable by changing the potentiometer on the DC step-down switching regulator (the screw on the non-heat-sinked side of the board) to change the board's output voltage. This setting affects only how quickly the cooler will try to reach the target temperature. Higher voltages mean faster, but less efficient cooling, while lower voltages mean slower, more efficient cooling. This is because Peltier coolers work best when there is a large difference between the target temperature difference and the actual temperature difference.
+
 ### Results
 
 The first test took place on top of a wrist, with the temperature sensor just beside the Peltier cooler:

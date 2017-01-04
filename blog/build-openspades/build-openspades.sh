@@ -8,28 +8,9 @@ mkdir OpenSpades
 cd OpenSpades
 
 # install some packages first
-sudo apt-get install libopenal-dev libpng-dev libtiff-dev
-sudo apt-get install pkg-config libglew-dev libcurl3-openssl-dev
-
-# install SDL
-wget http://www.libsdl.org/release/SDL2-2.0.2.tar.gz
-tar -zxvf SDL2-2.0.2.tar.gz
-cd SDL2-2.0.2/
-./configure
-make clean
-make
-sudo make install
-cd ../
-
-# install SDL_image
-wget https://www.libsdl.org/projects/SDL_image/release/SDL2_image-2.0.0.tar.gz
-tar -zxvf SDL2_image-2.0.0.tar.gz
-cd SDL2_image-2.0.0/
-./configure --disable-png-shared
-make clean
-make
-sudo make install
-cd ../
+sudo apt-get install pkg-config cmake build-essential
+sudo apt-get install libopenal-dev libpng-dev libtiff-dev libglew-dev libcurl3-openssl-dev
+sudo apt-get install libsdl2-dev libsdl2-image-dev
 
 # build OpenSpades
 wget https://github.com/yvt/openspades/archive/master.tar.gz
@@ -40,4 +21,3 @@ make
 
 # install and run OpenSpades
 sudo make install
-openspades
