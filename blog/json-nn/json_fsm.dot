@@ -1,0 +1,107 @@
+digraph {
+  node [shape=rectangle]
+  START [shape=circle]
+
+  # all transitions from START should check that parsing_key is false, except for START -> STRING, which should not check
+  # all transitions to START from after a full JSON value is done being parsed should check that item_present is true
+  # parsing_key can only be true if the inner container is a dict, so if the inner container is a list, we know that we're not parsing an object key
+
+  # ignore whitespace between tokens
+  START -> START [label="`[ \t\r\n]`; do OP_NOP"]
+  DICT_PAIR_VALUE -> DICT_PAIR_VALUE [label="`[ \t\r\n]`; do OP_NOP"]
+
+  # end of input scanning
+  START -> START [label="`\\x0000` and not parsing_key; do OP_NOP, and set accept to true"]
+
+  # string scanning
+  START                     -> STRING                    [label="`\"` and not item_present; do OP_PUSH_STRING"]
+  STRING                    -> STRING                    [label="`[^\"\\\\x0000-\\x001F\\x007F\\x0080-\\x009F]`; do OP_APPEND_CHAR(K) where K is the character code"]
+  STRING                    -> STRING_ESCAPE             [label="`\\`; do OP_NOP"]
+  STRING_ESCAPE             -> STRING                    [label="`\"`; do OP_APPEND_CHAR('\\\"')"]
+  STRING_ESCAPE             -> STRING                    [label="`\\`; do OP_APPEND_CHAR('\\\\')"]
+  STRING_ESCAPE             -> STRING                    [label="`/`; do OP_APPEND_CHAR('/')"]
+  STRING_ESCAPE             -> STRING                    [label="`b`; do OP_APPEND_CHAR('\\b')"]
+  STRING_ESCAPE             -> STRING                    [label="`f`; do OP_APPEND_CHAR('\\f')"]
+  STRING_ESCAPE             -> STRING                    [label="`n`; do OP_APPEND_CHAR('\\n')"]
+  STRING_ESCAPE             -> STRING                    [label="`r`; do OP_APPEND_CHAR('\\r')"]
+  STRING_ESCAPE             -> STRING                    [label="`t`; do OP_APPEND_CHAR('\\t')"]
+  STRING_ESCAPE             -> STRING_ESCAPE_UNICODE_0   [label="`u`; do OP_PUSH_NUMBER"]
+  STRING_ESCAPE_UNICODE_0   -> STRING_ESCAPE_UNICODE_1   [label="`[0-9a-fA-F]`; do OP_SHIFT_HEX(K) where K is the digit"]
+  STRING_ESCAPE_UNICODE_1   -> STRING_ESCAPE_UNICODE_2   [label="`[0-9a-fA-F]`; do OP_SHIFT_HEX(K) where K is the digit"]
+  STRING_ESCAPE_UNICODE_2   -> STRING_ESCAPE_UNICODE_3   [label="`[0-9a-fA-F]`; do OP_SHIFT_HEX(K) where K is the digit"]
+  STRING_ESCAPE_UNICODE_3   -> STRING_ESCAPE_UNICODE_END [label="`[0-9a-fA-F]`; do OP_SHIFT_HEX(K) where K is the digit, and set position_stay to true"]
+  STRING_ESCAPE_UNICODE_END -> STRING                    [label="`.`; do OP_APPEND_CHAR_CODE"]
+  STRING                    -> START                     [label="`\"` and not parsing_key; do OP_NOP, set item_present to true"] # normal mode
+  STRING                    -> DICT_PAIR_VALUE           [label="`\"` and parsing_key; do OP_NOP"] # string inside a dictionary key
+
+  # number mantissa scanning (push mantissa as 0, then shift each digit into the mantissa)
+  START                          -> NUMBER_MANTISSA_INTERIOR_START [label="`[1-9]` and not item_present and not parsing_key; do OP_PUSH_NUMBER, and set position_stay to true"]
+  NUMBER_MANTISSA_INTERIOR_START -> NUMBER_MANTISSA_INTERIOR       [label="`.`; do OP_SHIFT_DEC(K) where K is the digit, set negative to false"]
+  NUMBER_MANTISSA_INTERIOR       -> NUMBER_MANTISSA_INTERIOR       [label="`[0-9]`; do OP_SHIFT_DEC(K) where K is the digit"]
+  START                          -> NUMBER_MANTISSA_ZERO           [label="`0` and not item_present and not parsing_key; do OP_PUSH_NUMBER, set negative to false"]
+  START                          -> NUMBER_NEGATIVE                [label="`-` and not item_present and not parsing_key; do OP_PUSH_NUMBER, set negative to true"]
+  NUMBER_NEGATIVE                -> NUMBER_MANTISSA_INTERIOR       [label="`[1-9]`; do OP_SHIFT_DEC(K) where K is the digit"]
+  NUMBER_NEGATIVE                -> NUMBER_MANTISSA_ZERO           [label="`0`; do OP_NOP"]
+  NUMBER_MANTISSA_INTERIOR       -> NUMBER_END                     [label="`[^0-9\\.eE]`; do OP_NOP, and set position_stay to true"]
+  NUMBER_MANTISSA_ZERO           -> NUMBER_END                     [label="`[^0-9\\.eE]`; do OP_NOP, and set position_stay to true"]
+  NUMBER_END                     -> START                          [label="`.` and not negative; do OP_NOP, and set item_present to true and set position_stay to true"]
+  NUMBER_END                     -> START                          [label="`.` and negative; do OP_INVERT, and set item_present to true and set position_stay to true"]
+
+  # number fraction scanning (push exponent as 0, then for each digit, decrement exponent, swap, shift the digit into the mantissa, swap, then perform exponentiation if the number ends)
+  NUMBER_MANTISSA_INTERIOR          -> NUMBER_DECIMAL                    [label="`\\.`; do OP_PUSH_NUMBER"]
+  NUMBER_MANTISSA_ZERO              -> NUMBER_DECIMAL                    [label="`\\.`; do OP_PUSH_NUMBER"]
+  NUMBER_DECIMAL                    -> NUMBER_MANTISSA_FRACTIONAL_STEP_1 [label="`[0-9]`; do OP_DECREMENT, and set position_stay to true"]
+  NUMBER_MANTISSA_FRACTIONAL_STEP_1 -> NUMBER_MANTISSA_FRACTIONAL_STEP_2 [label="`.`; do OP_SWAP, and set position_stay to true"]
+  NUMBER_MANTISSA_FRACTIONAL_STEP_2 -> NUMBER_MANTISSA_FRACTIONAL_STEP_3 [label="`.`; do OP_SHIFT_DEC(K) where K is the digit, and set position_stay to true"]
+  NUMBER_MANTISSA_FRACTIONAL_STEP_3 -> NUMBER_MANTISSA_FRACTIONAL        [label="`.`; do OP_SWAP"]
+  NUMBER_MANTISSA_FRACTIONAL        -> NUMBER_MANTISSA_FRACTIONAL_STEP_1 [label="`[0-9]`; do OP_DECREMENT, and set position_stay to true"]
+  NUMBER_MANTISSA_FRACTIONAL        -> NUMBER_END                        [label="`[^0-9eE]`; do OP_EXPONENTIATE_NUMBERS, and set position_stay to true"]
+  
+  # number exponent scanning (push exponent as 0, then shift each digit into the exponent, then add it to the fraction exponent if applicable, then perform exponentiation at the end)
+  NUMBER_MANTISSA_INTERIOR       -> NUMBER_E              [label="`[eE]`; do OP_PUSH_NUMBER, and set add_exponents to false"]
+  NUMBER_MANTISSA_ZERO           -> NUMBER_E              [label="`[eE]`; do OP_PUSH_NUMBER, and set add_exponents to false"]
+  NUMBER_MANTISSA_FRACTIONAL     -> NUMBER_E              [label="`[eE]`; do OP_PUSH_NUMBER, and set add_exponents to true"]
+  NUMBER_E                       -> NUMBER_E_SIGN         [label="`\\+`; do OP_NOP, set negative_exponent to false"]
+  NUMBER_E                       -> NUMBER_E_SIGN         [label="`-`; do OP_NOP, set negative_exponent to true"]
+  NUMBER_E                       -> NUMBER_EXPONENT       [label="`[0-9]`; do OP_SHIFT_DEC(K) where K is the digit, set negative_exponent to false"]
+  NUMBER_E_SIGN                  -> NUMBER_EXPONENT       [label="`[0-9]`; do OP_SHIFT_DEC(K) where K is the digit"]
+  NUMBER_EXPONENT                -> NUMBER_EXPONENT       [label="`[0-9]`; do OP_SHIFT_DEC(K) where K is the digit"]
+  NUMBER_EXPONENT                -> NUMBER_EXPONENT_APPLY [label="`[^0-9]` and not negative_exponent; do OP_NOP, and set position_stay to true"]
+  NUMBER_EXPONENT                -> NUMBER_EXPONENT_APPLY [label="`[^0-9]` and negative_exponent; do OP_INVERT, and set position_stay to true"]
+  NUMBER_EXPONENT_APPLY          -> NUMBER_EXPONENT_APPLY [label="`.` and add_exponents; do OP_ADD, and set position_stay to true and set add_exponents to false"]
+  NUMBER_EXPONENT_APPLY          -> NUMBER_END            [label="`.` and not add_exponents; do OP_EXPONENTIATE_NUMBERS, and set position_stay to true"]
+
+  # true scanning
+  START       -> LITERAL_T   [label="`t` and not item_present and not parsing_key; do OP_NOP"]
+  LITERAL_T   -> LITERAL_TR  [label="`r`; do OP_NOP"]
+  LITERAL_TR  -> LITERAL_TRU [label="`u`; do OP_NOP"]
+  LITERAL_TRU -> START       [label="`e`; do OP_PUSH_TRUE, set item_present to true"]
+
+  # false scanning
+  START        -> LITERAL_F    [label="`f` and not item_present and not parsing_key; do OP_NOP"]
+  LITERAL_F    -> LITERAL_FA   [label="`a`; do OP_NOP"]
+  LITERAL_FA   -> LITERAL_FAL  [label="`l`; do OP_NOP"]
+  LITERAL_FAL  -> LITERAL_FALS [label="`s`; do OP_NOP"]
+  LITERAL_FALS -> START        [label="`e`; do OP_PUSH_FALSE, set item_present to true"]
+
+  # null scanning
+  START       -> LITERAL_N   [label="`n` and not item_present and not parsing_key; do OP_NOP"]
+  LITERAL_N   -> LITERAL_NU  [label="`u`; do OP_NOP"]
+  LITERAL_NU  -> LITERAL_NUL [label="`l`; do OP_NOP"]
+  LITERAL_NUL -> START       [label="`l`; do OP_PUSH_NONE, set item_present to true"]
+
+  # array scanning
+  START     -> START     [label="`\\[` and not item_present and not parsing_key; do OP_PUSH_LIST, and set item_present to false and set comma_used to false"]
+  START     -> START     [label="`,` and inner container is list and item_present; do OP_APPEND_VALUE_TO_LIST, and set item_present to false and set comma_used to true"]
+  START     -> ARRAY_END [label="`\\]` and inner container is list and not item_present and not comma_used; do OP_NOP, and set position_stay to true"] # empty list
+  START     -> ARRAY_END [label="`\\]` and inner container is list and item_present; do OP_APPEND_VALUE_TO_LIST, and set position_stay to true"] # non-empty list
+  ARRAY_END -> START     [label="`.`; do OP_COMPLETE_LIST, and set item_present to true and set comma_used to false"]
+
+  # object scanning
+  START           -> START    [label="`\\{` and not item_present and not parsing_key; do OP_PUSH_DICT, and set item_present to false and set parsing_key to true and set comma_used to false"]
+  DICT_PAIR_VALUE -> START    [label="`:`; do OP_NOP, and set item_present to false and set parsing_key to false"]
+  START           -> START    [label="`,` and inner container is dict and item_present and not parsing_key; do OP_APPEND_PAIR_TO_DICT, and set item_present to false and set parsing_key to true and set comma_used to true"]
+  START           -> DICT_END [label="`\\}` and inner container is dict and not item_present and not comma_used; do OP_NOP, and set position_stay to true"]
+  START           -> DICT_END [label="`\\}` and inner container is dict and item_present and not parsing_key; do OP_APPEND_PAIR_TO_DICT, and set position_stay to true"]
+  DICT_END        -> START    [label="`.`; do OP_COMPLETE_DICT, and set item_present to true and set parsing_key to false and set comma_used to false"]
+}

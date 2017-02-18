@@ -86,28 +86,16 @@
 	margin: 0 auto;
 }
 
-.post > pre > code {
-	margin: 1em 3em;
-	padding: 1em;
-	display: block;
-	font-family: monospace;
-	overflow: auto;
-	line-height: 150%;
-	border: 1px solid grey;
-	border-radius: 0.3em;
-	color: #555555;
-}
-.post :not(pre) > code {
+.post :not(pre) > code { /* inline code blocks */
 	padding: 0 0.3em;
-	margin-bottom: -0.35em;
-	margin-top: 0.2em;
 	display: inline-block;
-	border: 1px solid grey;
+	font-family: monospace;
+	border: 1px solid #eeeeee;
 	border-radius: 0.3em;
 	color: #555555;
 }
 
-.highlight {
+.highlight { /* formatted and unformatted code blocks */
 	margin: 1em 3em;
 	display: block;
 	font-family: monospace;
@@ -117,7 +105,13 @@
 	border-radius: 0.3em;
 	background: #272822;
 }
-.highlight > pre {
+:not(.highlight) > pre { /* unformatted code blocks */
+	color: #dddddd;
+	padding: 0.3em 0.5em;
+}
+.highlight > pre { /* formatted code blocks */
+	display: inline-block;
+	vertical-align: bottom; /* get rid of the space below the table */
 	padding: 0.3em 0.5em;
 }
 .highlight .gutter {
@@ -125,6 +119,21 @@
 	user-select: none; -webkit-user-select: none; -moz-user-select: none;
 	color: #555555;
 }
+
+table {
+	margin: 0 auto;
+	border-collapse: collapse;
+}
+.post table tr th, .post table tr td {
+	padding: 0.4em 1em;
+	border-left: 1px solid #dddddd;
+	border-top: 1px solid #dddddd;
+}
+.post table th:first-child, .post table td:first-child { border-left: none; }
+.post table tr:first-child th, .post table tr:first-child td { border-top: none !important; }
+.post table thead th { border-bottom: 3px double #dddddd; border-bottom-style: double; }
+.post table tr:first-child { padding: 1em; }
+
 
 .navigation {
 	text-align: center;
@@ -145,6 +154,13 @@
 }
 
 @media only screen and (max-width: 900px) {
+	.post {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
+@media print {
 	.post {
 		padding-left: 0;
 		padding-right: 0;

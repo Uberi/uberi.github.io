@@ -1,0 +1,2 @@
+include json_nn.py
+include README.rst

@@ -5,3 +5,5 @@ _site/
 Original Design/
 __pycache__/
 .bundle/
+venv/
+*.egg-info/
