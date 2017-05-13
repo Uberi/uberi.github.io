@@ -62,7 +62,7 @@
 	line-height: 1.2;
 }
 
-.post strong { font-weight: bold; }
+.post strong { font-weight: 800; }
 .post em { font-style: italic; }
 
 .post img {

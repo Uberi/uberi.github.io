@@ -6,4 +6,5 @@ Original Design/
 __pycache__/
 .bundle/
 venv/
+dist/
 *.egg-info/
