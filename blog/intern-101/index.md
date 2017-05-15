@@ -660,8 +660,8 @@ Since you were in the US as an intern, you should only require a W-2 form from y
     * The [Unofficial UWaterloo Intern USA Tax Guide](https://web-beta.archive.org/web/20150318060617/https://csclub.uwaterloo.ca/~f2fung/taxguide.html) gives a set of example forms with annotations. Quite a few things have changed since it was published, but it may be useful to see what goes where.
 * <label><input type="checkbox"><span> Do your state tax return, if applicable.</span></label>
     * For California taxes, this consisted of the 540NR Short Form (state tax return) and the W-2 State Copy (declaration of income).
-* **ERRAND** Submit your federal and state tax return by mail. Ideally, plan to finish your US tax return early, and mail it to the relevant tax authorities via Canada Post XpressPost (expensive and fast) or Canada Post Registered Mail (cheaper and slower), both of which offer tracking and proof of delivery.
-* Wait up to 6 weeks for the IRS to process your return. If you do not receive your tax return confirmation within 6 weeks, contact the IRS and ask about it.
+* <label><input type="checkbox"><span> **ERRAND** Submit your federal and state tax return by mail. Ideally, plan to finish your US tax return early, and mail it to the relevant tax authorities via Canada Post XpressPost (expensive and fast) or Canada Post Registered Mail (cheaper and slower), both of which offer tracking and proof of delivery.</span></label>
+* <label><input type="checkbox"><span> Wait up to 6 weeks for the IRS to process your return and ensure that it is processed correctly. If you do not receive your tax return confirmation within 6 weeks, contact the IRS and ask about it.</span></label>
     * You can check the status of your tax return refund [online at the IRS webite](https://sa.www4.irs.gov/irfof/lang/en/irfofgetstatus.jsp), if applicable.
     * My federal and state return both arrived in just three weeks, though my tax situation is considered uncomplicated.
 
