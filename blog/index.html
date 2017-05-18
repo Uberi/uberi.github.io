@@ -35,17 +35,13 @@
 			<li><a href="https://keybase.io/uberi" class="info">public key</a></li>
 		</ul>
 		<p>This content is also available as an <a href="feed.xml" class="feed">RSS feed</a>.</p>
-{% assign posts = site.pages | where:"layout","post" | sort:"date" | reverse %}
-{% for post in posts %}{% comment %}
-	{% endcomment %}		<div class="entry">
+
+{% assign posts = site.pages | where:"layout","post" | sort:"date" | reverse %}{% for post in posts %}{% assign prefix = post.url | truncate:6,"" %}{% if prefix == "/blog/" %}		<div class="entry">
 			<h2><a href="{{ post.url | append: '\n' | replace: '/index.html\n', '/\n' | remove_first: '\n' }}" class="permalink">{{ post.title | xml_escape }}</a></h2>
 			<p class="time">{{ post.date | date:'%B %-d, %Y' }}</p>
 		</div>
-{% endfor %}
+{% endif %}{% endfor %}
 		<div class="closing">Questions or comments? Drop me a line at <a href="mailto:azhang9@gmail.com">azhang9@gmail.com</a>.</div>
-		<div class="license">
-			<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a> This work by <a xmlns:cc="http://creativecommons.org/ns#" href="http://anthony-zhang.me/" property="cc:attributionName" rel="cc:attributionURL">Anthony Zhang</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
-			Copyright 2013-2017 Anthony Zhang.
-		</div>
+		{% include license.html %}
 	</body>
 </html>
