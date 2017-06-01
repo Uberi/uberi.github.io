@@ -525,15 +525,17 @@ There are far too many possibilities here, so I won't attempt to list them all. 
     * [Meetup](https://www.meetup.com/). In some places, very useful for finding local events - especially useful if you don't know anyone there yet.
 * <label><input type="checkbox"><span> Set up an account with a service like [Transferwise](https://transferwise.com/) (recommended) or [XE](http://www.xe.com/), so you're ready to move money back to Canada when you're returning.</span></label>
     * These services are legally required to verify your identity before allowing transactions to go through, which can take a few days. For Transferwise, this can be [done online](https://transferwise.com/user/verify/id) by uploading a photo of your ID.
-* <label><input type="checkbox"><span> Make sure you're prepared for the next term:</span></label>
-    * <label><input type="checkbox"><span> If the next term is a school term: select courses (pre-enrollment), enroll, and pay tuition.</span></label>
-    * <label><input type="checkbox"><span> Prepare housing arrangements for next term - where will you be living? Starting this earlier generally means more choices, possibly better prices, and nicer places.</span></label>
+* <label><input type="checkbox"><span> Prepare for the upcoming school term, if applicable:</span></label>
+    * <label><input type="checkbox"><span> Select courses during the pre-enrollment period. See [Important Dates](https://uwaterloo.ca/quest/undergraduate-students/important-dates) for pre-enrollment period dates.</span></label>
+    * <label><input type="checkbox"><span> Enroll in courses during the add/drop period. See [Important Dates](https://uwaterloo.ca/quest/undergraduate-students/important-dates) for add/drop period dates.</span></label>
+    * <label><input type="checkbox"><span> Pay tuition before the tuition due date. See [Due Dates and Late Fees](https://uwaterloo.ca/finance/student-financial-services/about-your-student-account/due-dates-and-late-fees) for tuition due dates.</span></label>
+* <label><input type="checkbox"><span> Prepare housing arrangements for next term - where will you be living? Starting this earlier generally means more choices, possibly better prices, and nicer places.</span></label>
 
 ### Thread 4: Event handling
 
 * If you are in an emergency situation, see the "Who to ask for help" section for immediate steps to take.
-* If you receive an email from CECA asking you to complete an e-Checkin form, fill in the requested information.
-    * This form asks for your phone number/email, your supervisor's phone number/email, and job details like salary and location.
+* If you receive an email from CECA asking you to complete the eCheckin form on WaterlooWorks, complete it.
+    * This form asks for basic job details like salary and working hours.
     * The form is usually sent around 5 weeks into the term.
 * If you receive an email from CECA asking you to complete an e-Update form, fill in the requested information.
     * This form asks for your phone number and Skype contact info. If you answer "Undecided" for whether you'll be returning to an employer next co-op term, you must attend a meeting with your student advisor.
@@ -736,7 +738,7 @@ input:checked + span a { color: #CCCCCC; }
 // current state serialization version
 // each time any checkboxes change, this version needs to be incremented and
 // we need to write a migration from the previous version to the new version where indicated in loadCheckboxStates()
-var CURRENT_STATE_VERSION = 0;
+var CURRENT_STATE_VERSION = 1;
 
 // load checkbox states from local storage
 function loadCheckboxStates() {
@@ -753,6 +755,17 @@ function loadCheckboxStates() {
     return;
   }
 
+  /*
+  // a useful snippet for finding the index of a checkbox:
+  CHECKBOX_LABEL_TEXT = "Double check the details of your return flight to Canada."
+  document.querySelectorAll("li input[type='checkbox']").forEach(function(checkbox, i) {
+    if (checkbox.parentElement.innerText.indexOf(CHECKBOX_LABEL_TEXT) != -1) {
+      console.log(i, checkbox.parentElement);
+    }
+  });
+  // now the checkbox at the index the snippet printed out can be found in the state using: checkboxStates.slice(INDEX, INDEX + 1)
+  */
+
   // MIGRATIONS GO HERE
   /*
   // example of what migrations would look like, assuming the current version is 2
@@ -766,6 +779,13 @@ function loadCheckboxStates() {
     version ++; // update the version now that we've migrated it
   }
   */
+  if (version === 0) { // migrate from version 0 to 1
+    // three checkboxes, at indices 182 to 184 inclusive, were changed to four checkboxes with similar meanings, so we can directly transfer checkbox states
+    var schoolPreparations = checkboxStates[183];
+    var housingPreparations = checkboxStates[184];
+    checkboxStates = checkboxStates.slice(0, 182) + schoolPreparations + schoolPreparations + schoolPreparations + schoolPreparations + housingPreparations + checkboxStates.slice(185);
+    version ++; // update the version now that we've migrated it
+  }
 
   // check that the version is correct - that the migrations moved the version up to the current version if it was older
   if (version !== CURRENT_STATE_VERSION) {

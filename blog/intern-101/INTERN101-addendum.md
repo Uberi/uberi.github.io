@@ -35,7 +35,7 @@ input:checked + span a { color: #CCCCCC; }
 // current state serialization version
 // each time any checkboxes change, this version needs to be incremented and
 // we need to write a migration from the previous version to the new version where indicated in loadCheckboxStates()
-var CURRENT_STATE_VERSION = 0;
+var CURRENT_STATE_VERSION = 1;
 
 // load checkbox states from local storage
 function loadCheckboxStates() {
@@ -52,6 +52,17 @@ function loadCheckboxStates() {
     return;
   }
 
+  /*
+  // a useful snippet for finding the index of a checkbox:
+  CHECKBOX_LABEL_TEXT = "Double check the details of your return flight to Canada."
+  document.querySelectorAll("li input[type='checkbox']").forEach(function(checkbox, i) {
+    if (checkbox.parentElement.innerText.indexOf(CHECKBOX_LABEL_TEXT) != -1) {
+      console.log(i, checkbox.parentElement);
+    }
+  });
+  // now the checkbox at the index the snippet printed out can be found in the state using: checkboxStates.slice(INDEX, INDEX + 1)
+  */
+
   // MIGRATIONS GO HERE
   /*
   // example of what migrations would look like, assuming the current version is 2
@@ -65,6 +76,13 @@ function loadCheckboxStates() {
     version ++; // update the version now that we've migrated it
   }
   */
+  if (version === 0) { // migrate from version 0 to 1
+    // three checkboxes, at indices 182 to 184 inclusive, were changed to four checkboxes with similar meanings, so we can directly transfer checkbox states
+    var schoolPreparations = checkboxStates[183];
+    var housingPreparations = checkboxStates[184];
+    checkboxStates = checkboxStates.slice(0, 182) + schoolPreparations + schoolPreparations + schoolPreparations + schoolPreparations + housingPreparations + checkboxStates.slice(185);
+    version ++; // update the version now that we've migrated it
+  }
 
   // check that the version is correct - that the migrations moved the version up to the current version if it was older
   if (version !== CURRENT_STATE_VERSION) {

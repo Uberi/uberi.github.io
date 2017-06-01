@@ -516,15 +516,17 @@ There are far too many possibilities here, so I won't attempt to list them all. 
     * [Meetup](https://www.meetup.com/). In some places, very useful for finding local events - especially useful if you don't know anyone there yet.
 * [x] Set up an account with a service like [Transferwise](https://transferwise.com/) (recommended) or [XE](http://www.xe.com/), so you're ready to move money back to Canada when you're returning.
     * These services are legally required to verify your identity before allowing transactions to go through, which can take a few days. For Transferwise, this can be [done online](https://transferwise.com/user/verify/id) by uploading a photo of your ID.
-* [ ] Make sure you're prepared for the next term:
-    * [ ] If the next term is a school term: select courses (pre-enrollment), enroll, and pay tuition.
-    * [x] Prepare housing arrangements for next term - where will you be living? Starting this earlier generally means more choices, possibly better prices, and nicer places.
+* [ ] Prepare for the upcoming school term, if applicable:
+    * [x] Select courses during the pre-enrollment period. See [Important Dates](https://uwaterloo.ca/quest/undergraduate-students/important-dates) for pre-enrollment period dates.
+    * [ ] Enroll in courses during the add/drop period. See [Important Dates](https://uwaterloo.ca/quest/undergraduate-students/important-dates) for add/drop period dates.
+    * [ ] Pay tuition before the tuition due date. See [Due Dates and Late Fees](https://uwaterloo.ca/finance/student-financial-services/about-your-student-account/due-dates-and-late-fees) for tuition due dates.
+* [x] Prepare housing arrangements for next term - where will you be living? Starting this earlier generally means more choices, possibly better prices, and nicer places.
 
 ### Thread 4: Event handling
 
 * If you are in an emergency situation, see the "Who to ask for help" section for immediate steps to take.
-* If you receive an email from CECA asking you to complete an e-Checkin form, fill in the requested information.
-    * This form asks for your phone number/email, your supervisor's phone number/email, and job details like salary and location.
+* If you receive an email from CECA asking you to complete the eCheckin form on WaterlooWorks, complete it.
+    * This form asks for basic job details like salary and working hours.
     * The form is usually sent around 5 weeks into the term.
 * If you receive an email from CECA asking you to complete an e-Update form, fill in the requested information.
     * This form asks for your phone number and Skype contact info. If you answer "Undecided" for whether you'll be returning to an employer next co-op term, you must attend a meeting with your student advisor.
