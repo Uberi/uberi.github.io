@@ -88,6 +88,7 @@ This guide owes its existance to:
     * [Pearson Departure Guide - To the United States](http://www.torontopearson.com/Departing_to_usa.aspx)
     * [Cultural Vistas - Frequently Asked Questions](http://www.culturalvistas.org/programs-for-students-and-professionals/j-1/frequently-asked-questions)
     * [Cultural Vistas - Participant Orientation](http://culturalvistas.org/orientation/)
+    * [J-1 Visa Exchange Programs Orientation Checklist](http://culturalvistas.org/cms/assets/uploads/2016/10/Orientation-Checklist_2016.pdf)
     * [Information About the Two-Year Home-Country Physical Presence Requirement](https://travel.state.gov/content/visas/en/study-exchange/student/residency-waiver/eligibility.html)
     * [Travellers - Residents Returning to Canada](http://www.cbsa-asfc.gc.ca/travel-voyage/ifcrc-rpcrc-eng.html)
     * [I Declare: A guide for residents returning to Canada](http://www.cbsa-asfc.gc.ca/travel-voyage/declare-eng.html)
@@ -513,9 +514,9 @@ There are far too many possibilities here, so I won't attempt to list them all. 
     * Also look at Uber/Lyft/Flywheel options for transport. Make sure you know your options before needing them.
 * <label><input type="checkbox"><span> Get a US credit card, even if you don't need one. Having a good credit history is important for everything from future housing opportunities to phone plans, so it's important to start building credit as soon as possible.</span></label>
     * Your bank will usually have options for that. Without existing US credit history, however, it's often difficult to obtain a credit card.
-    * One option is to get a secured credit card, where you put down a certain deposit at the bank in return for a credit card.
+    * One option is to get a secured credit card, where you put down a certain deposit at the bank in return for a credit card. A good option is the [Discover it Secured](https://www.discover.com/credit-cards/secured/).
     * If you don't care about the credit card being accepted everywhere, [Discover credit cards](https://www.discover.com/credit-cards/) have decent perks and are relatively easy to obtain for people with limited credit history, as long as you can prove you have consistent income. Another good option is the BankAmericard Cash Rewards, though it's a bit harder to get.
-    * [CreditKarma](https://www.creditkarma.com/credit-cards) has a ton of good recommendations for good credit cards, including credit cards that are good for people that are just starting to build a credit history.
+    * [WalletHub](https://wallethub.com/credit-cards) and [CreditKarma](https://www.creditkarma.com/credit-cards) have tons of good options for credit cards, including cards for people that are just starting to build a credit history. WalletHub seems to have a larger variety of recommendations, while CreditKarma also works for Canada credit.
     * The [Unofficial Waterloo USA Intern Guide](https://stephenholiday.com/Unofficial-Waterloo-USA-Intern-Guide/#credit-cards) also has some good credit history advice.
 * <label><input type="checkbox"><span> Put your health insurance cards in your wallet, and keep them there - they should always be on your person or in your bag.</span></label>
 * <label><input type="checkbox"><span> Consider signing up for a couple of useful services:</span></label>
