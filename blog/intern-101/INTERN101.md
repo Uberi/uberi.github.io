@@ -4,7 +4,7 @@ The excellent [Unofficial Waterloo USA Intern Guide](https://stephenholiday.com/
 
 I started writing this in June 2016, originally as a section of my to-do list. It quickly grew unwieldy after the first hundred tasks, so now it's a separate document. The checklist is organized chronologically, so at any point, you can see at a glance what the next step will be.
 
-Have suggestions, questions, or thrown vegetables? I'd be happy to hear it - contact information is available on [my website](http://anthony-zhang.me/), or simply email me at `azhang9@gmail.com`.
+Have suggestions, questions, or thrown vegetables? I'd be happy to hear it - contact information is available on [my website](http://anthony-zhang.me/), or simply email `me@anthonyz.ca`.
 
 If you have Javascript enabled and a modern browser, this document will save its state. When you return to this page, your progress through the checklist will be restored at where you left off.
 

@@ -10,7 +10,7 @@ setup(
 
     # PyPI metadata
     author="Anthony Zhang (Uberi)",
-    author_email="azhang9@gmail.com",
+    author_email="me@anthonyz.ca",
     description="JSON parser, powered by Tensorflow.",
     long_description=open("README.rst").read(),
     license="BSD",

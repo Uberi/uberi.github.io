@@ -52,7 +52,7 @@ Tensorflow-JSON is made available under the 3-clause BSD license:
 
 ::
 
-    Copyright (c) 2017, Anthony Zhang <azhang9@gmail.com>
+    Copyright (c) 2017, Anthony Zhang <me@anthonyz.ca>
     All rights reserved.
 
     Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:

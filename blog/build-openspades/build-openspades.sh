@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # OpenSpades automatic build script
-# by Anthony Zhang <azhang9@gmail.com>
+# by Anthony Zhang <me@anthonyz.ca>
 
 # set up working directory
 mkdir OpenSpades
