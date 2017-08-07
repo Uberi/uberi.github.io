@@ -100,7 +100,7 @@ for test_list in itertools.product(ALPHABET, repeat=MAX_LENGTH): # generate ever
 print("Test completed.")
 {% endhighlight %}
 
-The last one uncovered an issue in my original design: when parsing a number like `32.10e64`, it would read in the number 123, multiply by \\(10^{-2}\\), then read in the exponent 64 and multiply the number by \\(10^{64}\\). However, the first exponentiation loses a bit of floating point precision while the second one magnifies it, giving us `3.2100000000000003e+65` as the result.
+The last one uncovered an issue in my original design: when parsing a number like `32.10e64`, it would read in the number 123, multiply by $$10^{-2}$$, then read in the exponent 64 and multiply the number by $$10^{64}$$. However, the first exponentiation loses a bit of floating point precision while the second one magnifies it, giving us `3.2100000000000003e+65` as the result.
 
 To fix this, I introduced the `add_exponents` control variable and changed the transitions around so that if there was a fractional exponent (specified by the placement of the decimal point) and an explicit exponent (specified by the `e<NUMBER>` notation), they get added together. This ensures that there's at most one exponentiation for each number we parse, allowing us to get `3.21e+65` as expected.
 
@@ -109,15 +109,15 @@ Layer Design
 
 The basic idea is that the layers will implement logic gates that, when arranged correctly, will implement the state machine.
 
-Tensorflow has this neat activation function called RELU6, defined as \\(\mathrm{RELU6}(x) = \min(6, \max(0, x))\\) - it's the line \\(y = x\\), but bounded by the lines \\(y = 0\\) and \\(y = 6\\). The flat tails make this interesting, because with the correct weights, we can make it resemble a step function.
+Tensorflow has this neat activation function called RELU6, defined as $$\mathrm{RELU6}(x) = \min(6, \max(0, x))$$ - it's the line $$y = x$$, but bounded by the lines $$y = 0$$ and $$y = 6$$. The flat tails make this interesting, because with the correct weights, we can make it resemble a step function.
 
-Let's denote a logical "high" value as 6, and a logical "low" value as 0. Let \\(x_1, \ldots, x_n\\) be the inputs to a given neuron, \\(w_1, \ldots, w_n\\) be the weights associated with those inputs, and \\(b\\) be the neuron's bias. Clearly, the value of the neuron is \\(\mathrm{RELU6}\left(b + \sum_{1 \le i \le n} w_i x_i\right)\\).
+Let's denote a logical "high" value as 6, and a logical "low" value as 0. Let $$x_1, \ldots, x_n$$ be the inputs to a given neuron, $$w_1, \ldots, w_n$$ be the weights associated with those inputs, and $$b$$ be the neuron's bias. Clearly, the value of the neuron is $$\mathrm{RELU6}\left(b + \sum_{1 \le i \le n} w_i x_i\right)$$.
 
 ### AND/NOR gates
 
-Suppose \\(n = 5\\) and we want an AND gate over inputs \\(x_1, x_3, x_5\\) - the neuron should output 6 if \\(x_1 = 6\\) and \\(x_3 = 6\\) and \\(x_5 = 6\\), otherwise it should output 0. 
+Suppose $$n = 5$$ and we want an AND gate over inputs $$x_1, x_3, x_5$$ - the neuron should output 6 if $$x_1 = 6$$ and $$x_3 = 6$$ and $$x_5 = 6$$, otherwise it should output 0. 
 
-This one's pretty easy - just let \\(w_1 = w_3 = w_5 = 1\\) and \\(w_2 = w_4 = 0\\) with \\(b = -12\\). For a NOR gate, we can instead set \\(b = 6\\), with \\(w_1 = w_3 = w_5 = -1\\) and \\(w_2 = w_4 = 0\\).
+This one's pretty easy - just let $$w_1 = w_3 = w_5 = 1$$ and $$w_2 = w_4 = 0$$ with $$b = -12$$. For a NOR gate, we can instead set $$b = 6$$, with $$w_1 = w_3 = w_5 = -1$$ and $$w_2 = w_4 = 0$$.
 
 We can generalize this to get the following weight-and-bias-generating function:
 
@@ -149,9 +149,9 @@ def neuron_inputs_all_match(pattern):
 
 ### OR/NAND gates
 
-Suppose \\(n = 5\\) and we want an OR gate over inputs \\(x_1, x_3, x_5\\) - the neuron should output 6 if \\(x_1 = 6\\) or \\(x_3 = 6\\) or \\(x_5 = 6\\), otherwise it should output 0. 
+Suppose $$n = 5$$ and we want an OR gate over inputs $$x_1, x_3, x_5$$ - the neuron should output 6 if $$x_1 = 6$$ or $$x_3 = 6$$ or $$x_5 = 6$$, otherwise it should output 0. 
 
-This one's also pretty easy - just let \\(w_1 = w_3 = w_5 = 1\\) and \\(w_2 = w_4 = 0\\) with \\(b = 0\\). For a NOR gate, we can instead set \\(b = 6\\), with \\(w_1 = w_3 = w_5 = -1\\) and \\(w_2 = w_4 = 0\\).
+This one's also pretty easy - just let $$w_1 = w_3 = w_5 = 1$$ and $$w_2 = w_4 = 0$$ with $$b = 0$$. For a NOR gate, we can instead set $$b = 6$$, with $$w_1 = w_3 = w_5 = -1$$ and $$w_2 = w_4 = 0$$.
 
 We can generalize this to get the following weight-and-bias-generating function:
 
@@ -283,9 +283,9 @@ I wrote the weights/biases for the `CODEPOINT PATTERNS` layer by hand. An initia
 
 The weights/biases for the `OPERAND PATTERNS` layer is also written by hand. The operand should usually just be the input character, but some transitions require the operand to be set to certain values. Therefore, each bit of the operand has three possibilities: SET (current transition forces the operand bit to 1), RESET (current transition forces the operand bit to 0), and PASS (operand bit is just the corresponding bit in the input character).
 
-We can represent this as \\(\text{operand bit} = \text{set operand bit} \lor (\text{input character bit is 1} \land \neg \text{reset operand bit})\\). Clearly, \\(\text{set operand bit} = S_1 \lor \ldots \lor S_k\\), where \\(S_1, \ldots, S_k\\) are the neuron inputs corresponding to the transitions that set the operand bit. Likewise, \\(\text{reset operand bit} = R_1 \lor \ldots \lor R_k\\), where \\(R_1, \ldots, R_k\\) are the neuron inputs corresponding to the transitions that reset the operand bit. Therefore, \\(\text{operand bit} = S_1 \lor \ldots \lor S_k \lor (\text{input character bit is 1} \land \neg (R_1 \lor \ldots \lor R_k))\\).
+We can represent this as $$\text{operand bit} = \text{set operand bit} \lor (\text{input character bit is 1} \land \neg \text{reset operand bit})$$. Clearly, $$\text{set operand bit} = S_1 \lor \ldots \lor S_k$$, where $$S_1, \ldots, S_k$$ are the neuron inputs corresponding to the transitions that set the operand bit. Likewise, $$\text{reset operand bit} = R_1 \lor \ldots \lor R_k$$, where $$R_1, \ldots, R_k$$ are the neuron inputs corresponding to the transitions that reset the operand bit. Therefore, $$\text{operand bit} = S_1 \lor \ldots \lor S_k \lor (\text{input character bit is 1} \land \neg (R_1 \lor \ldots \lor R_k))$$.
 
-Note that this formula requires 3 levels of gates to implement, which means 3 layers. Applying DeMorgan's law, we can simplify it down to 2 (NOT gates don't count): \\(\text{operand bit} = S_1 \lor \ldots \lor S_k \lor \neg (\neg\text{input character bit is 1} \lor R_1 \lor \ldots \lor R_k)\\). We can now compute \\(\text{operand bit is tentatively 0} = \neg\text{input character bit is 1} \lor R_1 \lor \ldots \lor R_k\\) using the first layer, and then feed its output into a second layer that can then compute \\(\text{operand bit} = S_1 \lor \ldots \lor S_k \lor \neg \text{operand bit is tentatively 0}\\).
+Note that this formula requires 3 levels of gates to implement, which means 3 layers. Applying DeMorgan's law, we can simplify it down to 2 (NOT gates don't count): $$\text{operand bit} = S_1 \lor \ldots \lor S_k \lor \neg (\neg\text{input character bit is 1} \lor R_1 \lor \ldots \lor R_k)$$. We can now compute $$\text{operand bit is tentatively 0} = \neg\text{input character bit is 1} \lor R_1 \lor \ldots \lor R_k$$ using the first layer, and then feed its output into a second layer that can then compute $$\text{operand bit} = S_1 \lor \ldots \lor S_k \lor \neg \text{operand bit is tentatively 0}$$.
 
 The `TRANSITIONS` layer is partially [generated by a pretty hacky script](generate_transition_neurons.py) - specifically, I filled in the transition patterns by hand. It's just a longer version of the recognizer example above. The `OPERATION/STATE` layer is actually generated by two hacky scripts, [one for the operations](generate_operation_neurons.py), and [one for the state](generate_state_neurons.py). Both of these are just longer versions of the recognizer example above.
 
