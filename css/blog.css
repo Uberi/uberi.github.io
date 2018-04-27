@@ -134,25 +134,6 @@ table {
 .post table thead th { border-bottom: 3px double #dddddd; border-bottom-style: double; }
 .post table tr:first-child { padding: 1em; }
 
-
-.navigation {
-	text-align: center;
-}
-
-.navigation .spacer:after {
-	content: "\2732";
-	margin: 0 0.5em;
-	color: #888888;
-	font-size: 0.7em;
-}
-
-.navigation a {
-	text-decoration: none;
-	font-size: 0.8em;
-	text-transform: uppercase;
-	color: #888888;
-}
-
 @media only screen and (max-width: 900px) {
 	.post {
 		padding-left: 0;
