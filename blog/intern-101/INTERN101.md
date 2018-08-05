@@ -565,6 +565,7 @@ These items do not need to be done in order. Complete all tasks before your flig
 * [ ] Arrange travel from the destination airport to your Canadian residence.
     * Most airports have inexpensive shuttle services that have a decent amount of space for luggage too. Pearson International airport has some additional [suggestions for how to your destination from the airport](https://www.torontopearson.com/en/toandfrom/ground/).
     * Uber/Lyft/Flywheel rides are another option, but you must have a backup plan in case you arrive without any internet connectivity.
+* [ ] Re-enable your Canadian number if you previously put it on hold. Try to get as good of a plan or even better than before.
 
 Step 8: Flying back to Canada
 -----------------------------
