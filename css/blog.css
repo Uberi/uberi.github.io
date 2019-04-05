@@ -113,6 +113,7 @@
 	display: inline-block;
 	vertical-align: bottom; /* get rid of the space below the table */
 	padding: 0.3em 0.5em;
+	margin-bottom: 0;
 }
 .highlight .gutter {
 	padding: 0.3em 0.4em 0.3em 0.5em;

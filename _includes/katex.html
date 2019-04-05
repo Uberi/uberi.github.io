@@ -43,11 +43,6 @@ function renderMathElements(mathElements, displayMode) {
             "\\argmin": "\operatorname{argmin}}",
             "\\argmax": "\operatorname{argmax}}",
             "\\sgn": "\operatorname{sgn}}",
-
-            // not yet available in KaTeX
-            "\\operatorname": "\\mathop{\\text{#1}}\\nolimits", //wip: spacing is slightly off
-            "\\not": "\\rlap{\\kern{7.5mu}/}", //wip: slash angle is slightly off
-            "\\bm": "\\mathbf", //wip: should be italic, but isn't
         },
         throwOnError: false,
         displayMode: displayMode,
@@ -55,9 +50,6 @@ function renderMathElements(mathElements, displayMode) {
     for (var i=0; i < mathElements.length; i++) {
         var mathElement = mathElements[i];
         var latexText = mathElement.firstChild.data;
-
-        //wip: workaround for https://github.com/Khan/KaTeX/issues/20 (more info at https://github.com/gettalong/kramdown/issues/292#issuecomment-257770946)
-        latexText = latexText.replace(/^\s*%\s*<!\[CDATA\[\s*(.*)\s%\s*]]>\s*$/, "$1");
 
         var mathContainer = document.createElement(displayMode ? "div" : "span");
         mathContainer.classList.add("math");
