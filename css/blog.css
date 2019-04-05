@@ -75,6 +75,14 @@
 	margin: 1em auto;
 }
 
+.post img + em {
+	font-size: 0.8rem;
+	text-align: center;
+	display: block;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
 .post video {
 	display: block;
 	width: 90%;
