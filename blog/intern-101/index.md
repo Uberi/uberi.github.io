@@ -74,7 +74,7 @@ Credits
 
 This guide owes its existance to:
 
-* The wonderful recruiters, HR staff, and immigration lawyers at Yelp/Amazon.
+* The wonderful recruiters, HR staff, and immigration lawyers at Yelp/Amazon/Facebook.
 * Conversations with friends, coworkers, and classmates who have completed internships in a variety of countries.
 * Advice from CS advisors, CECA staff, and Cultural Vistas.
 * The [Unofficial Waterloo USA Intern Guide](https://stephenholiday.com/Unofficial-Waterloo-USA-Intern-Guide/) and its many authors.
@@ -145,9 +145,10 @@ Whenever you scan something or receive an electronic document, save it in a safe
 As a Canadian interning in the US, you will need a J-1 visa, so you will be under the "Intern" category of the US State Department cultural exchange program, working with a visa sponsor and the host company to obtain training authorization. Here are some important but non-obvious details about J-1 visas for training:
 
 * There are no limits to the number of J-1 visas you can get, as long as you are eligible.
-* You can't change host companies without getting a new J-1 visa.
-* The maximum duration of the J-1 visa is 8 months - after that, you must come back and take an academic term for at least 4 months before you can get another J-1 visa.
-* You can enter the US up to 30 days before your internship starts, and leave up to 30 days after your internship ends, but no international travel is allowed during this grace period (this includes Canada). If you leave during the ending grace period, you might not be re-admitted into the US under that same J-1 visa. If you need to enter the US again, you should get re-admitted under the B visa (for tourists and business).
+* You usually can't change host companies without getting a new J-1 visa. For example, if you have two internships back-to-back, you'd generally have to leave the US at the end of the first internship, and re-enter before the second internship to get the other J-1 visa.
+* That said, it is possible to get admitted for a single J-1 with two training plans (for two different companies) if both companies use the same visa sponsor and are willing to make it happen. If you have back-to-back internships, this would avoid the need to leave and re-enter the US between them. To start the process, email your recruiters from both companies and ask about combining your two J-1 visas into one.
+* The maximum contiguous duration of a J-1 visa is 12 months. It's possible to extend shorter J-1 visas up to this limit, with at least two weeks notice to Cultural Vistas and support from your host company - email your recruiter to start this process.
+* You can enter the US up to 30 days before your internship starts, and leave up to 30 days after your internship ends, but no international travel is allowed during this grace period (this includes Canada). If you leave during the ending grace period, you might not be re-admitted into the US under that same J-1 visa. If you need to enter the US again after the end of your internship, you should get re-admitted under the B visa (for tourists and business).
 
 This list isn't exhaustive, but covers the most important features of the J-1 visa. If you have questions that this doesn't cover, email Cultural Vistas or a CECA International Employment Specialist.
 
@@ -166,6 +167,7 @@ This section starts when you receive your job offer letter. I recommend going th
     * Make sure the offer is 16 weeks in order to get co-op credit. There are special cases, but 16 weeks is the easiest way to satisfy the work term length requirement. Read more about it at [the CECA website](https://uwaterloo.ca/co-operative-education/prepare-work/work-term/required-length-work-term).
     * Depending on the company, there may be other steps that you have to take, like filling out questionnaires and other forms. Follow the instructions and email your recruiter if you're not sure about any details.
 * <label><input type="checkbox"><span> Wait up to a week for someone working with the company to email you a link to the Cultural Vistas initial questionnaire, and for CECA to send you the UW Statement of Insurance Coverage form and the Program Budget Worksheet on WaterlooWorks. If you did not receive the former, email your recruiter. If you did not receive the latter, email CECA or visit the CECA information desk at the Tatham Center.</span></label>
+    * In some cases, you may be asked to provide proof of university enrolment. Simply visit the [Registrar's office](https://uwaterloo.ca/registrar/) and ask for one at the desk, and for 10 dollars, they will write you a letter on official uWaterloo letterhead. This process takes about 10 minutes. You can also get this via the [Proof of Enrolment Request form](https://uwaterloo.ca/forms/undergraduate-studies/proof-enrolment-request), but that can take several days.
 * <label><input type="checkbox"><span> Fill in the Cultural Vistas initial questionnaire.</span></label>
     * Note that the host is the company you are interning at, and Cultural Vistas is your sponsor.
     * Your current address is the one where you live at the moment. Your permanent address is an address that you can receive mail at over at least the next few months. [Rent a PO box from Canada Post](https://www.canadapost.ca/web/en/products/details.page?article=postal_boxes) if you do not have a permanent address. Note that certain types of mail can't be delivered to PO boxes, specifically certain types of government or bank correspondence.
@@ -188,7 +190,7 @@ This section starts when you receive your job offer letter. I recommend going th
 * <label><input type="checkbox"><span> Log in to your Cultural Vistas sponsorship application and fill in the application form.</span></label>
     * For "SCHOOLS ATTENDED", this includes universities and high schools. The school type for high schools should be "Other", and the Major/Concentration should be "Secondary School".
     * For "EMPLOYMENT HISTORY", this includes uWaterloo co-op terms and part-time/full-time jobs in any country, even though internships are considered training.
-    * For "PREVIOUS UNITED STATES VISA(S)", only include non-tourist visas like previous J-1 visas and so on. If you have had other kinds of visas, or too many J-1 visas to list, email train@culturalvistas.org with the subject “Waterloo co-op student”, and ask what to do about those.
+    * For "PREVIOUS UNITED STATES VISA(S)", only include non-tourist visas (visas that are not the B-2 visa) like previous J-1 visas and so on. If you have had other kinds of visas, or too many J-1 visas to list, email train@culturalvistas.org with the subject “Waterloo co-op student”, and ask what to do about those.
     * The "FINANCE" section is once again just a best-effort estimate. It should be as accurate as possible, but doesn't have to be exact.
     * Essays should be several sentences, no bullet points, and about 100-150 words. One paragraph for each is fine. Don't reuse essays from previous applications.
     * For "Previous Non-Tourist U.S. Visas", if you have previous J-1 visas, remember to submit the DS-7002 form, SEVIS fee receipt, and DS-2019 for each of them.
@@ -202,19 +204,19 @@ This section starts when you receive your job offer letter. I recommend going th
     * At the same time you receive this email, Cultural Vistas is also mailing out the original physical copies of your documents. It should take a few days to arrive, and the email should say what the destination is.
 * <label><input type="checkbox"><span> If you bought health insurance from Cultural Vistas, wait up to 5 days for Cultural Vistas to email you details about your health insurance: an electronic copy of the health insurance plan brochure, an electronic copy of your insurance ID card, and a Health Insurance Support Letter (this letter may arrive in another, later email). If you did not receive this, email train@culturalvistas.org with the subject “Waterloo co-op student”, and ask about your insurance details.</span></label>
     * It is a good idea to register online at the link provided in the emails to check out the details of your health insurance plan and make sure everything looks correct.
-* <label><input type="checkbox"><span> Wait up to a week for Cultural Vistas to snail mail (FedEx) your Cultural Vistas participant letter, original physical DS-2019 form, original physical Training/Internship Placement Plan, and original physical SEVIS fee receipt. If you did not receive these, email train@culturalvistas.org with the subject “Waterloo co-op student”, and ask about the status of your documents.</span></label>
+* <label><input type="checkbox"><span> Wait up to a week for Cultural Vistas to physically mail your Cultural Vistas participant letter, original physical DS-2019 form, original physical Training/Internship Placement Plan, and original physical SEVIS fee receipt. If you did not receive these, email train@culturalvistas.org with the subject “Waterloo co-op student”, and ask about the status of your documents.</span></label>
     * If this is done before the end of the [final exams period](https://uwaterloo.ca/registrar/final-examinations), the original physical copies will get sent to the university, and CECA will email you when the documents are ready to pick up from the CECA information desk in the Tatham Center.
-    * If too late to be sent to the university, Cultural Vistas will email you to ask where to snail mail the documents.
+    * If too late to be sent to the university, Cultural Vistas will email you to ask where to physically mail the documents.
     * Always use the original physical copies of these forms at the Port of Entry - copies and printouts are not acceptable.
 * <label><input type="checkbox"><span> **ERRAND** Pick up your Cultural Vistas participant letter, original physical DS-2019 form, original physical DS-7002 Training/Internship Placement Plan, and original physical SEVIS fee receipt, then scan the DS-2019 form (since Cultural Vistas doesn't send you an electronic copy).</span></label>
 * <label><input type="checkbox"><span> Sign your DS-2019 with a blue pen. It must be blue in order to show that it is an original document rather than a photocopy, which would be black and white.</span></label>
 * <label><input type="checkbox"><span> **ERRAND** If you will be using the Cultural Vistas standard health insurance plan while in the US, print out the electronic copy of the Health Insurance Support Letter and insurance ID Card, and cut out the insurance ID card on the indicated lines. Always keep this card in your wallet, on your person.</span></label>
     * Read over the electronic copy of the health insurance plan brochure to see what you're covered for.
     * [Register online with the insurance provider](https://myplan.sevencorners.com/), and log in to make sure you'll be able to file claims in the future if necessary.
-* <label><input type="checkbox"><span> **ERRAND** If you will be using the uWaterloo Feds/GSA health insurance plan while in the US, print out the [Sun Life Insurance Medi-Passport](http://ihaveaplan.ca/RTEContent/Document/EN/Travel_Documents/Medi_passport_83307.pdf), cut out the Sun Life Insurance Travel Card on the indicated lines, and fill in your full name under "Member's name" and your uWaterloo student ID under "Member ID no.". Always keep this card in your wallet, on your person.</span></label>
+* <label><input type="checkbox"><span> **ERRAND** If you will be using the uWaterloo Feds/GSA health insurance plan while in the US, print out the [Sun Life Insurance Medi-Passport](http://www.studentcare.ca/View.aspx?locale=en&uid=UniversityofWaterlooundergraduatestudentsFEDS_DownloadCentre_TravelHealthPassport&), cut out the Sun Life Insurance Travel Card on the indicated lines, and fill in your full name under "Member's name" and your uWaterloo student ID under "Member ID no.". Always keep this card in your wallet, on your person.</span></label>
     * See the [CECA page about health coverage on international work terms](https://uwaterloo.ca/co-operative-education/working-abroad/health-coverage) for more information.
     * This plan requires you to be in good standing with OHIP. It should cover all of the important emergency medical expenses while in the US.
-* <label><input type="checkbox"><span> Buy round trip flight tickets at least 3 weeks before you need to fly out, preferably more.</span></label>
+* <label><input type="checkbox"><span> Buy round trip flight tickets at least 3 weeks before you need to fly out, if the company is not arranging travel on your behalf.</span></label>
     * Make sure to keep your receipt if the company will be reimbursing you for your flight.
     * I highly recommend a direct/nonstop flight - they're only a little more expensive than multi-leg flights, and can potentially save a lot of headaches.
     * It's also a good idea to buy access to the flight lounge for those sweet, sweet complimentary snacks.
@@ -235,6 +237,13 @@ This section starts when you receive your job offer letter. I recommend going th
 
 Many US-based companies will ask you to undergo a background check. Often, this will be done through a third-party company that specializes in this.
 
+Some things to consider:
+
+* "Notarization" expires after several weeks - don't reuse notarized copies of your ID from previous internships, as they won't be valid anymore.
+* Don't sign the CPIC form or fill in the ID section until you're in front of the notary - one of their jobs is to witness your signature and ID, and they can't do that if you do these in beforehand. Do fill out the rest of the form, however.
+* If your background check form requires you to fill in employment, you can leave salary fields blank.
+* If asked for a US social security number on forms, and you don't have one, you can usually just enter 555-55-5555 - email your recruiter if you're not sure about this one.
+
 Skip this section if you do not have to undergo a background check.
 
 * <label><input type="checkbox"><span> Wait up to a week for the background check company to email you with login credentials for the background check form. If you did not receive this, email your recruiter.</span></label>
@@ -252,15 +261,17 @@ Skip this section if you do not have to undergo a background check.
     * <label><input type="checkbox"><span> Upload the resulting scan to your background check application.</span></label>
 * <label><input type="checkbox"><span> After a few weeks, check back on your application make sure that the background check report is completed. If not, email your contact for the background check company if you have one, otherwise email your recruiter.</span></label>
 * <label><input type="checkbox"><span> Get a copy of your background check verification for your own records.</span></label>
-    * For example, if your background check was conducted by HireRight, you can call the number listed under "How Do I Request a Copy of My Background Report/File?" on [this page](https://www.hireright.com/contact/applicants) and ask for a paper copy to get sent to your address (you can't use the online form unless you live in the US).
+    * For example, if your background check was conducted by HireRight, you can call the number listed on [this page](http://www.hireright.com/applicants/view/request-copy-background-report-dac-report
+) and ask for a paper copy to get sent to your address (HireRight's online form for this will only work if you live in the US).
     * For example, if your background check was conducted by Accurate Background, [this page](https://accuratebackground.com/resources/disputes/) has information about how to get a free copy of your background check.
 
 ### Thread 3: Housing
 
 This depends very heavily on the location and what your personal preferences are. Since each housing agreement is different, this section is mostly advice rather than step-by-step instructions.
 
-* Go for corporate housing if at all possible - you will save a ton of time, stress, and paperwork, and the housing units themselves are generally really nice. Often, the entire process involves just completing a form online, and then meeting your assigned representative at the airport to drive to your accomodations.
-* If there's no corportate housing available, find roommates that you know and trust. Find landlords that you know and trust, if at all possible. It's generally better overall to take a worse place or pay a bit more with people you trust than taking a better place with total strangers.
+* It is almost always recommended to take corporate housing if possible - you will save a ton of time, stress, and paperwork, plus the housing units themselves are generally really nice. Often, the entire process involves just completing some forms online, and then meeting your assigned representative at the location when your internship starts.
+* If there's no corporate housing available, find roommates that you know and trust (and if this is your first time, preferably roommates with experience renting as a Canadian intern). Find landlords that you know and trust, if at all possible. It's generally better overall to take a worse place or pay a bit more with people you trust than taking a better place with total strangers.
+* Check out crime heatmaps for each housing option on sites like Trulia (e.g., for [San Francisco, CA](https://www.trulia.com/real_estate/San_Francisco-California/crime/)).
 * It's a lot easier to find a place once you're settled in the area - it might be worth getting a hotel/AirBnB for a few weeks while you find or close a lease/sublet locally, since you can take tours and talk to landlords yourself.
 * If you don't know the potential landlord, it's highly recommended to schedule a video call with them to see what the place is like before committing to a lease/sublet. Don't be afraid to request references from previous tenants, and ask if you have any questions about the agreement terms.
 * Don't pay for anything or sign any forms until you or someone you trust has checked out the place and talked to the landlord in person.
@@ -269,7 +280,14 @@ This depends very heavily on the location and what your personal preferences are
 * Always obtain and keep deposit/rent payment receipts, signed agreement forms, and so on for your own records. Do not pay your deposit/rent in cash, as it is difficult to obtain legal records of payment this way.
 * Take pictures of the place upon moving in, print them, timestamp them, and sign them. This shows the state of the place when you just moved in, which you can compare to the state of the room when you're moving out to ensure that they're the same.
 * The Unofficial Waterloo USA Intern Guide has a lot of [information about where to find housing opportunities](https://stephenholiday.com/Unofficial-Waterloo-USA-Intern-Guide/#Living) as well.
-* Ask your employer, your friends, area-specific Facebook groups, CECA housing leads, and uWaterloo Facebook groups for good housing leads, roughly in that order. Asking your friends is probably the best way to find good roommates.
+* Good places for housing leads, in order of my personal preference:
+    * Housing options from friends or your employer.
+    * [PadPiper](https://www.padpiper.com/).
+    * [SF Housing Services](http://www.sfhousingservices.com/home) (haven't tried personally, but reliable sources say it's cheap and legitimate).
+    * Area-specific Facebook groups (e.g., [Stanford Housing Opportunities](https://www.facebook.com/groups/448042151892871/)).
+    * Long-term rentals on [AirBnB](https://www.airbnb.com/) (there's often a long-term rental discount too).
+    * The "apts/housing" section of [CraigsList](https://craigslist.org/). CraigsList also has a variety of useful addons such as [Cluck](http://www.cluckcluck.co/) and [CraigsHunter](http://www.craigshunter.com/).
+    * [CECA housing info](https://uwaterloo.ca/co-operative-education/prepare-work/after-job-match/location-specific-information-and-accomodations).
 
 You should always do the following, however:
 
@@ -284,14 +302,13 @@ You should always do the following, however:
     * Bring your Canadian Passport, Ontario Health Card, and internship offer letter (to prove that you're leaving Ontario for study/work purposes).
     * This is necessary because the Feds/GSA insurance coverage (and many other plans) are only valid while you're covered under OHIP - if your OHIP coverage stops, so does your Feds/GSA coverage.
 * <label><input type="checkbox"><span> **ERRAND** Visit your bank and call your credit card providers to tell them you'll be travelling, so using your credit and debit cards in the US won't trigger identity theft detection.</span></label>
-* <label><input type="checkbox"><span> **ERRAND** iIf you don't already have one, get a USD bank account and a USD Visa card from your Canadian bank, so you'll have money available to use in the US as soon as you arrive, in addition to the cash you'll be bringing.</span></label>
+* <label><input type="checkbox"><span> **ERRAND** If you don't already have one, get a USD bank account and a USD Visa card from your Canadian bank, so you'll have money available to use in the US as soon as you arrive, in addition to the cash you'll be bringing.</span></label>
     * CIBC has a US Dollar Visa credit card. It took about 10 minutes at a local CIBC branch to apply and be approved, and the card arrived in the mail within a few days. Having the option available is great for peace of mind.
     * TD offers actual cross-border banking with a [US-based bank account](https://www.tdcanadatrust.com/products-services/banking/cross-border-banking/index.jsp). Most USD bank account offerings are actually based in Canada, which makes it harder to do things like moving USD between countries. You can open one at any TD branch, and have all the fees waived for a while if you prove that you're a student.
 * <label><input type="checkbox"><span> **ERRAND** Schedule a general medical check-up at your local clinic or with your family doctor, if you have one. Go to the check-up.</span></label>
 * <label><input type="checkbox"><span> Obtain a phone plan that will work in the US:</span></label>
     * <label><input type="checkbox"><span> If you're on Freedom/WIND Mobile and use cellular data regularly, consider adding the "Unlimited US Roaming" addon, which [can be done online](https://www.freedommobile.ca). Make sure to enable "US Roaming" on your plan.</span></label>
     * <label><input type="checkbox"><span> If you're on Freedom/WIND and use calling or texting regularly, consider adding the "Unlimited US-wide Calling and Text Messaging" addon, which [can be done online](https://www.freedommobile.ca). Make sure to enable "US Roaming" on your plan.</span></label>
-    * <label><input type="checkbox"><span> Install [Hangouts Dialer](https://play.google.com/store/apps/details?id=com.google.android.apps.hangoutsdialer&hl=en) can be used to make long-distance calls using wifi/data.</span></label>
     * <label><input type="checkbox"><span> Install [Maps.me](https://maps.me/en/home) and download offline maps of your destination and the area around the airport, in case you don't have a signal upon arrival.</span></label>
 * <label><input type="checkbox"><span> **ERRAND** Make sure you are able to keep financial commitments while in the US, like checking to make sure you can pay bills online while out of Canada.</span></label>
     * If you have legal obligations that require physical presence in Canada, you may want to appoint someone as your power of attorney, which allows them to act on your behalf in financial matters (among other things). Ask a lawyer for more information about doing things.
@@ -331,16 +348,16 @@ Step 3: Preparing to leave Canada
 Complete all tasks before your flight.
 
 * <label><input type="checkbox"><span> [Register your trip with the Canadian Government](https://travel.gc.ca/travelling/registration) to ensure you can get messages in an emergency. Optional, but recommended.</span></label>
-* <label><input type="checkbox"><span> [Sign up for International SOS](https://uwaterloo.ca/international/travel-safety-and-security/international-sos) to get access to expanded medical and security services.</span></label>
+* <label><input type="checkbox"><span> [Sign up for International SOS](https://uwaterloo.ca/international/international-sos-member-services) to get access to expanded medical and security services.</span></label>
     * On itineraries and other flight documentation, the "Confirmation Number" is often alternatively labelled as a "Booking Reference Number", "Record Reference Number", "Booking Locator", "Record Locator", "PNR Code", or just "Reference Number". It's usually a six-character alphanumeric code.
     * For the "Flight Number" field, airlines often put an alphabetic prefix in front of a number, like "AC750" ("AC" means "Air Canada" here). In the form, just put the number part.
     * Follow the instructions to set up member services on the [university website](https://uwaterloo.ca/international/international-sos-member-services) (this page also has your membership number).
     * Consider writing the International SOS hotline number and your membership number on a piece of paper to keep in your wallet.
-* <label><input type="checkbox"><span> Pack bags with everything needed for the 4-month trip, making sure they comply with weight/size restrictions.</span></label>
+* <label><input type="checkbox"><span> Pack bags with everything needed for the trip, making sure they comply with airline weight/size restrictions.</span></label>
     * Check the [allowed items list](http://www.catsa.gc.ca/complete-item-list) to make sure there are no restricted items.
     * Check the airline's size/weight restrictions for luggage.
     * Fully turn off all electronic devices that use disk encryption.
-    * Use a travel-approved lock for checked luggage.
+    * Use a travel-approved lock for checked luggage to avoid getting your locks cut off.
     * Keep a few hundred USD in cash on your person or in carry-on for initial expenses.
     * Bring a portable power bank in your carry-on as a backup battery for your phone.
     * Melatonin, expanding foam earplugs, a small towel, and flip-flops/slippers are highly recommended for carry-on luggage.
@@ -388,6 +405,7 @@ Step 4: Flying to the US
     * Some people are almost always selected for secondary or enhanced screening - it's not a huge deal, but it's pretty annoying. This generally delays you between half an hour and three hours, so I usually get to the airport around 8 hours before the flight leaves rather than 6.
     * Usually you go to Terminal 1 for Star Alliance airlines (like Air Canada), or Terminal 3 for SkyTeam/Oneworld airlines and airlines that are unaffliated with any airline alliances.
     * Make sure you're at the international departures section of the terminal.
+    * Make sure to get itemized receipts for everything if you're going to expense them later.
 * <label><input type="checkbox"><span> If you did not check in online earlier, go to the check-in kiosks and do so.</span></label>
     * If you couldn't check in at the kiosks, try the check-in assistance counter instead. This probably means you've been selected for secondary screening. If your boarding pass has the letters "SSSS" on it, you've definitely been selected for secondary or enhanced screening.
     * If there's no line-up, this can be done in under two minutes. Expect a line-up of at least an hour during regular hours, however.
@@ -419,11 +437,11 @@ Step 4: Flying to the US
     * This information will generally become available a few hours before the flight departs. Delay and cancellation notices will also start to be published around this time.
 * <label><input type="checkbox"><span> Wait around inside the secure area until it is nearly boarding time, then go back the boarding gate and get onto the plane after it's readied.</span></label>
     * This is a good time to buy a water bottle (or bring an empty clear plastic one with you through security screening) to store drinking water in for the flight and after landing.
-    * Top up the battery on any rechargeable electronics. There are outlets near boarding gates and in some restaurants. Some flights have 120V/220V outlets, but sometimes these are actually DC outlets, which won't work with certain types of DC power adapters.
+    * Top up the battery on any rechargeable electronics. There are outlets near boarding gates and in some restaurants. Some flights have 120V/220V outlets, but sometimes these are actually DC outlets, which won't work with transformer-based power adapters.
     * If there's time, verify that your I-94 entry says "J1" on it. You can get this form from the [US Customs and Border Protection I-94 request website](https://i94.cbp.dhs.gov/I94/#/recent-search), immediately after passing through th US Customs and Border Protection hall. If it's incorrect, go to the nearest US Customs and Border Protection Deferred Inspection office and ask the people there to look at it.
 * <label><input type="checkbox"><span> Call your emergency contact to let them know that you're leaving.</span></label>
 * <label><input type="checkbox"><span> Take the flight to your destination airport.</span></label>
-* <label><input type="checkbox"><span> Retrieve any checked luggage, then leave the secure area of the airport.</span></label>
+* <label><input type="checkbox"><span> Retrieve any checked luggage from the baggage carousels, then leave the secure area of the airport.</span></label>
 * <label><input type="checkbox"><span> Go to your US residence using the transportation arrangements made in step 2.</span></label>
 * <label><input type="checkbox"><span> Call your emergency contact to let them know you've arrived.</span></label>
 
@@ -434,12 +452,12 @@ I recommend going through all the threads in parallel, since there are quite a f
 
 ### Thread 1: Random arrival-related stuff
 
-* <label><input type="checkbox"><span> Download your Admission/Departure form (I-94) from the [US Customs and Border Protection I-94 request website](https://i94.cbp.dhs.gov/I94/#/recent-search), then print it out and keep it with your other documents.</span></label>
 * <label><input type="checkbox"><span> Submit your CECA arrival forms on WaterlooWorks within 24 hours of landing.</span></label>
     * Go to the Dashboard section, go to "View Work Term Record", and then fill out the "Work-term details" and "My contact and travel info" forms.
     * Some places online state that [this](http://strobe.uwaterloo.ca/cecs/arrival-form/arrival-form) is the right form. This is no longer correct - the arrival notice now consists exactly of filling out those two forms on WaterlooWorks.
-* <label><input type="checkbox"><span> Fill out the [Cultural Vistas Arrival Validation form](http://www.culturalvistas.org/validations) with your full name, US address, phone number, email, arrival date in the US, and your SEVIS identification number (from your SEVIS fee receipt) within 5 days of arrival, in order to update your SEVIS record. Also email validations@culturalvistas.org with the same information just to make sure.</span></label>
+* <label><input type="checkbox"><span> Fill out the [Cultural Vistas Arrival Validation form](http://www.culturalvistas.org/validations) with your full name, US address, phone number, email, arrival date in the US, and your SEVIS identification number (from your SEVIS fee receipt) within 5 days of arrival, in order to update your SEVIS record. Make sure you get the confirmation email from validations@culturalvistas.org.</span></label>
     * If you're temporarily living in a hotel, put down the hotel's address and update the form when you begin your actual housing arrangements.
+* <label><input type="checkbox"><span> **ERRAND** Download your Admission/Departure form (I-94) from the [US Customs and Border Protection I-94 request website](https://i94.cbp.dhs.gov/I94/#/recent-search), then print it out and keep it with your other documents. You'll likely need to go to somewhere like a UPS Store or CVS Photo if you don't have a printer handy.</span></label>
 * <label><input type="checkbox"><span> If you don't already have a bank account, go to a US bank and open a chequeing account. Bring your Canadian passport, DS-2019 form, offer letter, and proof of address (for example, your lease agreement).</span></label>
     * I'm using a Chase Total Chequeing Account, which has no monthly fees with certain conditions and has several branches near my residence.
     * You can simply keep this account open for future purposes to conveniently bank in the US. However, to make sure the account never goes dormant, make sure to perform some account activity (such as transfers and payments) every three months or so. You might be able to set up an automatic back-and-forth transfer that can do this.
@@ -449,13 +467,15 @@ I recommend going through all the threads in parallel, since there are quite a f
     * This is the latest advice after the new immigration-related executive orders came out in early 2017.
     * You should also have electronic copies of those documents as well, from steps 2 and 4.
 * <label><input type="checkbox"><span> Go to your office on the first day, or follow any other arrangements made beforehand with your employer.</span></label>
+    * Bring your DS-2019, I-94, and Canadian passport - many companies require you to present proof of authorization via Form I-9, and these documents are always sufficient to complete that form.
+* <label><input type="checkbox"><span> If your J-1 visa wasn't done through Cultural Vistas or Intrax, or if your J-1 visa wasn't for an official co-op term, email cecausa@uwaterloo.ca with an electronic copy of your DS-2019 form, in order to ensure you'll receive co-op credit for the term.</span></label>
 
 ### Thread 2: Set up Social Security
 
 Skip this section if you already have a US social security number.
 
 * <label><input type="checkbox"><span> Wait at least 10 days after arriving in the US, 2 business days after submitting the CECA arrival notice forms, and 5 days after submitting your Cultural Vistas Arrival Validation form, whichever finishes last.</span></label>
-* <label><input type="checkbox"><span> Go to the [nearest Social Security Administration office](https://secure.ssa.gov/ICON/main.jsp). Bring your Canadian passport, another piece of photo ID (like a Canadian driver's license), DS-2019, DS-7002, printed out Admission/Departure form (I-94), Social Security Support Letter, internship offer letter, proof of address (like a lease agreement or utility bill), any name change certificates.</span></label>
+* <label><input type="checkbox"><span> Go to the [nearest Social Security Administration office](https://secure.ssa.gov/ICON/main.jsp). Bring your Canadian passport, another piece of photo ID (like a Canadian driver's license), DS-2019, DS-7002, printed out Admission/Departure form (I-94), Social Security Support Letter, internship offer letter, any name change certificates.</span></label>
     * These offices will generally only be open a few hours a day while most people are working, so either go before work or during a break.
     * Just bring your documents - you may be searched on the way in.
     * You'll probably only need your DS-2009, I-94, and Canadian passport, but it is quite possible you will need the other documents as well.
@@ -514,10 +534,11 @@ There are far too many possibilities here, so I won't attempt to list them all. 
     * Also look at Uber/Lyft/Flywheel options for transport. Make sure you know your options before needing them.
 * <label><input type="checkbox"><span> Get a US credit card, even if you don't need one. Having a good credit history is important for everything from future housing opportunities to phone plans, so it's important to start building credit as soon as possible.</span></label>
     * Your bank will usually have options for that. Without existing US credit history, however, it's often difficult to obtain a credit card.
-    * One option is to get a secured credit card, where you put down a certain deposit at the bank in return for a credit card. A good option is the [Discover it Secured](https://www.discover.com/credit-cards/secured/).
+    * One option is to get a secured credit card, where you put down a certain deposit at the bank in return for a credit card. A good option is the [Discover it Secured](https://www.discover.com/credit-cards/secured/). There's a [number of other good ones too](https://www.nerdwallet.com/blog/top-credit-cards/nerdwallets-best-secured-credit-cards/#rewards-upgrading).
     * If you don't care about the credit card being accepted everywhere, [Discover credit cards](https://www.discover.com/credit-cards/) have decent perks and are relatively easy to obtain for people with limited credit history, as long as you can prove you have consistent income. Another good option is the BankAmericard Cash Rewards, though it's a bit harder to get.
-    * [WalletHub](https://wallethub.com/credit-cards) and [CreditKarma](https://www.creditkarma.com/credit-cards) have tons of good options for credit cards, including cards for people that are just starting to build a credit history. WalletHub seems to have a larger variety of recommendations, while CreditKarma also works for Canada credit.
+    * [WalletHub](https://wallethub.com/credit-cards) and [CreditKarma](https://www.creditkarma.com/credit-cards) have tons of good options for credit cards, including cards for people that are just starting to build a credit history. WalletHub seems to have a larger variety of recommendations, while CreditKarma also works for Canada credit. JPMorgan Chase also offers online credit viewing options such as CreditJourney.
     * The [Unofficial Waterloo USA Intern Guide](https://stephenholiday.com/Unofficial-Waterloo-USA-Intern-Guide/#credit-cards) also has some good credit history advice.
+    * If you have a good credit score in Canada and have had an American Express card for a while, [AmEx Global Transfer](https://www.americanexpress.com/global-card-transfers/united-states.html) might be worth looking into - it allows you to apply for an AmEx card using your Canadian credit history in addition to your (possibly non-existant) US credit history. This is the option I personally went with.
 * <label><input type="checkbox"><span> Put your health insurance cards in your wallet, and keep them there - they should always be on your person or in your bag.</span></label>
 * <label><input type="checkbox"><span> Consider signing up for a couple of useful services:</span></label>
     * [Amazon Prime](https://www.amazon.com/Amazon-Prime-One-Year-Membership/dp/B00DBYBNEE). There's a free 1 month trial, remember to cancel it after if you don't plan to keep using it. I recommend setting a calendar event with a reminder to cancel this after.
@@ -527,7 +548,7 @@ There are far too many possibilities here, so I won't attempt to list them all. 
 * <label><input type="checkbox"><span> Set up an account with a service like [Transferwise](https://transferwise.com/) (recommended) or [XE](http://www.xe.com/), so you're ready to move money back to Canada when you're returning.</span></label>
     * These services are legally required to verify your identity before allowing transactions to go through, which can take a few days. For Transferwise, this can be [done online](https://transferwise.com/user/verify/id) by uploading a photo of your ID.
 * <label><input type="checkbox"><span> Prepare for the upcoming school term, if applicable:</span></label>
-    * <label><input type="checkbox"><span> Select courses during the pre-enrollment period. See [Important Dates](https://uwaterloo.ca/quest/undergraduate-students/important-dates) for pre-enrollment period dates.</span></label>
+    * <label><input type="checkbox"><span> Select courses during the pre-enrolment period. See [Important Dates](https://uwaterloo.ca/quest/undergraduate-students/important-dates) for pre-enrolment period dates.</span></label>
     * <label><input type="checkbox"><span> Enroll in courses during the add/drop period. See [Important Dates](https://uwaterloo.ca/quest/undergraduate-students/important-dates) for add/drop period dates.</span></label>
     * <label><input type="checkbox"><span> Pay tuition before the tuition due date. See [Due Dates and Late Fees](https://uwaterloo.ca/finance/student-financial-services/about-your-student-account/due-dates-and-late-fees) for tuition due dates.</span></label>
 * <label><input type="checkbox"><span> Prepare housing arrangements for next term - where will you be living? Starting this earlier generally means more choices, possibly better prices, and nicer places.</span></label>
@@ -538,13 +559,17 @@ There are far too many possibilities here, so I won't attempt to list them all. 
 * If you receive an email from CECA asking you to complete the eCheckin form on WaterlooWorks, complete it.
     * This form asks for basic job details like salary and working hours.
     * The form is usually sent around 5 weeks into the term.
+* If you want to extend your internship, contact Cultural Vistas and ask at least two weeks before the end date.
 * If you receive an email from CECA asking you to complete an e-Update form, fill in the requested information.
     * This form asks for your phone number and Skype contact info. If you answer "Undecided" for whether you'll be returning to an employer next co-op term, you must attend a meeting with your student advisor.
     * The form is usually sent near the end of your term.
 * If you receive an email from Cultural Vistas asking you to complete an Intermediate Evaluation form, fill in the requested information.
-    * The form is usually sent near the middle of an 8-month internship - you will not receive this if you are on a 4-month internship.
+    * The form is sent near the middle of an internship lasting 6 months or more - you will not receive this if you are on a 4-month internship.
 * If you need to pass your PD course, keep on top of that every week. Most of them will take less than 20 minutes a week at the very most.
-* If your address or phone number changes, make sure to update your contact info on WaterlooWorks (under "Dashboard", "View Work Term Record", "My contact and travel info"), [Cultural Vistas](http://www.culturalvistas.org/validations), and your employer.
+* If your home address or phone number changes, make sure to update your contact info on WaterlooWorks (under "Dashboard", "View Work Term Record", "My contact and travel info"), [Cultural Vistas](http://www.culturalvistas.org/validations), and your employer.
+* If your work address, direct supervisor, compensation, or employer company's name changes, email train@culturalvistas.org with the subject “Waterloo co-op student”, they may issue you updated documents if necessary.
+    * This is also necessary so that Cultural Vistas can update your SEVIS record.
+    * This is especially important if you plan to travel outside of the US after the change, as otherwise you may run into problems when re-entering the US.
 * If you plan to end your internship early, email train@culturalvistas.org with the subject “Waterloo co-op student”, and tell them when you are leaving.
     * This is necessary so that Cultural Vistas can update your SEVIS record.
 * If Cultural Vistas sends you an email with instructions to complete your half of the Participant Midterm Evaluation, complete it, and make sure your employer completes their half of the evaluation as well.
@@ -554,7 +579,7 @@ Step 7: The end is near
 
 These items do not need to be done in order. Complete all tasks before your flight.
 
-* <label><input type="checkbox"><span> If you need to transfer USD to CAD to cover living expenses in Canada after returning, perform the currency exchange. You should already have your identity verified with the exchange service from Step 6, so the only thing left is generally to send the service your USD, and wait for them to send you the resulting CAD.</span></label>
+* <label><input type="checkbox"><span> Transfer USD to CAD if you want/need to. You should already have your identity verified with the exchange service from Step 6, so the only thing left is generally to send the service your USD, and wait for them to send you the resulting CAD.</span></label>
     * If you're using [Transferwise](https://transferwise.com/), the service will generally take a few business days. If possible, I recommend selecting the ACH Pull option to allow them to directly withdraw from your US bank account, since other options might incur additional fees.
     * If you're using [XE](http://www.xe.com/), the service will generally take a week or two. If possible, I recommend selecting the ACH/EFT option to allow them to directly withdraw from your US bank account, since other options might incur additional fees.
 * <label><input type="checkbox"><span> Make sure your employer submits your uWaterloo Student Performance Evaluation before the [official end of work term](https://uwaterloo.ca/co-operative-education/important-dates), in order to get the co-op credit.</span></label>
@@ -569,6 +594,8 @@ These items do not need to be done in order. Complete all tasks before your flig
     * Here are the [Mathematics faculty work term report guidelines](https://uwaterloo.ca/math/current-undergraduates/co-op-information/work-report-guidelines).
     * Check on your work report course on LEARN (PD if this is your first work term report, WKRPT otherwise) for details about how to submit the report and how it is graded.
     * Generally, your employer must grade your report and fill out an [employer work report evaluation form](https://uwaterloo.ca/co-operative-education/work/work-reports), which you can prepend to your work term report and submit to a dropbox under your work report LEARN course.
+* <label><input type="checkbox"><span> If you have mail you're expecting at your US address (e.g. tax return transcripts), set up mail forwarding with USPS to have mail automatically forwarded to your permanent address.</span></label>
+    * There's an [online form](https://www.usps.com/manage/forward.htm), but it doesn't accept non-US addresses - you'll have to do this in-person at a US post office by filling in a [Change of Address form](http://faq.usps.com/?articleId=221220#how_to_get_started).
 * <label><input type="checkbox"><span> Leave a valid permanent mailing address with your employer so they can send you your tax documents.</span></label>
 * <label><input type="checkbox"><span> Double check the details of your return flight to Canada.</span></label>
 * <label><input type="checkbox"><span> Arrange travel from the destination airport to your Canadian residence.</span></label>
@@ -608,10 +635,12 @@ Step 8: Flying back to Canada
     * This information will generally become available a few hours before the flight departs. Delay and cancellation notices will also start to be published around this time.
 * <label><input type="checkbox"><span> Wait around inside the secure area until it is nearly boarding time, then go back the boarding gate and get onto the plane after it's readied.</span></label>
     * This is a good time to buy a water bottle (or bring an empty clear plastic one with you through security screening) to store drinking water in for the flight and after landing.
-    * Top up the battery on any rechargeable electronics. There are outlets near boarding gates and in some restaurants. Some flights have 120V/220V outlets, but sometimes these are actually DC outlets, which won't work with certain types of DC power adapters.
+    * Top up the battery on any rechargeable electronics. There are outlets near boarding gates and in some restaurants. Some flights have 120V/220V outlets, but sometimes these are actually DC outlets, which won't work with transformer-based power adapters.
 * <label><input type="checkbox"><span> Call your emergency contact to let them know that you're leaving.</span></label>
-* <label><input type="checkbox"><span> Take the flight to your destination airport.</span></label>
-    * While on the flight, you will be given a Canadian Customs Declaration card. Fill out the card with the necessary information about the value of the goods you've purchased while outside of Canada. For the form, unaccompanied goods are goods that are bought outside of Canada, and sent separately (e.g., by mail) to Canada (so checked luggage does not count as unaccompanied goods). Also, commercial goods are goods intended for sale or occupational/business use. For more information, see the [Canadian government's guide to customs declarations for residents](http://www.cbsa-asfc.gc.ca/travel-voyage/declare-eng.html).
+* <label><input type="checkbox"><span> Take the flight to your destination airport. While on the flight, you will be given a Canadian Customs Declaration card. Fill out the card with the necessary information about the value of the goods you've purchased while outside of Canada.</span></label>
+    * Unaccompanied goods are goods that are bought outside of Canada, and sent separately (e.g., by mail) to Canada (so checked luggage does not count as unaccompanied goods).
+    * Commercial goods are goods intended for sale or occupational/business use.
+    * For more information about the form, see the [Canadian government's guide to customs declarations for residents](http://www.cbsa-asfc.gc.ca/travel-voyage/declare-eng.html).
 * <label><input type="checkbox"><span> Upon landing, follow the signs to get to the Canadian border services area in the airport. Go to one of the electronic processing booths and follow the instructions.</span></label>
     * You will need the customs declaration card you filled out on the plane, as well as your Canadian passport.
     * You will receive a photocopy of the customs declaration card. Hold onto this for the time being.
@@ -620,7 +649,7 @@ Step 8: Flying back to Canada
     * The officer will mark your photocopy of your customs declaration card. Hold onto this for the time being.
     * This is a Canadian Port of Entry - this is the point at which you actually legally enter Canada.
     * If you are bringing goods purchased outside of Canada with value greater than your personal exemption amounts, you may be required to pay duty/taxes on them at this point, since they are being imported into Canada. See the [Canadian government's guide to returning to Canada](http://www.cbsa-asfc.gc.ca/travel-voyage/ifcrc-rpcrc-eng.html) for more information.
-* <label><input type="checkbox"><span> Retrieve any checked luggage, then leave the secure area of the airport.</span></label>
+* <label><input type="checkbox"><span> Retrieve any checked luggage from the baggage carousels, then leave the secure area of the airport.</span></label>
     * At the exit, you show your passport to the officers there and hand in your photocopy of the customs declaration card.
 * <label><input type="checkbox"><span> Call your emergency contact to let them know you've arrived.</span></label>
 * <label><input type="checkbox"><span> Go to your Canadian residence using the transportation arrangements made in step 7.</span></label>
@@ -632,12 +661,13 @@ These items do not need to be done in order, and are not particularly time-sensi
 
 * <label><input type="checkbox"><span> If you are paying for a US phone plan, cancel it if you will no longer be using it for the forseeable future.</span></label>
     * <label><input type="checkbox"><span> If you're on Freedom/WIND Mobile and added the "Unlimited US Roaming" addon, [remove it online](https://www.freedommobile.ca) and consider disabling "US Roaming" on your plan if you won't be using it.</span></label>
-* <label><input type="checkbox"><span> If you obtained any USD credit cards or USD bank accounts for use in the US, and they have periodic fees, and you don't intend to use them in the forseeable future, cancel/close them.</span></label>
+* <label><input type="checkbox"><span> If you obtained any credit cards or bank accounts for use in the US, and they have periodic fees, and you don't intend to use them in the forseeable future, cancel/close them.</span></label>
     * Usually credit cards are cancelled over the phone, and bank accounts are most easily closed in-person at a branch.
-    * Make sure to check a few weeks later to ensure it's actually cancelled properly. For example CIBC took about 2 months before the card was finally gone in online banking.
-* <label><input type="checkbox"><span> Update your address with various services like banking and others that might send out mail.</span></label>
+    * Make sure to check a few weeks later to ensure it's actually cancelled properly. For example CIBC's USD credit card took about 2 months before the card was finally gone in online banking.
+* <label><input type="checkbox"><span> Update your address with services like banking and others that might send out mail.</span></label>
     * Chase banking allows you to add a new Canadian address and set it as the primary mailing address.
 * <label><input type="checkbox"><span> A day or two after your internship ends, if you receive a link to a survey for free tax software from Cultural Vistas, and you intend to file your taxes by yourself, fill out the survey to obtain access to Glacier Tax Preparation software for US federal tax returns (you will still need to file the US state tax returns yourself).</span></label>
+* <label><input type="checkbox"><span> Your background check consent form may have included a clause like "We retain authorization to update background check information in the future as needed, unless you submit a revocation via fax/carrier pidgeon". If this is the case, to prevent your personal information from being used even after the background check, make sure to submit your revocation of consent after the background check is completed.</span></label>
 
 Step 10: US Tax Returns
 -----------------------
@@ -659,7 +689,7 @@ Since you were in the US as an intern, you should only require a W-2 form from y
     * "Country of Tax Residence" is generally your country of citizenship. However, if you lived in another country right before going to the US, it might be that country instead, depending on which country it was - ask an accountant to be sure.
     * For your Form 8843, "Current nonimmigrant status and date of change" actually means "Most recent nonimmigrant status and date of change".
     * For your Form 8843, "the director of the academic or other specialized program you participated in during 2016" is the person who signed your DS-2019 form under "Responsible Officer". For Cultural Vistas, you can look up their [office information](http://culturalvistas.org/about-us/leadership/) and find the corresponding [office contact info](http://culturalvistas.org/about-us/contact/).
-    * The software helped me fill out my 1040NR-EZ, but I still had to fill out Form 8843 myself. I ended up redoing the 1040EZ-NR by hand using the generated 1040NR-EZ as a template.
+    * The software helped me fill out my 1040NR-EZ, but I still had to fill out Form 8843 myself. I ended up redoing the 1040EZ-NR by hand using the generated 1040NR-EZ as a template. The main thing I did differently from the software is to count my days present under a J-1 visa as exempt days, which means that for tax purposes, the days I was here for my internship don't count toward the substantial presence test.
     * The [Unofficial UWaterloo Intern USA Tax Guide](https://web-beta.archive.org/web/20150318060617/https://csclub.uwaterloo.ca/~f2fung/taxguide.html) gives a set of example forms with annotations. Quite a few things have changed since it was published, but it may be useful to see what goes where.
 * <label><input type="checkbox"><span> Do your state tax return, if applicable.</span></label>
     * For California taxes, this consisted of the 540NR Short Form (state tax return) and the W-2 State Copy (declaration of income).
@@ -673,7 +703,7 @@ Step 11: Canadian Tax Returns
 
 Again, I'm not a tax professional, and the following is provided for information purposes only. Something something I'm not liable if this information turns out to be wrong, outdated, etc. Really, get an accountant having experience with Canadian tax law if you're unsure about this stuff.
 
-I'm still assuming that your only source of income in the US was from your employer.
+I'm still assuming that your only source of income in the US was from your US-based employer.
 
 Canadian tax returns are due on first business day on or after April 30 of each year, for the preceding year. Since you're a Canadian citizen, you probably need to file this every year anyways.
 
@@ -703,6 +733,12 @@ Other things to consider:
 * Don't forget the T2202 form for tuition amounts.
 
 Make sure to keep an electronic copy of all the relevant documents (including things like donation receipts) for at least 5 years, in case the CRA requires more proof or clarification during this time. After filing, in just two weeks or so, you'll receive your completed notice of assessment - download the PDF from [the CRA website](http://www.cra-arc.gc.ca/myaccount/) and keep it safe as well. Around the same time, you should receive your refund either directly in your bank account if you have direct deposit set up, or as a cheque mailed to your address on file.
+
+A Canadian income tax return doesn't include all of the documents necessary to actually prove the numbers are correct. Sometimes, you'll get selected for a tax review, where the CRA will ask you for these additional supporting documents. This can occur at any time within a few years of filing your return, and you will find out by mail at the address you've listed with the CRA. If you signed up for online CRA access, you can usually update these online.
+
+Usually the most painful part of the tax review process is collecting the IRS part of the documentation, such as your IRS account transcript and account statement from your state tax authority (these can usually only be obtained via mail, and often only to a US address), though in my experiences you can substitute bank account statements that display your US tax payments/refunds instead. I recommend including a letter with your submission, mentioning the tax review's reference number (which can be found in the original tax review letter) and a list of included files, as well as how those files correspond to the requested items.
+
+Once you submit your documents, the CRA will review everything and get back to you by mail. This process can take between a couple weeks and a couple of months. I received a letter saying the review was completed (and my claim was accepted) about 3.5 months after submitting.
 <style>
 /* use a more condensed text style */
 li {
