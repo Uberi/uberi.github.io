@@ -104,7 +104,6 @@
 }
 
 .highlight { /* formatted and unformatted code blocks */
-	margin: 1em 3em;
 	display: block;
 	font-family: monospace;
 	overflow: auto;
