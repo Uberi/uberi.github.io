@@ -194,6 +194,8 @@ We'll install the 3D printed limit switch mounts that we made for the Taig mill 
 ![Back X-axis limit switch installed](./assets/lathe-x-axis-limit-switch-back.jpg)
 ![Y-axis limit switches installed](./assets/lathe-y-axis-limit-switches.jpg)
 
+The limit switch mounts are made of plastic, to avoid damaging the switches when we accidentally crash into them by a few millimeters (funny enough, they're already slightly bent in the pictures after only a few test runs!). Usually, you wouldn't use these for precision purposes with regular mechanical switches, due to lack of rigidity, but inductive switches mean that almost no forces are applied to the mounts. Indeed, when we check with a dial indicator, the repeatability is well within 0.01mm at the sensor surface.
+
 Now we can connect the limit switches and spindle index sensor to the I/O port of the Taig mill controller box (and an external 12V power adapter) as follows:
 
 ![Schematic showing how all the sensors are connected and powered](./assets/final-schematic.png)
@@ -260,6 +262,8 @@ Downloads
 * [3D-printable mount for the spindle indexing sensor (STL format)](./lathe-indexing-sensor-mount.stl)
 * [KiCAD (version 9.0) project used to make the schematic drawing above](./hardware.zip)
 * [FreeCAD (version 1.0.0) project used to design the mount for the spindle indexing sensor, including a model of the sensor and the mounting hardware](./lathe-indexing-sensor-mount.FCStd)
+
+We'll talk about the limit switch mounts more in a future post, but for now, here's the [FreeCAD (version 1.0.0) project used to design all of these mounts](./inductive-limit-switches.FCStd).
 
 Shopping list (besides the used Taig MicroMill 2019DSLS CNC mill):
 
