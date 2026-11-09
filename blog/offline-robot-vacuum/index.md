@@ -5,6 +5,13 @@ description: Setting up and securing a Dreame robot vacuum with Valetudo, Tailsc
 layout: post
 ---
 
+**Updated 2026-11:** Instructions updated to work with the latest version of Valetudo's DustFab image for the Dreame L10S Ultra. You can find the original version of this post in the [Git repo](https://github.com/Uberi/uberi.github.io/commits/master/blog/offline-robot-vacuum/index.md), for historical purposes. The main changes are:
+
+* `ip6tables` wasn't present before, and now it is, so we could add firewall rules for IPv6. However, we still disable IPv6 anyways for simplicity.
+* Dreame Maploader Web UI updated to work with the new "manual control" UI in later versions of Valetudo (it also now detects the robot model automatically, waits until the robot is ready again after loading a map, and supports a few more models such as the Mova P10 Pro Ultra).
+* vacuumstreamer no longer works on the newer firmware because `libtrecorder.so` is missing, and the whole setup was getting pretty messy, so we just made a custom camera capture program called [vacuumcam](https://github.com/Uberi/dreame-maploader-web-ui/tree/main/vacuumcam) and use that for the front camera instead.
+* Tailscale and go2rtc updated.
+
 Rationale
 ---------
 
@@ -16,11 +23,11 @@ I wanted a completely cloud-free robot vacuum capable of both vacuuming and mopp
     * Someone else made [Dreame Vacuum Robot Maploader](https://github.com/pkoehlers/maploader), which allows map changes on Dreame robots via MQTT, and the web UI's functionality is based on this repo.
     * Note that the map loading feature is very hacky (it simply swaps out the entire map data folder and restarts Valetudo) - one of the reasons why it wasn't supported by Valetudo to begin with. But it's quite usable in practice, just takes an extra minute to set up.
 * Remote access via Tailscale running on-device.
-* Basic security hardening. A Valetudo install by default is already much more secure than a cloud-connected robot, but basic :
+* Basic security hardening. A Valetudo install by default is already much more secure than a cloud-connected robot, but:
     * By default, a Valetudo install listens on port 80 for the web UI, port 5353 for mDNS, port 1900 for SSDP, and a few others. This represents a significant attack surface, so we'll add a firewall in front.
     * By default, a Valetudo install allows password SSH authentication. This is less secure than using publickey auth, so we'll disable password authentication entirely.
     * The Valetudo web UI is also only accessible via Tailscale (and access-controlled via Tailscale ACLs), rather than anyone on the LAN.
-* Realtime browser-based video streaming from the robot's front-facing camera via vacuumstreamer and go2rtc.
+* Realtime browser-based video streaming from the robot's front-facing camera via vacuumcam and go2rtc.
 
 
 Setup Instructions
@@ -50,56 +57,50 @@ Setup Instructions
         * This allows traffic from Tailscale to talk to the Valetudo web UI. While this does make the Valetudo web UI accessible to traffic from outside the local network as well, we will be setting up firewall rules that will block this in an upcoming step.
     5. Change the `"port"` setting (under `"webserver"`) to `3000` in `/data/valetudo_config.json`.
         * Serving the web UI on port 3000 frees up port 80, which Valetudo would otherwise use by default, for Dreame Maploader Web UI, which we will be setting up in an upcoming step.
-2. Install [vacuumstreamer](https://github.com/tihmstar/vacuumstreamer) and [go2rtc](https://github.com/AlexxIT/go2rtc) to stream video to a web UI:
-    1. Download vacuumstreamer on the laptop from https://github.com/tihmstar/vacuumstreamer/archive/b1d463ccae60b5bd262f9b0db6639bceae40820c.zip and extract it to the working directory.
-    2. Download go2rtc on the laptop from https://github.com/AlexxIT/go2rtc/releases/download/v1.9.4/go2rtc_linux_arm64 to the working directory.
-    3. Transfer over the vacuumstreamer and go2rtc binaries and config files on the laptop (replace `192.168.8.101` with the actual IP of the robot, which you can find on your router's management page):
+2. Install [vacuumcam](https://github.com/Uberi/dreame-maploader-web-ui/tree/main/vacuumcam) and [go2rtc](https://github.com/AlexxIT/go2rtc) to stream video to a web UI:
+    1. Download Dreame Maploader Web UI (which includes vacuumcam) on the laptop from https://github.com/Uberi/dreame-maploader-web-ui/archive/refs/heads/main.zip and extract it to the working directory.
+    2. Download go2rtc on the laptop from https://github.com/AlexxIT/go2rtc/releases/download/v1.9.15/go2rtc_linux_arm64 to the working directory.
+    3. Transfer over the vacuumcam and go2rtc binaries on the laptop (replace `192.168.8.101` with the actual IP of the robot, which you can find on your router's management page):
 
-           scp -i ~/.ssh/id_rsa_valetudo go2rtc_linux_arm64 root@192.168.8.101:/data/vacuumstreamer/go2rtc
-           cd vacuumstreamer-b1d463ccae60b5bd262f9b0db6639bceae40820c
-           ssh -i ~/.ssh/id_rsa_valetudo root@192.168.8.101 "mkdir -p /data/vacuumstreamer"
-           scp -i ~/.ssh/id_rsa_valetudo vacuumstreamer.so root@192.168.8.101:/data/vacuumstreamer/vacuumstreamer.so
-           scp -i ~/.ssh/id_rsa_valetudo dist/usr/bin/video_monitor root@192.168.8.101:/data/vacuumstreamer/video_monitor
-           scp -i ~/.ssh/id_rsa_valetudo -r dist/ava/conf/video_monitor/ root@192.168.8.101:/data/vacuumstreamer/ava_conf_video_monitor
+           ssh -i ~/.ssh/id_rsa_valetudo root@192.168.8.101 "mkdir -p /data/dreame-maploader-web-ui/vacuumcam"
+           scp -O -i ~/.ssh/id_rsa_valetudo go2rtc_linux_arm64 root@192.168.8.101:/data/dreame-maploader-web-ui/vacuumcam/go2rtc
+           scp -O -i ~/.ssh/id_rsa_valetudo dreame-maploader-web-ui-main/vacuumcam/vacuumcam root@192.168.8.101:/data/dreame-maploader-web-ui/vacuumcam/vacuumcam
 
-    4. Install and set up vacuumstreamer and go2rtc on the robot over SSH:
+    4. Install and set up vacuumcam and go2rtc on the robot over SSH:
 
-           cp -r /mnt/private /data/vacuumstreamer/mnt_private_copy && touch /data/vacuumstreamer/mnt_private_copy/certificate.bin  # workaround for missing certificate bug, see https://github.com/tihmstar/vacuumstreamer/issues/1 for details
-           chmod +x /data/vacuumstreamer/go2rtc
+           chmod +x /data/dreame-maploader-web-ui/vacuumcam/go2rtc /data/dreame-maploader-web-ui/vacuumcam/vacuumcam
            cat <<EOF >> /data/_root_postboot.sh
 
-           if [[ -f /data/vacuumstreamer/video_monitor ]]; then
-               mount --bind /data/vacuumstreamer/ava_conf_video_monitor /ava/conf/video_monitor
-               mount --bind /data/vacuumstreamer/mnt_private_copy /mnt/private
-               LD_PRELOAD=/data/vacuumstreamer/vacuumstreamer.so /data/vacuumstreamer/video_monitor > /dev/null 2>&1 &
-               /data/vacuumstreamer/go2rtc -c '{"streams": {"tcp_magic": "tcp://127.0.0.1:6969"}}' > /dev/null 2>&1 &
+           if [[ -f /data/dreame-maploader-web-ui/vacuumcam/vacuumcam ]]; then
+               /data/dreame-maploader-web-ui/vacuumcam/vacuumcam > /dev/null 2> /tmp/vacuumcam.log &
+               /data/dreame-maploader-web-ui/vacuumcam/go2rtc -c '{"streams": {"tcp_magic": "tcp://127.0.0.1:6969"}}' > /dev/null 2>&1 &
            fi
            EOF
 
-    3. The video feed can now be viewed from the go2rtc web UI at `http://192.168.8.101:1984` (replace `192.168.8.101` with the actual IP of the robot, which you can find on your router's management page). The video feed is also integrated into the Dreame Maploader Web UI, if you prefer to have everything in one place.
+    5. The video feed can now be viewed from the go2rtc web UI at `http://192.168.8.101:1984` (replace `192.168.8.101` with the actual IP of the robot, which you can find on your router's management page). The video feed is also integrated into the Dreame Maploader Web UI, if you prefer to have everything in one place.
 3. Install [Dreame Maploader Web UI](https://github.com/Uberi/dreame-maploader-web-ui) to act as the main web UI:
-    1. Download Dream Maploader Web UI on the laptop from https://github.com/Uberi/dreame-maploader-web-ui/archive/refs/heads/main.zip and extract it to the working directory.
+    1. Dreame Maploader Web UI should already be downloaded and extracted to the working directory, from the previous step.
     2. Transfer over the Dreame Maploader Web UI binary and resource files on the laptop (replace `192.168.8.101` with the actual IP of the robot, which you can find on your router's management page):
 
-           scp -i ~/.ssh/id_rsa_valetudo dreame-maploader-web-ui root@192.168.8.101:/data/dreame-maploader-web-ui
-           scp -i ~/.ssh/id_rsa_valetudo map-loaded.wav root@192.168.8.101:/data/map-loaded.wav
+           scp -O -i ~/.ssh/id_rsa_valetudo dreame-maploader-web-ui-main/dreame-maploader-web-ui root@192.168.8.101:/data/dreame-maploader-web-ui/dreame-maploader-web-ui
+           scp -O -i ~/.ssh/id_rsa_valetudo dreame-maploader-web-ui-main/map-loaded.wav root@192.168.8.101:/data/dreame-maploader-web-ui/map-loaded.wav
 
     3. Install and set up the Dreame Maploader Web UI daemon on the robot over SSH:
 
            cat <<EOF >> /data/_root_postboot.sh
 
-           if [[ -f /data/dreame-maploader-web-ui ]]; then
-               /data/dreame-maploader-web-ui --robot="Dreame L10S Ultra" --port=80 --save_path=/data/saved_maps --valetudo_port=3000 > /dev/null 2>&1 &
+           if [[ -f /data/dreame-maploader-web-ui/dreame-maploader-web-ui ]]; then
+               /data/dreame-maploader-web-ui/dreame-maploader-web-ui --port=80 --save_path=/data/dreame-maploader-web-ui/saved_maps --valetudo_port=3000 > /dev/null 2>&1 &
            fi
            EOF
            reboot
 
 4. Set up Tailscale, based on [this Tailscale official blog post](https://tailscale.dev/blog/tailscale-sucks) (instructions modified due to being slightly outdated):
-    1. Transfer over the Tailscale binary on the laptop (this binary is downloaded from https://pkgs.tailscale.com/stable/#static) (replace `192.168.8.101` with the actual IP of the robot, which you can find on your router's management page):
+    1. Transfer over the extracted Tailscale archive on the laptop (this archive is downloaded from https://pkgs.tailscale.com/stable/#static, as of this writing the latest link is https://pkgs.tailscale.com/stable/tailscale_1.104.5_arm64.tgz) (replace `192.168.8.101` with the actual IP of the robot, which you can find on your router's management page):
 
-           scp -i ~/.ssh/id_rsa_valetudo -r tailscale_1.70.0_arm64 root@192.168.8.101:/data/tailscale
+           scp -i ~/.ssh/id_rsa_valetudo -r tailscale_1.104.5_arm64 root@192.168.8.101:/data/tailscale
 
-    2. Install and set up the Tailscale daemon on the robot over SSH:
+    2. Install and set up the Tailscale daemon on the robot over SSH, with persistent data in `/data/tailscale/state` and temporary data (e.g., logs and unix sockets) in `/tmp/tailscale`:
 
            cat <<EOF >> /data/_root_postboot.sh
 
@@ -128,7 +129,7 @@ Setup Instructions
        iptables -A INPUT -i lo -j ACCEPT  # allow all traffic on the loopback interface
        iptables -P INPUT DROP  # deny IPv4 traffic by default
 
-       # normally, we would add equivalent IPv6 rules via ip6tables, but this system doesn't have a working ip6tables, so we'll just disable IPv6 entirely (you can confirm this works by using `ip a` before and after, and noticing that the `inet6` entries are gone afterward)
+       # we could add equivalent IPv6 rules via ip6tables, but for simplicity we'll just disable IPv6 entirely (you can confirm this works by using `ip a` before and after, and ensuring that the `inet6` entries are gone afterward)
        echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
        echo 1 > /proc/sys/net/ipv6/conf/default/disable_ipv6
 
@@ -142,8 +143,8 @@ After these steps, the contents of `/data/_root_postboot.sh` should look somethi
 ```sh
 #!/bin/sh
 
-iptables -A INPUT -i tailscale0 -p tcp --dport 3000 -j ACCEPT  # allow maploader web UI access from Tailscale
-iptables -A INPUT -i tailscale0 -p tcp --dport 80 -j ACCEPT  # allow Valetudo web UI access from Tailscale
+iptables -A INPUT -i tailscale0 -p tcp --dport 3000 -j ACCEPT  # allow Valetudo web UI access from Tailscale
+iptables -A INPUT -i tailscale0 -p tcp --dport 80 -j ACCEPT  # allow maploader web UI access from Tailscale
 iptables -A INPUT -i tailscale0 -p tcp --dport 8555 -j ACCEPT  # allow WebRTC TCP video streaming from Tailscale
 iptables -A INPUT -i tailscale0 -p udp --dport 8555 -j ACCEPT  # allow WebRTC UDP video streaming from Tailscale
 iptables -A INPUT -i tailscale0 -p tcp --dport 1984 -j ACCEPT  # allow go2rtc web UI access from Tailscale
@@ -154,9 +155,11 @@ iptables -A INPUT -p udp --dport 41461 -j ACCEPT  # allow Tailscale connection t
 iptables -A INPUT -i lo -j ACCEPT  # allow all traffic on the loopback interface
 iptables -P INPUT DROP  # deny traffic by default
 
-# normally, we would add equivalent IPv6 rules via ip6tables, but this system doesn't have a working ip6tables, so we'll just disable IPv6 entirely (you can confirm this works by using `ip a` before and after, and noticing that the `inet6` entries are gone afterward)
+# we could add equivalent IPv6 rules via ip6tables, but for simplicity we'll just disable IPv6 entirely (you can confirm this works by using `ip a` before and after, and ensuring that the `inet6` entries are gone afterward)
 echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
 echo 1 > /proc/sys/net/ipv6/conf/default/disable_ipv6
+
+### BEGIN ORIGINAL CONTENTS ###
 
 # Interestingly, the iw command does not always have the same effect as these module parameters
 # It is expected that some of these will fail as the robot has only one of those modules
@@ -165,6 +168,10 @@ echo 0 > /sys/module/8188fu/parameters/rtw_power_mgnt
 echo 0 > /sys/module/8723ds/parameters/rtw_power_mgnt
 
 iw dev wlan0 set power_save off
+
+if [[ -f /data/config/ava/iot.flag ]] && grep -q "dmiot" /data/config/ava/iot.flag; then
+        rm /data/config/ava/iot.flag
+fi
 
 if [ ! "$(readlink /data/config/system/localtime)" -ef "/usr/share/zoneinfo/UTC" ]; then
         rm /data/config/system/localtime
@@ -175,11 +182,11 @@ if [[ -f /data/valetudo ]]; then
         VALETUDO_CONFIG_PATH=/data/valetudo_config.json /data/valetudo > /dev/null 2>&1 &
 fi
 
-if [[ -f /data/vacuumstreamer/video_monitor ]]; then
-    mount --bind /data/vacuumstreamer/ava_conf_video_monitor /ava/conf/video_monitor
-    mount --bind /data/vacuumstreamer/mnt_private_copy /mnt/private
-    LD_PRELOAD=/data/vacuumstreamer/vacuumstreamer.so /data/vacuumstreamer/video_monitor > /dev/null 2>&1 &
-    /data/vacuumstreamer/go2rtc -c '{"streams": {"tcp_magic": "tcp://127.0.0.1:6969"}}' > /dev/null 2>&1 &
+### END ORIGINAL CONTENTS ###
+
+if [[ -f /data/dreame-maploader-web-ui/vacuumcam/vacuumcam ]]; then
+    /data/dreame-maploader-web-ui/vacuumcam/vacuumcam > /dev/null 2> /tmp/vacuumcam.log &
+    /data/dreame-maploader-web-ui/vacuumcam/go2rtc -c '{"streams": {"tcp_magic": "tcp://127.0.0.1:6969"}}' > /dev/null 2>&1 &
 fi
 
 if [[ -f /data/tailscale/tailscaled ]]; then
@@ -187,7 +194,7 @@ if [[ -f /data/tailscale/tailscaled ]]; then
         STATE_DIRECTORY=/tmp/tailscale /data/tailscale/tailscaled --socket=/tmp/tailscale/tailscaled.sock --statedir=/data/tailscale/state > /dev/null 2>&1 &
 fi
 
-if [[ -f /data/dreame-maploader-web-ui ]]; then
-    /data/dreame-maploader-web-ui --robot="Dreame L10S Ultra" --port=80 --save_path=/data/saved_maps --valetudo_port=3000 > /dev/null 2>&1 &
+if [[ -f /data/dreame-maploader-web-ui/dreame-maploader-web-ui ]]; then
+    /data/dreame-maploader-web-ui/dreame-maploader-web-ui --port=80 --save_path=/data/dreame-maploader-web-ui/saved_maps --valetudo_port=3000 > /dev/null 2>&1 &
 fi
 ```
